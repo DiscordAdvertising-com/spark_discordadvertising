@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    {{-- @if($bot) --}}
+    @if($bot)
         <div class="mt-10 relative">
             <div class="w-full bg-dsb rounded-lg border border-db relative overflow-hidden ">
                 <div class="p-6">
@@ -74,7 +74,7 @@
                 </div>
             </div>
         </div>
-    {{-- @endif --}}
+    @endif
     @if(count($addedTags) != 0 && strlen($description) != 0 && strlen($headline))
         <div class="mt-10">
             <div class="w-full p-6 bg-dsb rounded-lg border border-db relative overflow-hidden ">
@@ -115,7 +115,7 @@
             </div>
         </div>
     @endif
-    {{-- @if(count($accounts) != 0) --}}
+    @if(count($accounts) != 0)
         <div class="mt-10">
             <div class="w-full p-6 bg-dsb rounded-lg border border-db relative overflow-hidden ">
                 <h1 class="text-gray-200 text-xl font-bold border-b border-opacity-10 border-white pb-6"> <span class="text-accent">Step 4.</span> - Finish Bot Listing</h1>
@@ -125,7 +125,7 @@
                 </div>
             </div>
         </div>
-    {{-- @endif --}}
+    @endif
 </div>
 
 {{-- Ask if want reload --}}
