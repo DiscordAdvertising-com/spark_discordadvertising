@@ -3,30 +3,39 @@
 namespace App\Http\Livewire\Pages\Dashboard;
 
 use Exception;
+use App\Models\Bot;
+use App\Models\Tag;
+use App\Models\User;
+use App\Models\BotTag;
 use GuzzleHttp\Client;
+use App\Models\BotUser;
 use Livewire\Component;
 use Illuminate\Support\Facades\Session;
 
 class Upload extends Component
 {
 
-    public $bot_client_id;
+    public $botClientID;
     public $bot;
     public $description;
     public $headline;
-    public $tags = ["Gaming", "Community", "Fun", "Education", "Moderation", "Economy", "Ticket"];
+    public $tags = [];
     public $addedTags = [];
     public $tag;
-    public $owners = [];
+    public $accounts = [];
+    public $accountID;
 
-    public $step2 = true;
-    public $step3 = true;
-    public $step4 = true;
+    public function mount() {
 
-    // Production 
-    // public $step2 = false;
-    // public $step3 = false;
-    // public $step4 = false;
+        $tags = Tag::all();
+
+        foreach($tags as $tag) {
+
+            $this->tags[] = $tag->name;
+
+        }
+
+    }
 
     public function render()
     {
@@ -37,30 +46,38 @@ class Upload extends Component
         
         $client = new Client();
 
-        try {
+        $bot = Bot::find((String) $this->botClientID);
 
-            //Fetch bot by id
-            $data = $client->get('https://discord.com/api/v8/users/'.$this->bot_client_id, ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token')]]);
-            $data = json_decode($data->getBody(), true);
+        if($bot != null) {
+
+            Session::push('notifications', ['title' => 'Error', 'message' => 'Bot is already registerd']);
+
+        } else {
+
+            try {
+
+                //Fetch bot by id
+                $data = $client->get('https://discord.com/api/v8/users/'.$this->botClientID, ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token')]]);
+                $data = json_decode($data->getBody(), true);
+        
+                if($data['bot']) {
     
-            if($data['bot']) {
-
-                $this->bot = $data;
-                Session::push('notifications', ['title' => 'Success', 'message' => 'Bot has been found']);
-
-                $this->step2 = true;
+                    $this->bot = $data;
+                    Session::push('notifications', ['title' => 'Success', 'message' => 'Bot has been found']);
+                    
+                } else {
+    
+                    throw null;
+    
+                }
                 
-            } else {
-
-                throw null;
-
+            } catch( Exception $err) {
+    
+                $this->bot = null;
+    
+                Session::push('notifications', ['title' => 'Error', 'message' => 'Bot could not be found']);
+    
             }
-            
-        } catch( Exception $err) {
-
-            $this->bot = null;
-
-            Session::push('notifications', ['title' => 'Error', 'message' => 'Bot could not be found']);
 
         }
 
@@ -97,6 +114,90 @@ class Upload extends Component
 
         unset($this->addedTags[array_search($tag, $this->addedTags)]);  
         $this->addedTags = array_merge($this->addedTags);
+
+    }
+
+    public function addAccount() {
+
+
+        $client = new Client();
+        $unique = true;
+
+        $user = User::find((String) $this->accountID);
+
+        if($user == null) {
+
+            Session::push('notifications', ['title' => 'Error', 'message' => 'User has not been registerd on our platform, before they can be added they have to login atleast once']);
+
+        } else {
+
+            try {
+
+                foreach($this->accounts as $account) {
+    
+                    if($account['id'] == $this->accountID) {
+    
+                        $unique = false;
+    
+                    }
+        
+                }
+    
+                if($unique) {
+    
+                    //Fetch bot by id
+                    $data = $client->get('https://discord.com/api/v8/users/'.$this->accountID, ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token')]]);
+                    $data = json_decode($data->getBody(), true);
+            
+                    $this->accounts[] = $data;
+                    Session::push('notifications', ['title' => 'Success', 'message' => 'Account has been found']);
+    
+                } else {
+    
+                    Session::push('notifications', ['title' => 'Error', 'message' => 'Account is already added']);
+    
+                }
+                    
+            } catch( Exception $err) {
+    
+                Session::push('notifications', ['title' => 'Error', 'message' => 'Account could not be found']);
+    
+            }
+
+        }
+
+        $this->emit('flashSession');
+
+    }
+
+    public function createListing() {
+
+        try {
+
+            Bot::create(['id' => $this->bot['id'], 'headline' => $this->headline, 'description' => $this->description, 'username' => $this->bot['username'], 'avatar' => $this->bot['avatar'], 'discriminator' => $this->bot['discriminator']]);
+            
+            foreach($this->addedTags as $tag) {
+
+                BotTag::create(['bot_id' => $this->bot['id'], 'tag' => $tag]);
+
+            }
+
+            foreach($this->accounts as $account) {
+
+                BotUser::create(['bot_id' => $this->bot['id'], 'user_id' => $account['id']]);
+
+            }
+            
+            Session::push('notifications', ['title' => 'Success', 'message' => 'Bot listing has been created']);
+
+        } catch (Exception $err) {
+
+            Session::push('notifications', ['title' => 'Error', 'message' => 'Something went wrong']);
+            dd($err);
+
+        }
+
+        $this->emit('flashSession');
 
     }
     

@@ -9,7 +9,7 @@
 
                     <label class="text-gray-400" for="clientid">Application ID</label>
                     <div class="flex gap-x-5">
-                        <input wire:model="bot_client_id" name="clientid" type="text"
+                        <input wire:model="botClientID" name="clientid" type="text"
                         class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" required>
                         <button wire:click="findBot" class="w-[10rem] bg-accent rounded-lg text-white font-semibold"> <li class="fa-solid fa-search"></li> Find Bot</button>
                     </div>
@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    @if($bot)
+    {{-- @if($bot) --}}
         <div class="mt-10 relative">
             <div class="w-full bg-dsb rounded-lg border border-db relative overflow-hidden ">
                 <div class="p-6">
@@ -74,7 +74,7 @@
                 </div>
             </div>
         </div>
-    @endif
+    {{-- @endif --}}
     @if(count($addedTags) != 0 && strlen($description) != 0 && strlen($headline))
         <div class="mt-10">
             <div class="w-full p-6 bg-dsb rounded-lg border border-db relative overflow-hidden ">
@@ -85,9 +85,9 @@
 
                         <label class="text-gray-400" for="clientid">Discord ID</label>
                         <div class="flex gap-x-5">
-                            <input name="clientid" type="text"
+                            <input name="clientid" wire:model="accountID" type="text"
                             class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" required>
-                            <button class="w-[12rem] bg-accent rounded-lg text-white font-semibold"> <li class="fa-solid fa-search"></li> Find Account</button>
+                            <button wire:click="addAccount" class="w-[12rem] bg-accent rounded-lg text-white font-semibold"> <li class="fa-solid fa-search"></li> Find Account</button>
                         </div>
                         <h1 class="text-sm text-gray-500">How to find someones discord ID<i class="fa-solid fa-arrow-right ml-1 text-accent"></i></h1>
 
@@ -98,26 +98,16 @@
 
                         <label class="text-gray-400" for="clientid">Added Accounts</label>
 
-                        <div class="bg-input w-full p-4 rounded-lg text-gray-400">
-                            <div class="relative w-full">
-                                <span class="text-gray-300">Bacio001</span> - 173347297181040640
-                                <li class="fa-solid absolute fa-x right-0 top-1/2 -translate-y-1/2 text-accent font-semibold"></li>
+                        @foreach ($accounts as $account)
+                            
+                            <div class="bg-input w-full p-4 rounded-lg text-gray-400">
+                                <div class="relative w-full">
+                                    <span class="text-gray-300">{{$account['username']}}</span> - {{$account['id']}}
+                                    <li class="fa-solid absolute fa-x right-0 top-1/2 -translate-y-1/2 text-accent font-semibold"></li>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="bg-input w-full p-4 rounded-lg text-gray-400">
-                            <div class="relative w-full">
-                                <span class="text-gray-300">Spark</span> - 884516044151083079
-                                <li class="fa-solid absolute fa-x right-0 top-1/2 -translate-y-1/2 text-accent font-semibold"></li>
-                            </div>
-                        </div>
-
-                        <div class="bg-input w-full p-4 rounded-lg text-gray-400">
-                            <div class="relative w-full">
-                                <span class="text-gray-300">Nick</span> - 724097871934128189
-                                <li class="fa-solid absolute fa-x right-0 top-1/2 -translate-y-1/2 text-accent font-semibold"></li>
-                            </div>
-                        </div>
+                        @endforeach
 
                     </div>
 
@@ -125,17 +115,17 @@
             </div>
         </div>
     @endif
-    @if(count($owners) != 0)
+    {{-- @if(count($accounts) != 0) --}}
         <div class="mt-10">
             <div class="w-full p-6 bg-dsb rounded-lg border border-db relative overflow-hidden ">
-                <h1 class="text-gray-200 text-xl font-bold border-b border-opacity-10 border-white pb-6"> <span class="text-accent">Step 4.</span> - Bot Publishing</h1>
+                <h1 class="text-gray-200 text-xl font-bold border-b border-opacity-10 border-white pb-6"> <span class="text-accent">Step 4.</span> - Finish Bot Listing</h1>
                 <div class="max-w-[50rem] grid gap-y-6 mt-6">
-                    <button class="w-fit bg-accent rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-check mr-1"></li> Publish Bot</button>
-                    <h1 class="text-sm text-gray-500">By publishing your bot you accept Discord Advertising's TOS<i class="fa-solid fa-arrow-right ml-1 text-accent"></i></h1>
+                    <button wire:click="createListing" class="w-fit bg-accent rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-check mr-1"></li> Create Listing</button>
+                    <h1 class="text-sm text-gray-500">By creating your bot listing you accept Discord Advertising's TOS<i class="fa-solid fa-arrow-right ml-1 text-accent"></i></h1>
                 </div>
             </div>
         </div>
-    @endif
+    {{-- @endif --}}
 </div>
 
 {{-- Ask if want reload --}}
