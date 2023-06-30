@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Pages\Dashboard;
+use App\Http\Controllers\DiscordLoginContoller;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +15,11 @@ use App\Http\Livewire\Pages\Dashboard;
 |
 */
 
-Route::get('/dashboard/{page?}', Dashboard::class)->name('dashboard');
+Route::get('/',  [DiscordLoginContoller::class, 'redirectToProvider'])->name('login');
+Route::get('/discordinfo', [DiscordLoginContoller::class, 'handleProviderCallback']);
+
+Route::group(['middleware' => 'auth'], function() {
+
+    Route::get('/dashboard/{page?}', Dashboard::class)->name('dashboard');
+
+});

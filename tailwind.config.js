@@ -17,6 +17,8 @@ export default {
         'db': '#3D3E45',
         // Dashboard Border
         'accent': '#6773E5',
+        // Dashboard input
+        'input': '#3D3E45',
 
       }
     },
