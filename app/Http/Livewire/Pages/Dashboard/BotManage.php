@@ -227,9 +227,9 @@ class BotManage extends Component
 
         }
 
-        $this->emit('flashSession');
+        // $this->emit('flashSession');
 
-        $this->emit('setPage', 'botList');
+        // $this->emit('setPage', 'botList');
 
     }
 
