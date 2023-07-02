@@ -31,5 +31,6 @@ class Dashboard extends Component
             $this->dispatchBrowserEvent('changeUrl', ['url' => '/dashboard']);
         }
         Session::put('page', $page);
+        $this->emit('flashSession');
     }
 }
