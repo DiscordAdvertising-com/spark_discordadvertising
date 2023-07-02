@@ -42,8 +42,8 @@ class BotManage extends Component
             $this->botClientID = $botID;
         }
 
-        $bot = Bot::where(['id' => $this->botClientID])->first();
-        dd($this->botClientID);
+        $bot = Bot::where(['id' => (String)$this->botClientID])->first();
+        dd($bot);
         $this->description = $bot['description'] ?? '';
         $this->headline = $bot['headline'] ?? '';
 
