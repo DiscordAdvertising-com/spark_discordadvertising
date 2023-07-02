@@ -202,8 +202,8 @@ class Upload extends Component
 
         try {
 
-            $b = Bot::create(['id' => $this->bot['id'], 'author' => (String) Auth::user()->id, 'headline' => $this->headline, 'description' => $this->description, 'username' => $this->bot['username'], 'avatar' => $this->bot['avatar'], 'discriminator' => $this->bot['discriminator']]);
-            dd((String) Auth::user()->id, $b);
+            Bot::create(['id' => $this->bot['id'], 'author' => (String) Auth::user()->id, 'headline' => $this->headline, 'description' => $this->description, 'username' => $this->bot['username'], 'avatar' => $this->bot['avatar'], 'discriminator' => $this->bot['discriminator']]);
+
             foreach($this->addedTags as $tag) {
 
                 BotTag::create(['bot_id' => $this->bot['id'], 'tag' => $tag]);
