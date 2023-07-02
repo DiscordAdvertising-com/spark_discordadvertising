@@ -43,7 +43,7 @@ class BotManage extends Component
         }
 
         $bot = Bot::where(['id' => $this->botClientID])->first();
-        dd($bot);
+        dd($this->botClientID);
         $this->description = $bot['description'] ?? '';
         $this->headline = $bot['headline'] ?? '';
 
