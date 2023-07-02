@@ -49,7 +49,7 @@
         
                             <label class="text-gray-400" for="clientid">Bot Tags</label>
                             <div class="flex gap-x-5">
-                                <select name="tag" class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" id="">
+                                <select wire:model="tag" class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" id="">
                                     @foreach ($tags as $tag)
                                         <option value="{{$tag}}">{{$tag}}</option>
                                     @endforeach
@@ -61,7 +61,7 @@
                                     <div class="w-full bg-input p-4 rounded-lg focus:ring-2 min-h-[3.5rem] focus:ring-accent focus:outline-none text-gray-200 flex  flex-wrap gap-3">
 
                                         @foreach ($addedTags as $tag)
-                                            <span class=" bg-accent rounded-lg p-1.5 px-3 text-center">{{$tag}} <li class="fa-solid fa-x text-[0.8rem] ml-1" wire:click="removeTag('{{$tag}}')"></li></span>
+                                            <span class=" bg-accent rounded-lg p-1.5 px-3 text-center">{{$tag}} <li class="fa-solid fa-x text-[0.8rem] ml-1 hover:cursor-pointer" wire:click="removeTag('{{$tag}}')"></li></span>
                                         @endforeach
             
                                     </div>                                    
@@ -103,7 +103,7 @@
                             <div class="bg-input w-full p-4 rounded-lg text-gray-400">
                                 <div class="relative w-full">
                                     <span class="text-gray-300">{{$account['username']}}</span> - {{$account['id']}}
-                                    <li class="fa-solid absolute fa-x right-0 top-1/2 -translate-y-1/2 text-accent font-semibold"></li>
+                                    <li class="fa-solid absolute fa-x right-0 top-1/2 -translate-y-1/2 text-accent font-semibold hover:cursor-pointer" wire:click="removeAccount('{{$account['id']}}')"></li>
                                 </div>
                             </div>
 
@@ -115,7 +115,7 @@
             </div>
         </div>
     @endif
-    @if(count($accounts) != 0)
+    @if(count($addedTags) != 0 && strlen($description) != 0 && strlen($headline))
         <div class="mt-10">
             <div class="w-full p-6 bg-dsb rounded-lg border border-db relative overflow-hidden ">
                 <h1 class="text-gray-200 text-xl font-bold border-b border-opacity-10 border-white pb-6"> <span class="text-accent">Step 4.</span> - Finish Bot Listing</h1>

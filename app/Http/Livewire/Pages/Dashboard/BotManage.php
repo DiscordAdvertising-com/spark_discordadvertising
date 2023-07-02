@@ -13,7 +13,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class Upload extends Component
+class BotManage extends Component
 {
 
     public $botClientID;
@@ -25,8 +25,8 @@ class Upload extends Component
     public $tag;
     public $accounts = [];
     public $accountID;
-
-    public function mount() {
+    
+    public function mount($botID = null) {
 
         $tags = Tag::all();
 
@@ -36,54 +36,43 @@ class Upload extends Component
 
         }
 
-    }
-
-    public function render()
-    {
-        return view('livewire.pages.dashboard.upload');
-    }
-
-    public function findBot() {
-        
-        $client = new Client();
-
-        $bot = Bot::find((String) $this->botClientID);
-
-        if($bot != null) {
-
-            Session::push('notifications', ['title' => 'Error', 'message' => 'Bot is already registerd']);
-
+        if(!$botID) {
+            $this->botClientID = Session::get('botID');
         } else {
+            $this->botClientID = $botID;
+        }
 
-            try {
+        $bot = Bot::where(['id' => $this->botClientID])->first();
 
-                //Fetch bot by id
-                $data = $client->get('https://discord.com/api/v8/users/'.$this->botClientID, ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token')]]);
-                $data = json_decode($data->getBody(), true);
-        
-                if($data['bot']) {
+        $this->description = $bot['description'];
+        $this->headline = $bot['headline'];
+
+        foreach($bot->tags as $tag) {
+
+            $this->addedTags[] = $tag['tag'];
+
+            unset($this->tags[array_search($tag['tag'], $this->tags)]);  
     
-                    $this->bot = $data;
-                    Session::push('notifications', ['title' => 'Success', 'message' => 'Bot has been found']);
-                    
-                } else {
-    
-                    throw null;
-    
-                }
-                
-            } catch( Exception $err) {
-    
-                $this->bot = null;
-    
-                Session::push('notifications', ['title' => 'Error', 'message' => 'Bot could not be found']);
-    
+            $this->tag = null;  
+            $this->tags = array_merge($this->tags);
+
+        }
+
+        foreach($bot->users as $user) {
+
+            if($user->user != null) {
+
+                $this->accounts[] = $user->user;
+
             }
 
         }
 
-        $this->emit('flashSession');
+    }
 
+    public function render()
+    {        
+        return view('livewire.pages.dashboard.bot-manage');
     }
 
     public function addTag() {
@@ -198,27 +187,63 @@ class Upload extends Component
 
     }
 
-    public function createListing() {
+    public function updateListing() {
 
         try {
 
-            Bot::create(['id' => $this->bot['id'], 'author' => Auth::user()->id, 'headline' => $this->headline, 'description' => $this->description, 'username' => $this->bot['username'], 'avatar' => $this->bot['avatar'], 'discriminator' => $this->bot['discriminator']]);
-            
+            $findBot = Bot::find($this->botClientID);
+            Bot::where(['id' => $this->botClientID])->update(['headline' => $this->headline, 'description' => $this->description]);
+    
+
+            foreach($findBot->tags as $tag) {
+
+                BotTag::where(['bot_id' => $tag['bot_id'], 'tag' => $tag['tag']])->delete();
+
+            }
+
             foreach($this->addedTags as $tag) {
 
-                BotTag::create(['bot_id' => $this->bot['id'], 'tag' => $tag]);
+                BotTag::create(['bot_id' => $findBot['id'], 'tag' => $tag]);
+
+            }
+
+            foreach($findBot->users as $user) {
+
+                BotUser::where(['bot_id' => $user['bot_id'], 'user_id' => $user['user_id']])->delete();
 
             }
 
             foreach($this->accounts as $account) {
 
-                BotUser::create(['bot_id' => $this->bot['id'], 'user_id' => $account['id']]);
+                BotUser::create(['bot_id' => $findBot['id'], 'user_id' => $account['id']]);
 
             }
             
-            Session::push('notifications', ['title' => 'Success', 'message' => 'Bot listing has been created']);
+            Session::push('notifications', ['title' => 'Success', 'message' => 'Bot listing has been updated']);
 
         } catch (Exception $err) {
+
+            Session::push('notifications', ['title' => 'Error', 'message' => 'Something went wrong']);
+
+        }
+
+        $this->emit('flashSession');
+
+        $this->emit('setPage', 'botList');
+
+    }
+
+    public function deleteListing() {
+
+        try {
+
+            Bot::where(['id' => $this->botClientID])->delete();
+            BotTag::where(['bot_id' => $this->botClientID])->delete();
+            BotUser::where(['bot_id' => $this->botClientID])->delete();
+
+            Session::push('notifications', ['title' => 'Success', 'message' => 'Bot has been delisted']);
+
+        } catch(Exception $err) {
 
             Session::push('notifications', ['title' => 'Error', 'message' => 'Something went wrong']);
 

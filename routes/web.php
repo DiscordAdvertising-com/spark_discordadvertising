@@ -21,5 +21,6 @@ Route::get('/discordinfo', [DiscordLoginContoller::class, 'handleProviderCallbac
 Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/dashboard/{page?}', Dashboard::class)->name('dashboard');
+    Route::get('/dashboard/{page?}/{botID}', Dashboard::class)->name('manage');
 
 });

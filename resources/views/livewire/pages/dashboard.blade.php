@@ -21,6 +21,11 @@
                         <livewire:pages.dashboard.bot-list />
                     </div>
                 @break
+                @case('botManage')
+                <div>
+                    <livewire:pages.dashboard.bot-manage />
+                </div>
+            @break
                 @endswitch
 
             </div>

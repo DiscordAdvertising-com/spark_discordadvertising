@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Pages\Dashboard;
 use App\Models\Bot;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class BotList extends Component
 {
@@ -27,5 +28,10 @@ class BotList extends Component
         }
 
         return view('livewire.pages.dashboard.bot-list', ['bots' => $bots]);
+    }
+
+    public function setPage($page, $id) {
+        Session::put('botID', $id);
+        $this->emit('setPage', $page);
     }
 }
