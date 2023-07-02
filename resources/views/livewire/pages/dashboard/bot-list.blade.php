@@ -55,3 +55,9 @@
         </div>
     </div>
 </div>
+
+<script>
+    window.onbeforeunload = function() {
+        return null;
+    };
+</script>
