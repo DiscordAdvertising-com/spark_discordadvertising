@@ -31,7 +31,7 @@ class BotList extends Component
     }
 
     public function setPage($page, $id) {
-        Session::put('botID', $id);
+        Session::put('botID', (String) $id);
         $this->emit('setPage', $page);
     }
 }
