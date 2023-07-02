@@ -129,8 +129,8 @@
 </div>
 
 {{-- Ask if want reload --}}
-{{-- <script>
+<script>
     window.onbeforeunload = function() {
         return "Are you sure you want to refresh the page?";
     };
-</script> --}}
+</script>

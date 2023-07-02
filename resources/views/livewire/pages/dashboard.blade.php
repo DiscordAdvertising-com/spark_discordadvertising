@@ -16,6 +16,11 @@
                         <livewire:pages.dashboard.upload />
                     </div>
                 @break
+                @case('botList')
+                    <div>
+                        <livewire:pages.dashboard.bot-list />
+                    </div>
+                @break
                 @endswitch
 
             </div>
