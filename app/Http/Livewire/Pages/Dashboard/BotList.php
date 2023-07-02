@@ -22,9 +22,9 @@ class BotList extends Component
         $bots = null;
         
         if($this->search) {
-            $bots = Bot::where(['author' => Auth::user()->id])->where($this->category, 'LIKE', '%' . $this->search .'%')->get();            
+            $bots = Bot::where(['author' => (String)Auth::user()->id])->where($this->category, 'LIKE', '%' . $this->search .'%')->get();            
         } else {
-            $bots = Bot::where(['author' => Auth::user()->id])->get(); 
+            $bots = Bot::where(['author' => (String)Auth::user()->id])->get(); 
         }
 
         return view('livewire.pages.dashboard.bot-list', ['bots' => $bots]);
