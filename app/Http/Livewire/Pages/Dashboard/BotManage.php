@@ -227,9 +227,7 @@ class BotManage extends Component
 
         }
 
-        // $this->emit('flashSession');
-
-        // $this->emit('setPage', 'botList');
+        $this->emit('flashSession');
 
     }
 
@@ -248,8 +246,6 @@ class BotManage extends Component
             Session::push('notifications', ['title' => 'Error', 'message' => 'Something went wrong']);
 
         }
-
-        $this->emit('flashSession');
 
         $this->emit('setPage', 'botList');
 
