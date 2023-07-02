@@ -17,6 +17,7 @@
     <script defer src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+    <meta name="csrf_token" value="{{ csrf_token() }}"/>
 
     <style>
         [x-cloak] {
@@ -107,7 +108,7 @@
 </head>
 
 <body class="h-screen w-full bg-dmb font-sans overflow-x-hidden flex">
-
+    
     @include('layouts.dashboard.top-navigation')
 
     @yield('content')
