@@ -19,7 +19,6 @@
     <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
 
     <style>
-        
         [x-cloak] {
             display: none !important;
         }
@@ -28,21 +27,23 @@
             display: none;
         }
 
-        input:checked ~ .dot {
+        input:checked~.dot {
             transform: translateX(100%);
             background-color: #48bb78;
         }
 
         /* Toggle B */
-        input:checked ~ .dot {
+        input:checked~.dot {
             transform: translateX(100%);
             background-color: #48bb78;
         }
 
         /* Hide scrollbar for IE, Edge and Firefox */
         .no-scrollbar {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
         }
 
         .custom-scrollbar::-webkit-scrollbar {
@@ -66,22 +67,53 @@
             display: flex;
             padding-right: 0.75rem
         }
-
     </style>
 
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+        content: [
+            "./resources/**/*.blade.php",
+            "./resources/**/*.js",
+            "./resources/**/*.vue",
+            "./node_modules/flowbite/**/*.js",
+        ], 
+        theme: {
+            extend: {
+            colors: {
+                // Dashboard Main Background
+                'dmb': '#25272C',
+                // Dashboard Secondaire Background
+                'dsb': '#303138',
+                // Dashboard Border
+                'db': '#3D3E45',
+                // Dashboard Border
+                'accent': '#6773E5',
+                // Dashboard input
+                'input': '#3D3E45',
+
+            }
+            },
+        },
+        plugins: [],
+    }
+    </script>
+    
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">    
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @livewireStyles
 
 </head>
 
-    <body class="h-screen w-full bg-dmb font-sans overflow-x-hidden flex">
+<body class="h-screen w-full bg-dmb font-sans overflow-x-hidden flex">
 
-        @include('layouts.dashboard.top-navigation')
+    @include('layouts.dashboard.top-navigation')
 
-        @yield('content')
-        
-    </body>
-    
-    @livewireScripts
+    @yield('content')
+
+</body>
+
+@livewireScripts
+
 </html>
