@@ -108,7 +108,7 @@
 </head>
 
 <body class="h-screen w-full bg-dmb font-sans overflow-x-hidden custom-scrollbar">
-    <div class="w-[1240px] min-h-screen mx-auto">
+    <div class="w-[1240px] min-h-screen mx-auto pb-40">
         @include('layouts.header')
         @yield('content')
     </div>

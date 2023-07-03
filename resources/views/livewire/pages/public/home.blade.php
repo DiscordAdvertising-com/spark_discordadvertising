@@ -1,4 +1,4 @@
-<div class="pb-40"> 
+<div> 
     <livewire:filter-search/>
 
     <div class="w-full mt-32">
@@ -7,7 +7,6 @@
                 <h1 class="text-accent">Just Added</h1>
                 <h1 class="text-white text-3xl">Recently Added Bots</h1>
             </div>
-            <h1 class="text-white text-opacity-60 italic absolute right-0 bottom-0 font-semibold text-sm">View More <li class="fa-solid fa-arrow-right text-accent"></li></h1>
         </div>
         <div class="w-full mt-4 grid grid-cols-4 gap-x-10">
         
@@ -51,8 +50,6 @@
                 <h1 class="text-accent">Populare Bots</h1>
                 <h1 class="text-white text-3xl">Highly Upvoted Bots</h1>
             </div>
-            <h1 class="text-white text-opacity-60 italic absolute right-0 bottom-0 font-semibold text-sm">View More <li class="fa-solid fa-arrow-right text-accent"></li></h1>
-
         </div>
         <div class="w-full mt-4 grid grid-cols-4 gap-x-10">
         

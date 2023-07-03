@@ -11,6 +11,7 @@ class FilterSearch extends Component
 {
 
     public $filter;
+    public $search;
 
     public function render()
     {
@@ -22,7 +23,8 @@ class FilterSearch extends Component
 
             $bs = DB::table('bots')
             ->join('bot_tags', 'bots.id', '=', 'bot_tags.bot_id')
-            ->where('bot_tags.tag' , '=', $this->filter)
+            ->where('bot_tags.tag', $this->filter)
+            ->where('bots.username', 'LIKE', '%' . $this->search . '%')
             ->select('*')
             ->orderBy('bots.created_at', 'DESC')
             ->limit(16)
@@ -30,11 +32,13 @@ class FilterSearch extends Component
 
             $bs2 = DB::table('bots')
             ->join('bot_tags', 'bots.id', '=', 'bot_tags.bot_id')
-            ->where('bot_tags.tag' , '=', $this->filter)
+            ->where('bot_tags.tag', $this->filter)
+            ->where('bots.username', 'LIKE', '%' . $this->search . '%')
             ->select('*')
             ->orderBy('bots.created_at', 'DESC')
             ->get();
 
+            
             foreach($bs as $b) {
                 $searchBots[] = (array)$b;
             }
@@ -50,7 +54,7 @@ class FilterSearch extends Component
 
         }
         
-        return view('livewire.filter-search',['bots' => Bot::all(), 'tags' => Tag::all(), 'search' => $searchBots, 'allSearch' => $totalSearchBots ]);
+        return view('livewire.filter-search',['bots' => Bot::all(), 'tags' => Tag::all(), 'searchResults' => $searchBots, 'allSearchResults' => $totalSearchBots ]);
     }
 
     public function filter($filter) {
@@ -61,6 +65,14 @@ class FilterSearch extends Component
             $this->filter = $filter;
         }
 
+    }
+
+    public function search() {
+        if($this->search) {
+            return redirect()->route('search', ['query' => $this->search, 'filter' => $this->filter]);
+        } else { 
+            return redirect()->route('search');
+        }
     }
     
 }
