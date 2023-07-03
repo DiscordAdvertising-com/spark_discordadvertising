@@ -52,11 +52,11 @@
         }
 
         .custom-scrollbar::-webkit-scrollbar-track {
-            background: #0C1427;
+            background: #3D3E45;
         }
 
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #121e39;
+            background: #6773E5;
             border-radius: 25px;
         }
 
@@ -107,11 +107,12 @@
 
 </head>
 
-<body class="h-screen w-full bg-dmb font-sans overflow-x-hidden flex">
+<body class="h-screen w-full bg-dmb font-sans overflow-x-hidden custom-scrollbar">
     <div class="w-[1240px] min-h-screen mx-auto">
         @include('layouts.header')
         @yield('content')
     </div>
+        @include('layouts.footer')
     @livewireScripts
 </body>
 
