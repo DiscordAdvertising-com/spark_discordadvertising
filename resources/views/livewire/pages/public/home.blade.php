@@ -1,19 +1,7 @@
-<div class="pb-20"> 
-    <h1 class="mt-10 text-gray-500 mb-4 text-lg border-b w-[45rem] border-gray-500 border-opacity-40 pb-2"> <li class="fa-solid fa-tags mr-1 text-accent"></li>Tags</h1>
-    <div class="flex gap-x-8 gap-y-5 w-[45rem] flex-wrap">
-        <div class="border-2 border-db bg-dsb px-4 py-3 text-xl  font-bold min-w-[5rem] text-center hover:text-accent cursor-pointer @if($filter == null) text-accent @else text-gray-500 @endif" wire:click="filter('all')">
-            All <span class="text-opacity-50 text-gray-500 text-[0.9rem] ">({{count($bots)}})</span>
-        </div>
-        @foreach ($tags as $tag)
-            @php
-                $name = $tag['name'];
-            @endphp
-            <div class="border-2 border-db bg-dsb px-4 py-3 text-xl font-bold min-w-[5rem] text-center hover:text-accent cursor-pointer @if($filter == $name) text-accent @else text-gray-500 @endif" wire:click="filter(`{{$tag['name']}}`)">
-                {{$tag['name']}} <span class="text-opacity-50 text-gray-500 text-[0.9rem] ">({{count($tag->bots)}})</span>
-            </div>
-        @endforeach
-    </div>
-    <div class="w-full mt-40">
+<div class="pb-40"> 
+    <livewire:filter-search/>
+
+    <div class="w-full mt-32">
         <div class="w-full relative">
             <div class="font-bold tracking-widest">
                 <h1 class="text-accent">Just Added</h1>
