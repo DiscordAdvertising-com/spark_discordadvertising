@@ -38,7 +38,11 @@
         <div class="w-full p-6 bg-dsb rounded-lg border border-db relative overflow-hidden grid gap-y-5">
             @foreach ($bots as $bot)
                 <div class="p-2 w-full bg-dmb flex">
-                    <img  src="https://cdn.discordapp.com/app-icons/{{$bot['id']}}/{{$bot['avatar']}}.png?size=256" alt="" class="h-14 w-14 mr-2 border border-db bg-db rounded-full">
+                    @if($bot['avatar'])
+                        <img  src="https://cdn.discordapp.com/avatars/{{$bot['id']}}/{{$bot['avatar']}}.png?size=256" alt="" class="h-14 w-14 mr-2 border border-db bg-db rounded-full">
+                    @else
+                        <img  src="{{asset('img/logo.png')}}" alt="" class="h-14 w-14 mr-2 border bg-cover border-db bg-db rounded-full">
+                    @endif
                     <div class="grid grid-cols-5 w-full my-auto gap-x-5 ml-5 text-gray-400 text-lg">
                         <h1 class="font-semibold text-white">{{$bot['username']}}</h1>
                         <h1 class=""><li class="fa-solid fa-id-card mr-2 text-accent"></li>{{$bot['id']}}</h1>
