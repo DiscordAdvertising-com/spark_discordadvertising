@@ -49,8 +49,8 @@ class FilterSearch extends Component
 
         } else {
 
-            $searchBots = Bot::orderBy('created_at', 'DESC')->limit(16)->get();
-            $totalSearchBots = Bot::orderBy('created_at', 'DESC')->get();
+            $searchBots = Bot::where('bots.username', 'LIKE', '%' . $this->search . '%')->orderBy('created_at', 'DESC')->limit(16)->get();
+            $totalSearchBots = Bot::where('bots.username', 'LIKE', '%' . $this->search . '%')->orderBy('created_at', 'DESC')->get();
 
         }
         
