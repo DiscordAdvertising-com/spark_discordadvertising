@@ -1,15 +1,4 @@
 <header>
-    <nav class="py-[40px] relative">
-        <img src="{{asset('img/logo.png')}}" class="h-[3.5rem]" alt="">
-        <div class="flex gap-x-10 float-right absolute top-1/2 -translate-y-1/2 right-0 text-lg font-semibold text-white">
-            <h1>Bots</h1>
-            <h1>Our Discord</h1>
-            <h1>Add Bot</h1>
-            <a href="{{route('login')}}">
-                <button class="w-[7rem] bg-accent rounded text-white font-semibold py-1.5 px-3 -mt-1 " >Login</button>
-            </a>
-        </div>
-    </nav>
     <div class="mt-10 relative">
         <h1 class="text-6xl font-bold text-white w-[25rem]"><span class="text-accent">An awesome list</span> of Discord bots</h1>
         <h1 class="text-white text-xl mt-5 w-[35rem] tracking-widest">Make sure to vote for your favorite bot to support their developer, or list your own bot!</h1>

@@ -5,6 +5,7 @@ use App\Http\Livewire\Pages\Dashboard;
 use App\Http\Controllers\DiscordLoginContoller;
 use App\Http\Livewire\Pages\Public\Home;
 use App\Http\Livewire\Pages\Public\Search;
+use App\Http\Livewire\Pages\Public\BotInfo;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use App\Http\Livewire\Pages\Public\Search;
 
 Route::get('/', Home::class)->name('home');
 Route::get('/search', Search::class)->name('search');
+Route::get('/bot/{botID}', BotInfo::class)->name('botInfo');
 Route::get('/login',  [DiscordLoginContoller::class, 'redirectToProvider'])->name('login');
 Route::get('/discordinfo', [DiscordLoginContoller::class, 'handleProviderCallback']);
 

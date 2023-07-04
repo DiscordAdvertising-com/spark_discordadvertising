@@ -11,7 +11,7 @@
                         <a href="#" class="hover:underline">Team</a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="hover:underline">Apply Now</a>
+                        <a href="https://staff.discordadvertising.com/" class="hover:underline">Apply Now</a>
                     </li>
                 </ul>
             </div>
@@ -19,10 +19,10 @@
                 <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Help center</h2>
                 <ul class="text-gray-500 dark:text-gray-400 font-medium">
                     <li class="mb-4">
-                        <a href="#" class="hover:underline">Discord Server</a>
+                        <a href="https://discord.gg/GypsEsvVrU" class="hover:underline">Discord Server</a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="hover:underline">Contact Us</a>
+                        <a href="https://tos.discordadvertising.com/#contact-us" class="hover:underline">Contact Us</a>
                     </li>
                 </ul>
             </div>
@@ -30,10 +30,10 @@
                 <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
                 <ul class="text-gray-500 dark:text-gray-400 font-medium">
                     <li class="mb-4">
-                        <a href="#" class="hover:underline">Privacy Policy</a>
+                        <a href="https://tos.discordadvertising.com/" class="hover:underline">Privacy Policy</a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+                        <a href="https://tos.discordadvertising.com/" class="hover:underline">Terms &amp; Conditions</a>
                     </li>
                     <li class="mb-4">
                         <a href="#" class="hover:underline">Brand guidlines</a>
@@ -44,10 +44,10 @@
                 <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Dashboard</h2>
                 <ul class="text-gray-500 dark:text-gray-400 font-medium">
                     <li class="mb-4">
-                        <a href="#" class="hover:underline">Upload Bot</a>
+                        <a href="https://www.discordadvertising.com/dashboard/upload" class="hover:underline">Upload Bot</a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="hover:underline">Your Bots</a>
+                        <a href="https://www.discordadvertising.com/dashboard/botList" class="hover:underline">Your Bots</a>
                     </li>
                     <li class="mb-4">
                         <a href="#" class="hover:underline">Upload Server</a>

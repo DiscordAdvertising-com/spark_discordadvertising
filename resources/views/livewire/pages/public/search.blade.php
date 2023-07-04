@@ -1,5 +1,6 @@
 <div>
-    
+    @include('layouts.header')
+
     <livewire:filter-search :filter="$filter" :search="$query"/>
 
     @if($query) 

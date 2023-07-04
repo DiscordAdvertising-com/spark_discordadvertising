@@ -19,8 +19,8 @@
     
                         <label class="text-gray-400" for="description">Bot Description</label>
                         <div class="flex gap-x-5 relative">
-                            <textarea class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" rows="8" name="description" wire:model="description" maxlength="400"></textarea>
-                            <h1 class=" text-accent text-sm absolute right-1 bottom-1">{{strlen($description)}} / 400</h1>
+                            <textarea class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" rows="8" name="description" wire:model="description" maxlength="2000"></textarea>
+                            <h1 class=" text-accent text-sm absolute right-1 bottom-1">{{strlen($description)}} / 2000</h1>
                         </div>
     
                     </div>
