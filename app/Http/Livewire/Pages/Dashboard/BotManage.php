@@ -25,7 +25,9 @@ class BotManage extends Component
     public $tag;
     public $accounts = [];
     public $accountID;
-    
+    public $invite;
+    public $inviteValid = true;
+
     public function mount($botID = null) {
 
         $tags = Tag::all();
@@ -46,6 +48,7 @@ class BotManage extends Component
 
         $this->description = $bot['description'] ?? '';
         $this->headline = $bot['headline'] ?? '';
+        $this->invite = $bot['invite'] ?? '';
 
         foreach($bot->tags as $tag) {
 
@@ -73,6 +76,10 @@ class BotManage extends Component
     public function render()
     {        
         return view('livewire.pages.dashboard.bot-manage');
+    }
+
+    public function updatingInvite() {
+        $this->inviteValid = false;
     }
 
     public function addTag() {
@@ -192,7 +199,7 @@ class BotManage extends Component
         try {
 
             $findBot = Bot::find($this->botClientID);
-            Bot::where(['id' => $this->botClientID])->update(['headline' => $this->headline, 'description' => $this->description]);
+            Bot::where(['id' => $this->botClientID])->update(['headline' => $this->headline, 'description' => $this->description, 'invite' => $this->invite]);
     
 
             foreach($findBot->tags as $tag) {
@@ -238,6 +245,24 @@ class BotManage extends Component
         }
 
         $this->emit('setPage', 'botList');
+
+    }
+
+    public function validateInvite() {
+
+        if(str_contains($this->invite, 'https://discord.com/api/oauth2/authorize?')) {
+
+            $this->inviteValid = true;
+            Session::push('notifications', ['title' => 'Success', 'message' => 'Valid Invite']);
+
+        } else {
+
+            $this->inviteValid = false;
+            Session::push('notifications', ['title' => 'Error', 'message' => 'Invalid Invite']);
+
+        }
+    
+        $this->emit('flashSession');
 
     }
 

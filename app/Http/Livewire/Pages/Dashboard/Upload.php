@@ -25,6 +25,8 @@ class Upload extends Component
     public $tag;
     public $accounts = [];
     public $accountID;
+    public $invite;
+    public $inviteValid = false;
 
     public function mount() {
 
@@ -198,11 +200,29 @@ class Upload extends Component
 
     }
 
+    public function validateInvite() {
+
+        if(str_contains($this->invite, 'https://discord.com/api/oauth2/authorize?')) {
+
+            $this->inviteValid = true;
+            Session::push('notifications', ['title' => 'Success', 'message' => 'Valid Invite']);
+
+        } else {
+
+            $this->inviteValid = false;
+            Session::push('notifications', ['title' => 'Error', 'message' => 'Invalid Invite']);
+
+        }
+    
+        $this->emit('flashSession');
+
+    }
+
     public function createListing() {
 
         try {
 
-            Bot::create(['id' => $this->bot['id'], 'author' => (String) Auth::user()->id, 'headline' => $this->headline, 'description' => $this->description, 'username' => $this->bot['username'], 'avatar' => $this->bot['avatar'], 'discriminator' => $this->bot['discriminator']]);
+            Bot::create(['id' => $this->bot['id'], 'author' => (String) Auth::user()->id, 'headline' => $this->headline, 'description' => $this->description, 'username' => $this->bot['username'], 'avatar' => $this->bot['avatar'], 'discriminator' => $this->bot['discriminator'], 'invite' => $this->invite]);
 
             foreach($this->addedTags as $tag) {
 

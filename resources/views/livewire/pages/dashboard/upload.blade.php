@@ -120,8 +120,25 @@
             <div class="w-full p-6 bg-dsb rounded-lg border border-db relative overflow-hidden ">
                 <h1 class="text-gray-200 text-xl font-bold border-b border-opacity-10 border-white pb-6"> <span class="text-accent">Step 4.</span> - Finish Bot Listing</h1>
                 <div class="max-w-[50rem] grid gap-y-6 mt-6">
-                    <button wire:click="createListing" class="w-fit bg-accent rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-check mr-1"></li> Create Listing</button>
-                    <h1 class="text-sm text-gray-500">By creating your bot listing you accept Discord Advertising's TOS<i class="fa-solid fa-arrow-right ml-1 text-accent"></i></h1>
+                    <div class="grid gap-y-2">
+        
+                        <label class="text-gray-400" for="invite">Bot Invite Link</label>
+                        <div class="flex gap-x-5">
+                            <input wire:model="invite" name="invite" type="text"
+                            class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" required>
+                            <button wire:click="validateInvite" class="w-[10rem] bg-accent rounded-lg text-white font-semibold"> <li class="fa-solid fa-search"></li> Validate</button>
+                        </div>
+    
+                    </div>
+                    <div class="grid gap-y-2">
+                        
+                        @if($inviteValid)
+                            <button wire:click="createListing" class="w-fit bg-accent rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-check mr-1"></li> Create Listing</button>
+                        @endif
+                        <h1 class="text-sm text-gray-500">By creating your bot listing you accept Discord Advertising's TOS<i class="fa-solid fa-arrow-right ml-1 text-accent"></i></h1>
+
+                    </div>
+                
                 </div>
             </div>
         </div>
