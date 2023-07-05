@@ -221,6 +221,16 @@ class BotManage extends Component
             
             Session::push('notifications', ['title' => 'Success', 'message' => 'Bot listing has been updated']);
 
+            $client = new Client();
+
+            $embed = (object)array();
+            $embed->title = "Bot Updated";
+            $embed->description = "**Application ID:** ".$findBot['id']."\n**Bot Name:** ".$findBot['username'];
+            $embed->color = hexdec('#F7771D');
+
+            $client->post('https://discord.com/api/v9/channels/1126134459415134289/messages', ['headers' => ['Authorization' => 'Bot '.'MTEyMzYwNDIzOTYwODk5MTgyNQ.G-iyRG.B6DIa1qiRI8TLV8Ur21arNEVGpCA1Lidci7H_s', 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
+
+
         } catch (Exception $err) {
 
             Session::push('notifications', ['title' => 'Error', 'message' => 'Something went wrong']);
@@ -235,11 +245,22 @@ class BotManage extends Component
 
         try {
 
+            $findBot = Bot::find($this->botClientID);
+
             Bot::where(['id' => $this->botClientID])->delete();
             BotTag::where(['bot_id' => $this->botClientID])->delete();
             BotUser::where(['bot_id' => $this->botClientID])->delete();
 
             Session::push('notifications', ['title' => 'Success', 'message' => 'Bot has been delisted']);
+
+            $client = new Client();
+
+            $embed = (object)array();
+            $embed->title = "Bot Deleted";
+            $embed->description = "**Application ID:** ".$findBot['id']."\n**Bot Name:** ".$findBot['username'];
+            $embed->color = hexdec('#F70000');
+
+            $client->post('https://discord.com/api/v9/channels/1126134459415134289/messages', ['headers' => ['Authorization' => 'Bot '.'MTEyMzYwNDIzOTYwODk5MTgyNQ.G-iyRG.B6DIa1qiRI8TLV8Ur21arNEVGpCA1Lidci7H_s', 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
 
         } catch(Exception $err) {
 
