@@ -23,7 +23,6 @@ class BotManage extends Component
     public $tags = [];
     public $addedTags = [];
     public $tag;
-    public $accounts = [];
     public $accountID;
     public $invite;
     public $inviteValid = true;
@@ -44,8 +43,7 @@ class BotManage extends Component
             $this->botClientID = $botID;
         }
 
-
-        $bot = Bot::where(['id' => $this->botClientID])->first();
+        $bot = Bot::where(['id' => (String)$this->botClientID])->first();
 
         $this->description = $bot['description'] ?? '';
         $this->headline = $bot['headline'] ?? '';
@@ -67,28 +65,20 @@ class BotManage extends Component
     public function render()
     {        
 
-        $displayAccounts = array();
-
-        $bot = Bot::where(['id' =>$this->botClientID])->first();
-
+        $bot = Bot::where(['id' => (String)$this->botClientID])->first();
+        $accounts = array();
         foreach($bot->users as $user) {
 
             if($user->user != null) {
 
-                $displayAccounts[] = $user->user;
+                $accounts[] = $user->user;
 
             }
 
         }
 
-        foreach($this->accounts as $account) {
-            
-            $user = User::where(['id' => $account])->first();
-            $displayAccounts[] = $user;
+        return view('livewire.pages.dashboard.bot-manage', ['accounts' => $accounts]);
 
-        }
-
-        return view('livewire.pages.dashboard.bot-manage', ['displayAccounts' => $displayAccounts]);
     }
 
     public function updatingInvite() {
@@ -154,16 +144,6 @@ class BotManage extends Component
         } else {
 
             try {
-
-                foreach($this->accounts as $account) {
-    
-                    if($account['id'] == $this->accountID) {
-    
-                        $unique = false;
-    
-                    }
-        
-                }
     
                 if($unique) {
     
@@ -171,7 +151,8 @@ class BotManage extends Component
                     $data = $client->get('https://discord.com/api/v8/users/'.$this->accountID, ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token')]]);
                     $data = json_decode($data->getBody(), true);
             
-                    $this->accounts[] = $data;
+                    BotUser::create(['user_id' => $this->accountID, 'bot_id' => $this->botClientID]);
+
                     Session::push('notifications', ['title' => 'Success', 'message' => 'Account has been found']);
     
                 } else {
@@ -196,9 +177,7 @@ class BotManage extends Component
 
         try {
 
-            unset($this->accounts[array_search(User::find($accountID), $this->accounts)]);  
-            $this->accounts = array_merge($this->accounts);
-            BotUser::where(['bot_id' => $this->botClientID, 'user_id' => $accountID])->delete();
+            BotUser::where(['user_id' => $accountID])->delete();
 
         } catch( Exception $err) {
 
@@ -213,31 +192,18 @@ class BotManage extends Component
         try {
 
             $findBot = Bot::find($this->botClientID);
-            
             Bot::where(['id' => $this->botClientID])->update(['headline' => $this->headline, 'description' => $this->description, 'invite' => $this->invite]);
     
 
             foreach($findBot->tags as $tag) {
 
-                BotTag::where(['bot_id' => $this->botClientID, 'tag' => $tag['tag']])->delete();
+                BotTag::where(['bot_id' => $tag['bot_id'], 'tag' => $tag['tag']])->delete();
 
             }
 
             foreach($this->addedTags as $tag) {
 
-                BotTag::create(['bot_id' => $this->botClientID, 'tag' => $tag]);
-
-            }
-
-            foreach($this->accounts as $account) {
-
-                $user = BotUser::where(['bot_id' => $account['id']])->first();
-
-                if(!$user) {
-
-                    BotUser::create(['bot_id' => $this->botClientID, 'user_id' => $account['id']]);
-
-                }
+                BotTag::create(['bot_id' => $findBot['id'], 'tag' => $tag]);
 
             }
             
@@ -260,10 +226,11 @@ class BotManage extends Component
 
             $client->post('https://discord.com/api/v9/channels/1126134459415134289/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
 
+
         } catch (Exception $err) {
 
             Session::push('notifications', ['title' => 'Error', 'message' => 'Something went wrong']);
-            dd($err);
+
         }
 
         $this->emit('setPage', 'botList');

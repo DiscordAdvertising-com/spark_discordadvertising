@@ -75,7 +75,7 @@
 
                     <label class="text-gray-400" for="clientid">Added Accounts</label>
 
-                    @foreach ($displayAccounts as $account)
+                    @foreach ($accounts as $account)
                         
                         <div class="bg-input w-full p-4 rounded-lg text-gray-400">
                             <div class="relative w-full">
