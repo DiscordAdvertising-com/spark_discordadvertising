@@ -65,7 +65,8 @@ class BotManage extends Component
     public function render()
     {        
 
-        $bot = Bot::where(['id' => (String)$this->botClientID])->first();
+        $bot = Bot::where(['id' => $this->botClientID])->first();
+
         $accounts = array();
         foreach($bot->users as $user) {
 
@@ -76,6 +77,7 @@ class BotManage extends Component
             }
 
         }
+        dd($accounts, $bot->users);
 
         return view('livewire.pages.dashboard.bot-manage', ['accounts' => $accounts]);
 
