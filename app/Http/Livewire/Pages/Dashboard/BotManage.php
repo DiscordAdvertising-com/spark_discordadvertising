@@ -235,6 +235,14 @@ class BotManage extends Component
             $embed->description = "**Application ID:** ".$findBot['id']."\n**Bot Name:** ".$findBot['username'];
             $embed->color = hexdec('#F7771D');
 
+            $component = (object)array();
+            $component->type = 1;
+            $component->components = [(object)array()];
+            $component->components[0]->type = 2;
+            $component->components[0]->style = 5;
+            $component->components[0]->label = "Updated Page";
+            $component->components[0]->url = route('botInfo', ['botID' => $this->bot['id']]);
+
             $client->post('https://discord.com/api/v9/channels/1126134459415134289/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
 
 
