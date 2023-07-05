@@ -44,7 +44,8 @@ class BotManage extends Component
             $this->botClientID = $botID;
         }
 
-        $bot = Bot::where(['id' => (String)$this->botClientID])->first();
+
+        $bot = Bot::where(['id' => $this->botClientID])->first();
 
         $this->description = $bot['description'] ?? '';
         $this->headline = $bot['headline'] ?? '';
@@ -61,21 +62,33 @@ class BotManage extends Component
 
         }
 
+    }
+
+    public function render()
+    {        
+
+        $displayAccounts = array();
+
+        $bot = Bot::where(['id' =>$this->botClientID])->first();
+
         foreach($bot->users as $user) {
 
             if($user->user != null) {
 
-                $this->accounts[] = $user->user;
+                $displayAccounts[] = $user->user;
 
             }
 
         }
 
-    }
+        foreach($this->accounts as $account) {
+            
+            $user = User::where(['id' => $account])->first();
+            $displayAccounts[] = $user;
 
-    public function render()
-    {        
-        return view('livewire.pages.dashboard.bot-manage');
+        }
+
+        return view('livewire.pages.dashboard.bot-manage', ['displayAccounts' => $displayAccounts]);
     }
 
     public function updatingInvite() {
@@ -185,6 +198,7 @@ class BotManage extends Component
 
             unset($this->accounts[array_search(User::find($accountID), $this->accounts)]);  
             $this->accounts = array_merge($this->accounts);
+            BotUser::where(['bot_id' => $this->botClientID, 'user_id' => $accountID])->delete();
 
         } catch( Exception $err) {
 
@@ -199,30 +213,31 @@ class BotManage extends Component
         try {
 
             $findBot = Bot::find($this->botClientID);
+            
             Bot::where(['id' => $this->botClientID])->update(['headline' => $this->headline, 'description' => $this->description, 'invite' => $this->invite]);
     
 
             foreach($findBot->tags as $tag) {
 
-                BotTag::where(['bot_id' => $tag['bot_id'], 'tag' => $tag['tag']])->delete();
+                BotTag::where(['bot_id' => $this->botClientID, 'tag' => $tag['tag']])->delete();
 
             }
 
             foreach($this->addedTags as $tag) {
 
-                BotTag::create(['bot_id' => $findBot['id'], 'tag' => $tag]);
-
-            }
-
-            foreach($findBot->users as $user) {
-
-                BotUser::where(['bot_id' => $user['bot_id'], 'user_id' => $user['user_id']])->delete();
+                BotTag::create(['bot_id' => $this->botClientID, 'tag' => $tag]);
 
             }
 
             foreach($this->accounts as $account) {
 
-                BotUser::create(['bot_id' => $findBot['id'], 'user_id' => $account['id']]);
+                $user = BotUser::where(['bot_id' => $account['id']])->first();
+
+                if(!$user) {
+
+                    BotUser::create(['bot_id' => $this->botClientID, 'user_id' => $account['id']]);
+
+                }
 
             }
             
@@ -241,10 +256,9 @@ class BotManage extends Component
             $component->components[0]->type = 2;
             $component->components[0]->style = 5;
             $component->components[0]->label = "Updated Page";
-            $component->components[0]->url = route('botInfo', ['botID' => $this->bot['id']]);
+            $component->components[0]->url = route('botInfo', ['botID' => $findBot['id']]);
 
             $client->post('https://discord.com/api/v9/channels/1126134459415134289/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
-
 
         } catch (Exception $err) {
 

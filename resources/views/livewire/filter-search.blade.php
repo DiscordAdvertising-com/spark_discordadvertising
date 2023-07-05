@@ -56,7 +56,7 @@
             <div class="max-h-[20rem] overflow-hidden">
                 <div class="p-5 grid grid-cols-4 gap-3">
                     @foreach ($searchResults as $bot)
-                        <div class="flex gap-x-5 hover:bg-db p-2 rounded-lg hover:cursor-pointer" @click="search = false" >
+                        <a class="flex gap-x-5 hover:bg-db p-2 rounded-lg hover:cursor-pointer" @click="search = false" href="{{route('botInfo', ['botID' => $bot['id']])}}">
                             <div class="h-[4rem] w-[4rem] rounded-full overflow-hidden bg-db">
                                 @if($bot['avatar'])
                                     <img  src="https://cdn.discordapp.com/avatars/{{$bot['id']}}/{{$bot['avatar']}}.png?size=256" alt="" class="h-[4rem] w-[4rem]">
@@ -71,7 +71,7 @@
                                     <h1 class="flex gap-x-1 "><span class="text-accent"><li class="fa-solid fa-eye text-sm"></li> 300</span></h1>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     @endforeach
                 </div>
             </div>

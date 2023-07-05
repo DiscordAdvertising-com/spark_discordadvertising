@@ -34,9 +34,9 @@
                     <h1 class="text-gray-300 m-1 text-center tracking-widest w-3/4 mx-auto h-[48px]">
                         {{$bot['headline']}}
                     </h1>
-                    <div class="w-full flex place-items-center">
+                    <a class="w-full flex place-items-center" href="{{route('botInfo', ['botID' => $bot['id']])}}">
                         <button class=" bg-accent rounded text-white font-semibold py-3 px-3 w-[10rem] mx-auto text-lg mt-2"><li class="fa-solid fa-eye mr-2"></li>View</button>
-                    </div>
+                    </a>
     
                 </div>
             </div>

@@ -22,4 +22,9 @@ class Bot extends Model
         return $this->hasMany(BotUser::class, 'bot_id', 'id');
     }
 
+    public function lister()
+    {
+        return $this->hasOne(User::class, 'id', 'author');
+    }
+
 }
