@@ -36,6 +36,7 @@ return [
         'client_secret' => env('DISCORD_CLIENT_SECRET'),
         'redirect' =>  env('DISCORD_REDIRECT_URL'),
         'bot_token' => env('DISCORD_BOT_TOKEN'),
+        'bot_token_webhooks' => env('DISCORD_BOT_TOKEN_WEBHOOKS'),
     ],
 
 ];

@@ -228,7 +228,7 @@ class BotManage extends Component
             $embed->description = "**Application ID:** ".$findBot['id']."\n**Bot Name:** ".$findBot['username'];
             $embed->color = hexdec('#F7771D');
 
-            $client->post('https://discord.com/api/v9/channels/1126134459415134289/messages', ['headers' => ['Authorization' => 'Bot '.'MTEyMzYwNDIzOTYwODk5MTgyNQ.G-iyRG.B6DIa1qiRI8TLV8Ur21arNEVGpCA1Lidci7H_s', 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
+            $client->post('https://discord.com/api/v9/channels/1126134459415134289/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
 
 
         } catch (Exception $err) {
@@ -260,7 +260,7 @@ class BotManage extends Component
             $embed->description = "**Application ID:** ".$findBot['id']."\n**Bot Name:** ".$findBot['username'];
             $embed->color = hexdec('#F70000');
 
-            $client->post('https://discord.com/api/v9/channels/1126134459415134289/messages', ['headers' => ['Authorization' => 'Bot '.'MTEyMzYwNDIzOTYwODk5MTgyNQ.G-iyRG.B6DIa1qiRI8TLV8Ur21arNEVGpCA1Lidci7H_s', 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
+            $client->post('https://discord.com/api/v9/channels/1126134459415134289/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
 
         } catch(Exception $err) {
 

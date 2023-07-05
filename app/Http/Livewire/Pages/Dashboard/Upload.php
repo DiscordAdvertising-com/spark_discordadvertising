@@ -233,7 +233,7 @@ class Upload extends Component
             $component->components[0]->label = "Bot Approval Page";
             $component->components[0]->url = route('botInfo', ['botID' => $this->bot['id']]);
 
-            $client->post('https://discord.com/api/v9/channels/1124325015630913576/messages', ['headers' => ['Authorization' => 'Bot '.'MTEyMzYwNDIzOTYwODk5MTgyNQ.G-iyRG.B6DIa1qiRI8TLV8Ur21arNEVGpCA1Lidci7H_s', 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed], 'components' => [$component]]]);
+            $client->post('https://discord.com/api/v9/channels/1124325015630913576/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed], 'components' => [$component]]]);
             // $client->post('https://discord.com/api/webhooks/1126136433359474791/27msjV_2pVrW2Dnhb-2UCOA7og-pI3PNZ7E_RIfAI7sXTRqKjL36oyPcUxcEPhmjUBv1', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
 
         } catch (Exception $err) {
