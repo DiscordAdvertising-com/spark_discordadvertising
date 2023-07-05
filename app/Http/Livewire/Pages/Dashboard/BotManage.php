@@ -77,7 +77,6 @@ class BotManage extends Component
             }
 
         }
-        dd($accounts, $bot->users);
 
         return view('livewire.pages.dashboard.bot-manage', ['accounts' => $accounts]);
 
