@@ -263,7 +263,7 @@ class BotManage extends Component
         } catch (Exception $err) {
 
             Session::push('notifications', ['title' => 'Error', 'message' => 'Something went wrong']);
-
+            dd($err);
         }
 
         $this->emit('setPage', 'botList');
