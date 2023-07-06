@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Vote;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Bot extends Model
 {
@@ -25,6 +26,11 @@ class Bot extends Model
     public function lister()
     {
         return $this->hasOne(User::class, 'id', 'author');
+    }
+
+    public function votes()
+    {
+        return $this->hasMany(Vote::class, 'bot_id', 'id');
     }
 
 }

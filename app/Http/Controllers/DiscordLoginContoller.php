@@ -56,8 +56,21 @@ class DiscordLoginContoller extends Controller
         ]);
 
         if($user) {
+
             Auth::login($user, true);
-            return redirect()->route('dashboard');
+
+            if(Session::get('vote')) {
+
+                $botID = Session::get('vote');
+                Session::forget('vote');
+                return redirect()->route('botInfo', ['botID' => $botID]);
+
+            } else {
+
+                return redirect()->route('dashboard');
+
+            }
+
         }
 
             
