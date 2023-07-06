@@ -67,7 +67,7 @@
                             <div>
                                 <h1 class="text-white font-bold overflow-hidden truncate w-[180px]">{{$bot['username']}}</h1>
                                 <div class="flex gap-x-5 w-fit my-3 text-gray-300 font-semibold bg-dmb rounded-lg px-2">
-                                    <h1 class="flex gap-x-1 "><span class="text-accent"><li class="fa-solid fa-arrow-up text-sm"></li> 30</span></h1>
+                                    <h1 class="flex gap-x-1 "><span class="text-accent"><li class="fa-solid fa-arrow-up text-sm"></li> {{count($bot->votes)}}</span></h1>
                                     <h1 class="flex gap-x-1 "><span class="text-accent"><li class="fa-solid fa-eye text-sm"></li> 300</span></h1>
                                 </div>
                             </div>

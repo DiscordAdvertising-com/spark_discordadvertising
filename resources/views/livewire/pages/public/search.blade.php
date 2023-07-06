@@ -28,7 +28,7 @@
                 <div class="h-3/5">
                     <h1 class="text-center text-2xl text-white font-semibold mt-2 max-h-[32px] overflow-hidden truncate mx-5">{{$bot['username']}}</h1>
                     <div class="flex gap-x-5 w-fit mx-auto my-3 text-gray-300 font-semibold">
-                        <h1 class="flex gap-x-1 px-3 py-1.5 bg-dmb rounded-2xl"><span class="text-accent"><li class="fa-solid fa-arrow-up text-sm"></li> 30</span> Votes</h1>
+                        <h1 class="flex gap-x-1 px-3 py-1.5 bg-dmb rounded-2xl"><span class="text-accent"><li class="fa-solid fa-arrow-up text-sm"></li> {{count($bot->votes)}}</span> Votes</h1>
                         <h1 class="flex gap-x-1 px-3 py-1.5 bg-dmb rounded-2xl"><span class="text-accent"><li class="fa-solid fa-eye text-sm"></li> 300</span> Views</h1>
                     </div>
                     <h1 class="text-gray-300 m-1 text-center tracking-widest w-3/4 mx-auto h-[48px]">
