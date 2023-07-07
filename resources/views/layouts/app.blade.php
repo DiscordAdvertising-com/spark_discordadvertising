@@ -2,7 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3693059889859602"
+     crossorigin="anonymous"></script>
     <title>Discord Advertisment</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
