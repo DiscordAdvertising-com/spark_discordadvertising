@@ -2,10 +2,13 @@
 
 namespace App\Http\Livewire\Pages\Public;
 
+use Exception;
+use Carbon\Carbon;
 use App\Models\Bot;
 use App\Models\Vote;
-use Carbon\Carbon;
+use GuzzleHttp\Client;
 use Livewire\Component;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -22,32 +25,54 @@ class BotInfo extends Component
     {
 
         $time = null;
+        $vote = null;
 
-        $vote = Vote::where(['bot_id' => $this->botID, 'user_id' => Auth::user()->id])->latest()->first();
+        try {
 
-        if($vote) {
-            
-            $twelveHourMark = strtotime($vote->created_at) + (12 * 60 * 60);
-            $currentTimestamp = time();
-            $remainingTime = max(0, $twelveHourMark - $currentTimestamp);
-            
-            $hours = floor($remainingTime / 3600);
-            $minutes = floor(($remainingTime % 3600) / 60);
-            $seconds = $remainingTime % 60;
-            
-            $time = sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);        
+            $vote = Vote::where(['bot_id' => $this->botID, 'user_id' => Auth::user()->id])->latest()->first();
 
-            if(Carbon::parse($vote->created_at)->addHours(12) < Carbon::now()) {
+            if($vote) {
+                
+                $twelveHourMark = strtotime($vote->created_at) + (12 * 60 * 60);
+                $currentTimestamp = time();
+                $remainingTime = max(0, $twelveHourMark - $currentTimestamp);
+                
+                $hours = floor($remainingTime / 3600);
+                $minutes = floor(($remainingTime % 3600) / 60);
+                $seconds = $remainingTime % 60;
+                
+                $time = sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);        
+    
+                if(Carbon::parse($vote->created_at)->addHours(12) < Carbon::now()) {
+                    $time = "00:00:00";
+                }
+    
+            } else {
+    
                 $time = "00:00:00";
+    
             }
 
-        } else {
+        } catch (Exception $err) {
 
             $time = "00:00:00";
 
         }
 
-        return view('livewire.pages.public.bot-info', ['bot' => Bot::find($this->botID), 'time' => $time])
+        $result = DB::table(function ($query) {
+            $query->select('b.id', 'b.username', DB::raw('COUNT(bu.bot_id) AS vote_count'))
+                ->from('bots AS b')
+                ->leftJoin('votes AS bu', 'b.id', '=', 'bu.bot_id')
+                ->groupBy('b.id', 'b.username') // Include b.username in the GROUP BY clause
+                ->orderBy('vote_count', 'DESC');
+        }, 'ranked_bots')
+        ->get();
+        
+        $rank = $result->search(function($r) {
+            return $r->id === $this->botID;
+        });
+
+        return view('livewire.pages.public.bot-info', ['bot' => Bot::find($this->botID), 'time' => $time, 'rank' => $rank + 1])
         ->extends('layouts.app')
         ->section('content');
     }

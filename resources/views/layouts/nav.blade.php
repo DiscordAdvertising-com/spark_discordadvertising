@@ -1,5 +1,7 @@
 <nav class="py-[40px] relative">
-    <img src="{{asset('img/logo.png')}}" class="h-[3.5rem]" alt="">
+    <a href="{{route('home')}}">
+        <img src="{{asset('img/logo.png')}}" class="h-[3.5rem]" alt="">
+    </a>
     <div class="flex gap-x-10 float-right absolute top-1/2 -translate-y-1/2 right-0 text-lg font-semibold text-white">
         <a href="{{route('search')}}">
             <h1>Bots</h1>
