@@ -22,7 +22,7 @@ class BotInfo extends Component
         
         $bot = Bot::where(['id' => $this->botID])->first();
 
-        $bot->tags()->count();
+        dd($bot->tags()->count());
         $bot->tags()->create(['bot_id' => '783324614138658847', 'tag' => 'Fun']);
 
         if(!$bot) {
