@@ -39,7 +39,7 @@ class BotInfo extends Component
 
         try {
 
-            $vote = Vote::where(['bot_id' => $this->botID, 'user_id' => Auth::user()->id])->latest()->first();
+            $vote = Vote::where(['bot_id' => $this->botID, 'user_id' => (String) Auth::user()->id])->latest()->first();
 
             if($vote) {
                 
