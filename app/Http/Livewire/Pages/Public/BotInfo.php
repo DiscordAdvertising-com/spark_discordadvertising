@@ -82,7 +82,7 @@ class BotInfo extends Component
             return $r->id === $this->botID;
         });
 
-        return view('livewire.pages.public.bot-info', ['bot' => Bot::find($this->botID), 'time' => $time, 'rank' => $rank + 1])
+        return view('livewire.pages.public.bot-info', ['bot' => Bot::where(['id' => $this->botID])->first(), 'time' => $time, 'rank' => $rank + 1])
         ->extends('layouts.app')
         ->section('content');        
 
