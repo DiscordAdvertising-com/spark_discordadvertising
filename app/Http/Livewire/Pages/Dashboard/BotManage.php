@@ -77,7 +77,7 @@ class BotManage extends Component
             }
 
         }
-
+        
         return view('livewire.pages.dashboard.bot-manage', ['accounts' => $accounts]);
 
     }
@@ -277,11 +277,15 @@ class BotManage extends Component
 
             $client->post('https://discord.com/api/v9/channels/1126134459415134289/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
 
+            $this->emit('setPage', 'botList');
+
         } catch(Exception $err) {
 
             Session::push('notifications', ['title' => 'Error', 'message' => 'Something went wrong']);
 
         }
+
+        return redirect()->route('dashboard', ['page' => 'botList']);
 
         $this->emit('setPage', 'botList');
 
