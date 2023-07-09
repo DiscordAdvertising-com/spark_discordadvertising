@@ -106,7 +106,7 @@
                     
 
                 </div>
-                @if(Auth::user()->access)
+                @if( Auth::check() && Auth::user()->access)
                     <h1 class="text-white mt-10 mb-5">Status: {{$bot['status']}}</h1>
                     <div class="grid gap-y-5">
                         @if ($bot['status'] == 'Awaiting Review' || $bot['status'] == 'Rejected')
