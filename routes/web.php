@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Pages\Dashboard;
-use App\Http\Controllers\DiscordLoginContoller;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Livewire\Pages\Public\Home;
 use App\Http\Livewire\Pages\Public\Search;
 use App\Http\Livewire\Pages\Public\BotInfo;
+use App\Http\Controllers\DiscordLoginContoller;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,13 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/dashboard/{page?}', Dashboard::class)->name('dashboard');
     Route::get('/dashboard/{page?}/{botID}', Dashboard::class)->name('manage');
 
+});
+
+// Clear application cache:
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('route:cache');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    return 'Application cache has been cleared';
 });
