@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="flex gap-x-5 w-fit mx-auto my-3 text-gray-300 font-semibold">
-                    <h1 class="flex gap-x-1 px-3 py-1.5 bg-dmb rounded-2xl"><span class="text-accent"><li class="fa-solid fa-arrow-up text-sm"></li> {{count($bot->votes)}}</span> Votes</h1>
+                    <h1 class="flex gap-x-1 px-3 py-1.5 bg-dmb rounded-2xl"><span class="text-accent"><li class="fa-solid fa-arrow-up text-sm"></li> {{count($bot->votes())}}</span> Votes</h1>
                     <h1 class="flex gap-x-1 px-3 py-1.5 bg-dmb rounded-2xl"><span class="text-accent"><li class="fa-solid fa-hashtag text-sm"></li> {{$rank}}</span> Rank</h1>
                 </div>
                 <div class="w-full grid grid-cols-2 gap-x-5">
