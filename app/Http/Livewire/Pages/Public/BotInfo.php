@@ -22,7 +22,7 @@ class BotInfo extends Component
         
         $bot = Bot::where(['id' => $this->botID])->first();
 
-        $bot->tags->create(['bot_id' => '783324614138658847', 'tag' => 'Moderation']);
+        $bot->tags()->create(['bot_id' => '783324614138658847', 'tag' => 'Moderation']);
 
         if(!$bot) {
             return redirect()->route('home');
