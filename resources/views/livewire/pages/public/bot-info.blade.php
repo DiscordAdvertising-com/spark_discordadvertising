@@ -67,7 +67,9 @@
                     @else
                         <button class="w-full bg-accent rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-arrow-up mr-1"></li><span id="countdown">{{$time}}</span></button>
                     @endif
-                    <button class="w-full bg-accent rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-plus mr-1"></li> Invite</button>
+                    <a target="_blank" href="{{$bot['invite']}}">
+                        <button class="w-full bg-accent rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-plus mr-1"></li> Invite</button>
+                    </a>
 
                 </div>
                 <h1 class="text-white mt-10 mb-5">Owners</h1>
