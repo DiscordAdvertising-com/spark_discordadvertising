@@ -22,6 +22,10 @@ class BotInfo extends Component
         
         $bot = Bot::where(['id' => $this->botID])->first();
 
+        if(!$bot) {
+            return redirect()->route('home');
+        }
+
         if($bot->status != 'Accepted' && !Auth::user()->access) {
             return redirect()->route('home');
         }
