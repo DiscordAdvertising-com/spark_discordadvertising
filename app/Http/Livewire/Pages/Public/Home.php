@@ -17,7 +17,7 @@ class Home extends Component
         $latestBots = [];
 
 
-        $latestBots = Bot::orderBy('created_at', 'DESC')->limit(4)->get();
+        $latestBots = Bot::where('status', 'Accepted')->orderBy('created_at', 'DESC')->limit(4)->get();
 
 
         return view('livewire.pages.public.home', ['latest' => $latestBots])

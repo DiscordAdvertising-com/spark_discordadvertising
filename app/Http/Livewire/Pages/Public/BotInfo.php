@@ -19,6 +19,12 @@ class BotInfo extends Component
 
     public function mount($botID) {
         $this->botID = $botID;
+        
+        $bot = Bot::where(['id' => $this->botID])->first();
+
+        if($bot->status != 'Accepted' && !Auth::user()->access) {
+            return redirect()->route('home');
+        }
     }
 
     public function render()
@@ -74,7 +80,12 @@ class BotInfo extends Component
 
         return view('livewire.pages.public.bot-info', ['bot' => Bot::find($this->botID), 'time' => $time, 'rank' => $rank + 1])
         ->extends('layouts.app')
-        ->section('content');
+        ->section('content');        
+
+    }
+
+    public function updateStatus($status) {
+        Bot::where(['id' => $this->botID])->update(['status' => $status]);
     }
 
     public function vote() {

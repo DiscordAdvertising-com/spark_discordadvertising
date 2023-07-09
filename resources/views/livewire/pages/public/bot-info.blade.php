@@ -104,6 +104,18 @@
                     
 
                 </div>
+                @if(Auth::user()->access)
+                    <h1 class="text-white mt-10 mb-5">Status: {{$bot['status']}}</h1>
+                    <div class="grid gap-y-5">
+                        @if ($bot['status'] == 'Awaiting Review' || $bot['status'] == 'Rejected')
+                            <button class="w-full bg-green-500 rounded-lg text-white font-semibold p-3" wire:click="updateStatus('Accepted')"> <li class="fa-solid fa-check mr-1"></li> Accept</button>   
+                        @endif
+                        @if ($bot['status'] == 'Awaiting Review' || $bot['status'] == 'Accepted')
+                            <button class="w-full bg-red-500 rounded-lg text-white font-semibold p-3" wire:click="updateStatus('Rejected')"> <li class="fa-solid fa-x mr-1"></li> Reject</button>                     
+                        @endif
+
+                    </div>
+                @endif
 
             </div>
 

@@ -33,6 +33,7 @@ class Search extends Component
             ->join('bot_tags', 'bots.id', '=', 'bot_tags.bot_id')
             ->where('bot_tags.tag', $this->filter)
             ->where('bots.username', 'LIKE', '%' . $this->query . '%')
+            ->where('bots.status', 'Accepted')
             ->select('*')
             ->orderBy('bots.created_at', 'DESC')
             ->paginate($this->perPage);
@@ -44,7 +45,7 @@ class Search extends Component
 
         } else {
 
-            $bots = Bot::where('username', 'LIKE', '%' . $this->query .'%')->orderBy('created_at', 'DESC')->paginate($this->perPage);
+            $bots = Bot::where('username', 'LIKE', '%' . $this->query .'%')->where('status', 'Accepted')->orderBy('created_at', 'DESC')->paginate($this->perPage);
 
         }
 

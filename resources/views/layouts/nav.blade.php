@@ -13,7 +13,9 @@
             <h1>Add Bot</h1>
         </a>
         @if(Auth::check()) 
-            <button class="w-[7rem] bg-accent rounded text-white font-semibold py-1.5 px-3 -mt-1 " >{{Auth::user()->username}}</button>
+            <a href="{{route('login')}}">
+                <button class="w-[7rem] bg-accent rounded text-white font-semibold py-1.5 px-3 -mt-1 " >{{Auth::user()->username}}</button>
+            </a>
         @else 
             <a href="{{route('login')}}">
                 <button class="w-[7rem] bg-accent rounded text-white font-semibold py-1.5 px-3 -mt-1 " >Login</button>

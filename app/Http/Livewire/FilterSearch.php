@@ -25,6 +25,7 @@ class FilterSearch extends Component
             ->join('bot_tags', 'bots.id', '=', 'bot_tags.bot_id')
             ->where('bot_tags.tag', $this->filter)
             ->where('bots.username', 'LIKE', '%' . $this->search . '%')
+            ->where('status', 'Accepted')
             ->select('*')
             ->orderBy('bots.created_at', 'DESC')
             ->limit(16)
@@ -34,6 +35,7 @@ class FilterSearch extends Component
             ->join('bot_tags', 'bots.id', '=', 'bot_tags.bot_id')
             ->where('bot_tags.tag', $this->filter)
             ->where('bots.username', 'LIKE', '%' . $this->search . '%')
+            ->where('status', 'Accepted')
             ->select('*')
             ->orderBy('bots.created_at', 'DESC')
             ->get();
@@ -49,8 +51,8 @@ class FilterSearch extends Component
 
         } else {
 
-            $searchBots = Bot::where('bots.username', 'LIKE', '%' . $this->search . '%')->orderBy('created_at', 'DESC')->limit(16)->get();
-            $totalSearchBots = Bot::where('bots.username', 'LIKE', '%' . $this->search . '%')->orderBy('created_at', 'DESC')->get();
+            $searchBots = Bot::where('bots.username', 'LIKE', '%' . $this->search . '%')->where('status', 'Accepted')->orderBy('created_at', 'DESC')->limit(16)->get();
+            $totalSearchBots = Bot::where('bots.username', 'LIKE', '%' . $this->search . '%')->where('status', 'Accepted')->orderBy('created_at', 'DESC')->get();
 
         }
         
