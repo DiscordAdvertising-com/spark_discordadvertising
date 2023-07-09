@@ -95,7 +95,7 @@ class BotInfo extends Component
     public function vote() {
         if(Auth::check()) {
 
-            Vote::create(['user_id' => Auth::user()->id, 'bot_id' => $this->botID]);
+            Vote::create(['user_id' => (String) Auth::user()->id, 'bot_id' => $this->botID]);
             redirect()->route('botInfo', ['botID' => $this->botID]);
             
         } else {
