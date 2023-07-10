@@ -225,12 +225,12 @@ class BotManage extends Component
             $component->components[0]->label = "Updated Page";
             $component->components[0]->url = route('botInfo', ['botID' => $findBot['id']]);
 
-            $client->post('https://discord.com/api/v9/channels/1126134459415134289/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
+            $client->post('https://discord.com/api/v9/channels/1126134459415134289/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed], 'components' => [$component]]]);
 
 
         } catch (Exception $err) {
 
-            Session::push('notifications', ['title' => 'Error', 'message' => 'Something went wrong']);
+            Session::push('notifications', ['title' => 'Error', 'message' => 'Something went wrong error:1']);
 
         }
 
