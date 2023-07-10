@@ -93,6 +93,8 @@ class BotInfo extends Component
     }
 
     public function vote() {
+
+        Session::put('vote', $this->botID);
         if(Auth::check()) {
 
             Vote::create(['user_id' => (String) Auth::user()->id, 'bot_id' => $this->botID]);
@@ -100,7 +102,6 @@ class BotInfo extends Component
             
         } else {
 
-            Session::put('vote', $this->botID);
             redirect()->route('login');
 
         }
