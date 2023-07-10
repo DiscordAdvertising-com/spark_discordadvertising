@@ -109,9 +109,12 @@
 </head>
 
 <body class="h-screen w-full bg-dmb font-sans overflow-x-hidden custom-scrollbar">
-    <div class="w-[1240px] min-h-screen mx-auto pb-40">
+    <div class="xl:w-[1240px] min-h-screen mx-auto pb-40 ">
         @include('layouts.nav')
-        @yield('content')
+        @include('layouts.mobile-nav')
+        <div class="lg:px-0 px-4 mt-16 lg:mt-0">
+            @yield('content')
+        </div>
     </div>
         @include('layouts.footer')
     @livewireScripts

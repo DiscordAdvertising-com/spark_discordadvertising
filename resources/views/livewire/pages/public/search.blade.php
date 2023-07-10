@@ -9,7 +9,7 @@
         <h1 class="mt-24 text-2xl text-gray-300">All registerd bots on our site...</h1>
     @endif
 
-    <div class="w-full mt-10 grid grid-cols-4 gap-x-10 ">
+    <div class="w-full mt-4 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
         
         @foreach ($bots as $bot)
             

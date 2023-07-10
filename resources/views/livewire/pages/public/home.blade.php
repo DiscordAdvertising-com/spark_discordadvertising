@@ -10,7 +10,7 @@
                 <h1 class="text-white text-3xl">Recently Added Bots</h1>
             </div>
         </div>
-        <div class="w-full mt-4 grid grid-cols-4 gap-x-10">
+        <div class="w-full mt-4 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
         
             @foreach ($latest as $bot)
 

@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class="w-full relative">
-            <div class="left-0 absolute top-1/2 -translate-y-1/2  pt-5 flex">
+            <div class="left-0 absolute top-1/2 -translate-y-1/2  pt-5 md:flex   hidden">
                 <img src="{{asset('img/logo.png')}}" class="h-[1.5rem]" alt="">
                 <h1 class="text-white my-auto text-xl ml-2 font-bold"><span class="text-accent">Discord</span> Advertising</h1>
             </div>

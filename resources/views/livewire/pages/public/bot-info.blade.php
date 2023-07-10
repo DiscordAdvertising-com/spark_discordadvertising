@@ -2,20 +2,20 @@
     
     <div class="mt-10">
 
-        <div class="w-full flex gap-10">
+        <div class="w-full lg:flex gap-10">
 
-            <div class="w-2/3 tracking-widest text-gray-400 ">
+            <div class="lg:w-2/3 tracking-widest text-gray-400 ">
 
                 <h1 class="text-3xl text-white font-semibold border-b pb-[0.8rem] border-gray-500 border-opacity-40">{{$bot['username']}}</h1>
 
-                <div class="w-full grid grid-cols-2 mt-8">
+                <div class="w-full grid lg:grid-cols-2 mt-8">
 
                     <div>
                         <h1 class="text-white">Application ID</h1>
                         <h1>{{$bot['id']}}</h1>
                     </div>
 
-                    <div>
+                    <div class="mt-8 lg:mt-0">
                         <h1 class="text-white">Listing Date</h1>
                         <h1>{{Carbon\Carbon::parse($bot->created_at)->diffForHumans()}}</h1>
                     </div>
@@ -44,7 +44,7 @@
                 </div>
                 
             </div>
-            <div class="w-1/3">
+            <div class="lg:w-1/3 mt-5 lg:mt-0">
 
                 <div class=" h-[14rem] w-full rounded-lg relative border border-db" style="background-image: @if($bot['avatar']) url('https://cdn.discordapp.com/avatars/{{$bot['id']}}/{{$bot['avatar']}}.jpg') @else url('{{asset('img/logo.png')}}') @endif; background-size: cover;">
                     <div class="w-full h-full backdrop-blur-lg ">
