@@ -26,7 +26,11 @@ class BotInfo extends Component
             return redirect()->route('home');
         }
 
-        if($bot->status != 'Accepted' && !Auth::check() ||  !Auth::user()->access) {
+        if($bot->status != 'Accepted' && !Auth::check()) {
+            return redirect()->route('home');
+        }
+
+        if($bot->status != 'Accepted' && !Auth::user()->access) {
             return redirect()->route('home');
         }
     }
