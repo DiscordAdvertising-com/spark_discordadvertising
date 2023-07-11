@@ -9,6 +9,11 @@ class BotUser extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'bot_id' => 'string',
+        'user_id' => 'string',
+    ];
+
     protected $guarded = [];
     public $timestamps = false;
 

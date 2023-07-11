@@ -12,7 +12,10 @@ class Bot extends Model
 
     protected $guarded = [];
 
-    
+    protected $casts = [
+        'id' => 'string',
+    ];
+
     public function tags()
     {
         return $this->hasMany(BotTag::class, 'bot_id', 'id');

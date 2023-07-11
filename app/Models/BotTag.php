@@ -12,5 +12,8 @@ class BotTag extends Model
     protected $guarded = [];
     public $timestamps = false;
 
+    protected $casts = [
+        'bot_id' => 'string',
+    ];
 
 }

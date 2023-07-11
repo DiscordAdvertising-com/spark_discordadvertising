@@ -19,4 +19,8 @@ class User extends Authenticatable
      */
     protected $guarded = [];
 
+    protected $casts = [
+        'id' => 'string',
+    ];
+    
 }

@@ -11,6 +11,11 @@ class Vote extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'bot_id' => 'string',
+        'user_id' => 'string',
+    ];
+    
     public function user()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
