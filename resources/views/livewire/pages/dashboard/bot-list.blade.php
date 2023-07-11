@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="mt-10 overflow-x-auto custom-scrollbar ">
-        <div class="px-8 bg-dmb flex my-3 overflow-x-auto w-[1300px]">
+        <div class="px-8 bg-dmb flex my-3 overflow-x-auto lg:w-auto w-[1300px]">
             <span class="w-[56px] mr-[0.5rem]"></span>
             <div class="grid grid-cols-5 w-full my-auto gap-x-5 ml-5 text-gray-400 text-lg">
                 <h1 class=" text-gray-400 text-sm">Name</h1>
