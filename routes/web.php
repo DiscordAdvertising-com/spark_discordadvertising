@@ -24,6 +24,7 @@ Route::get('/search', Search::class)->name('search');
 Route::get('/bot/{botID}', BotInfo::class)->name('botInfo');
 Route::get('/login',  [DiscordLoginContoller::class, 'redirectToProvider'])->name('login');
 Route::get('/discordinfo', [DiscordLoginContoller::class, 'handleProviderCallback']);
+Route::get('/logout',  [DiscordLoginContoller::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => 'auth'], function() {
 

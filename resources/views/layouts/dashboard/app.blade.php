@@ -52,11 +52,11 @@
         }
 
         .custom-scrollbar::-webkit-scrollbar-track {
-            background: #0C1427;
+            background: #3D3E45;
         }
 
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #121e39;
+            background: #6773E5;
             border-radius: 25px;
         }
 
@@ -107,9 +107,18 @@
 
 </head>
 
-<body class="h-screen w-full bg-dmb font-sans overflow-x-hidden flex">
+<body class="h-screen w-full bg-dmb font-sans overflow-x-hidden flex" x-data="{mobile: false}">
     
     @include('layouts.dashboard.top-navigation')
+
+    <div class="absolute lg:hidden right-0 top-0">
+        <i x-cloak @click="mobile = true" x-show="!mobile" class="fa-solid fa-bars right-5 top-2 text-3xl text-accent absolute cursor-pointer"></i>
+        <i x-cloak @click="mobile = false" x-show="mobile" class="fa-solid fa-x right-5 top-2 text-3xl text-accent absolute cursor-pointer"></i>
+    </div>
+
+    <span x-show="mobile">
+        @include('layouts.dashboard.mobile-navigation')
+    </span>
 
     @yield('content')
 

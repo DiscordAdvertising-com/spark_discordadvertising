@@ -86,7 +86,7 @@ class DiscordLoginContoller extends Controller
 
         Auth::logout();
         Session::put('page', null);
-        return redirect()->route('login');
+        return redirect()->route('home');
 
     }
 }
