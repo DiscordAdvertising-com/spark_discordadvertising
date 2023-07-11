@@ -51,7 +51,7 @@
                             <h1 class=""><li class="fa-solid fa-user mr-2 text-accent"></li>{{count($bot->users) + 1}}</h1>
                         </div>
                         <h1 class=""><li class="fa-solid fa-calendar mr-2 text-accent"></li>{{Carbon\Carbon::parse($bot->created_at)->diffForHumans()}}</h1>
-                        <h1><span class="text-sm px-3 py-1.5 bg-orange-300 font-semibold text-orange-600 rounded-lg">{{$bot['status']}}</span><li wire:click="setPage('botManage', '{{$bot['id']}}')" class="float-right fa-solid fa-arrow-right text-accent text-xl mt-1 mr-2 hover:cursor-pointer"></li></h1>
+                        <h1><span class="text-sm px-3 py-1.5 bg-accent font-semibold text-white rounded-lg">{{$bot['status']}}</span><li wire:click="setPage('botManage', '{{$bot['id']}}')" class="float-right fa-solid fa-arrow-right text-accent text-xl mt-1 mr-2 hover:cursor-pointer"></li></h1>
                     </div>
                 </div>  
             @endforeach
