@@ -107,18 +107,9 @@
 
 </head>
 
-<body class="h-screen w-full bg-dmb font-sans overflow-x-hidden flex" x-data="{mobile: false}">
+<body class="h-screen w-full bg-dmb font-sans overflow-x-hidden flex">
     
     @include('layouts.dashboard.top-navigation')
-
-    <div class="absolute lg:hidden right-0 top-0">
-        <i x-cloak @click="mobile = true" x-show="!mobile" class="fa-solid fa-bars right-5 top-2 text-3xl text-accent absolute cursor-pointer"></i>
-        <i x-cloak @click="mobile = false" x-show="mobile" class="fa-solid fa-x right-5 top-2 text-3xl text-accent absolute cursor-pointer"></i>
-    </div>
-
-    <span x-show="mobile" x-cloak>
-        @include('layouts.dashboard.mobile-navigation')
-    </span>
 
     @yield('content')
 

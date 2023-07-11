@@ -1,4 +1,13 @@
-<div class="overflow-x-hidden flex">
+<div class="overflow-x-hidden flex"  x-data="{mobile: false}">
+
+    <div class="absolute lg:hidden right-0 top-0">
+        <i x-cloak @click="mobile = true" x-show="!mobile" class="fa-solid fa-bars right-5 top-2 text-3xl text-accent absolute cursor-pointer"></i>
+        <i x-cloak @click="mobile = false" x-show="mobile" class="fa-solid fa-x right-5 top-2 text-3xl text-accent absolute cursor-pointer"></i>
+    </div>
+
+    <span x-show="mobile" x-cloak>
+        @include('layouts.dashboard.mobile-navigation')
+    </span>
 
     @include('layouts.dashboard.navigation')
 
