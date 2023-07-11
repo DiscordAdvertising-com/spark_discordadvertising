@@ -10,9 +10,9 @@
                 </a>
                 <li wire:click="setPage('upload')" class="hover:bg-dmb   cursor-pointer flex gap-4 text-lg py-2 px-3 rounded-lg"><i class="fa-solid fa-upload text-accent my-auto w-[20px]"></i><h1 class="text-base">Upload</h1></li>
                 <li wire:click="setPage('botList')" class="hover:bg-dmb  cursor-pointer flex gap-4 text-lg py-2 px-3 rounded-lg"><i class="fa-solid fa-list text-accent my-auto w-[20px]"></i><h1 class="text-base">My Bots</h1></li>
-                <a href="{{route('logout')}}">
+                {{-- <a href="{{route('logout')}}"> --}}
                     <li class="hover:bg-dmb cursor-pointer flex gap-4 text-lg py-2 px-3 rounded-lg"><i class="fa-solid fa-right-from-bracket text-accent my-auto w-[20px]"></i><h1 class="text-base">Logout</h1></li>
-                </a>
+                {{-- </a> --}}
 
             </ul>
         </div>
