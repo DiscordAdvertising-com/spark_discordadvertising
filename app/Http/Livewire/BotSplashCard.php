@@ -17,7 +17,7 @@ class BotSplashCard extends Component
 
         $this->votes = Vote::where(['bot_id' => $this->bot['id']])->count();
 
-        dd($this->votes,  Vote::where(['bot_id' => $this->bot['id']])->count(),  Vote::where(['bot_id' => $this->bot['id']])->get());
+        dd($this->votes,  Vote::where(['bot_id' => $this->bot['id']])->count(),  Vote::where(['bot_id' => $this->bot['id']])->get(), Vote::all(), $this->bot);
 
         $result = DB::table(function ($query) {
             $query->select('b.id', 'b.username', DB::raw('COUNT(bu.bot_id) AS vote_count'))
