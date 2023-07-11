@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Vote;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 
@@ -9,9 +10,12 @@ class BotSplashCard extends Component
 {
     public $bot;
     public $rank = 0;
-    
+    public $votes = 0;
+
     public function render()
     {
+
+        $this->votes = Vote::where(['bot_id' => $this->bot['id']])->count();
 
         $result = DB::table(function ($query) {
             $query->select('b.id', 'b.username', DB::raw('COUNT(bu.bot_id) AS vote_count'))
