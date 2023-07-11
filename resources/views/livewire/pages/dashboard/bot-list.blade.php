@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="mt-10 overflow-x-auto custom-scrollbar ">
-        <div class="px-8 bg-dmb flex my-3 overflow-x-auto lg:w-auto w-[1300px]">
+        <div class="px-8 bg-dmb flex my-3 overflow-x-auto 2xl:w-full w-[1300px]">
             <span class="w-[56px] mr-[0.5rem]"></span>
             <div class="grid grid-cols-5 w-full my-auto gap-x-5 ml-5 text-gray-400 text-lg">
                 <h1 class=" text-gray-400 text-sm">Name</h1>
@@ -35,7 +35,7 @@
                 <h1 class=" text-gray-400 text-sm">Status</h1>
             </div>
         </div>
-        <div class=" p-6 bg-dsb rounded-lg border border-db relative overflow-hidden grid gap-y-5 overflow-x-auto w-[1300px]">
+        <div class=" p-6 bg-dsb rounded-lg border border-db relative overflow-hidden grid gap-y-5 overflow-x-auto 2xl:w-full w-[1300px]">
             @foreach ($bots as $bot)
                 <div class="p-2 w-full bg-dmb flex">
                     @if($bot['avatar'])
