@@ -116,7 +116,7 @@
         <i x-cloak @click="mobile = false" x-show="mobile" class="fa-solid fa-x right-5 top-2 text-3xl text-accent absolute cursor-pointer"></i>
     </div>
 
-    <span x-show="mobile">
+    <span x-show="mobile" x-cloak>
         @include('layouts.dashboard.mobile-navigation')
     </span>
 
