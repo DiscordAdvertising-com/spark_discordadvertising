@@ -16,6 +16,7 @@ class BotInfo extends Component
 {
 
     public $botID;
+    public $reason;
 
     public function mount($botID) {
         $this->botID = $botID;
@@ -89,7 +90,29 @@ class BotInfo extends Component
     }
 
     public function updateStatus($status) {
+
         Bot::where(['id' => $this->botID])->update(['status' => $status]);
+        $bot = Bot::where(['id' => $this->botID])->first();
+
+        $client = new Client();
+        $embed = (object)array();
+
+        if($status == "Rejected") {
+
+            $embed->title = "Bot Rejected";
+            $embed->description = "**Application ID:** ".$bot['id']."\n**Bot Name:** ".$bot['username']. "\n**Reviewer:** ".Auth::user()->username. "\n\n**Reason:** ".$this->reason;
+            $embed->color = hexdec('#F70000');
+
+        } else {
+
+            $embed->title = "Bot Accepted";
+            $embed->description = "**Application ID:** ".$bot['id']."\n**Bot Name:** ".$bot['username']. "\n**Reviewer:** ".Auth::user()->username;
+            $embed->color = hexdec('#00F700');
+
+        }
+
+        $client->post('https://discord.com/api/v9/channels/1124325015630913576/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
+
     }
 
     public function vote() {

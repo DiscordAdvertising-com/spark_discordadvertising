@@ -1,4 +1,4 @@
-<div>
+<div x-data="{rejectModal: false}">
     
     <div class="mt-10">
 
@@ -103,8 +103,6 @@
 
                     @endforeach
 
-                    
-
                 </div>
                 @if( Auth::check() && Auth::user()->access)
                     <h1 class="text-white mt-10 mb-5">Status: {{$bot['status']}}</h1>
@@ -113,11 +111,19 @@
                             <button class="w-full bg-green-500 rounded-lg text-white font-semibold p-3" wire:click="updateStatus('Accepted')"> <li class="fa-solid fa-check mr-1"></li> Accept</button>   
                         @endif
                         @if ($bot['status'] == 'Awaiting Review' || $bot['status'] == 'Accepted')
-                            <button class="w-full bg-red-500 rounded-lg text-white font-semibold p-3" wire:click="updateStatus('Rejected')"> <li class="fa-solid fa-x mr-1"></li> Reject</button>                     
+                            <button class="w-full bg-red-500 rounded-lg text-white font-semibold p-3" @click="rejectModal = true"> <li class="fa-solid fa-x mr-1"></li> Reject</button>                     
                         @endif
 
                     </div>
                 @endif
+
+                <div class="z-10 h-screen lg:w-screen bg-black top-0 left-0 fixed bg-opacity-50" x-show="rejectModal" x-cloak>
+                    <div class="absolute top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2 z-60 w-[30rem] p-4 bg-dsb rounded-lg" @click.away="rejectModal = false">
+                        <h1 class="text-gray-300 mb-1 text-sm"><i class="fa-solid fa-question mr-1 text-accent"></i>Reason</h1>
+                        <textarea type="text" rows="5" wire:model="reason" @click="search = true" class="bg-input p-5 text-lg rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200 w-full"> </textarea>
+                        <button class=" mt-3 w-[10rem] float-right bg-red-500 rounded-lg text-white font-semibold p-3" @click="rejectModal = false"  wire:click="updateStatus('Rejected')"> <li class="fa-solid fa-x mr-1"></li> Reject</button>                     
+                    </div>
+                </div>
 
             </div>
 
