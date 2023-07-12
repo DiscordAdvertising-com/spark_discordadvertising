@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Exception;
 use App\Models\Vote;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 class BotSplashCard extends Component
 {
     public $bot;
+    public $votes;
     public $rank = 0;
 
     public function render()
@@ -26,7 +28,13 @@ class BotSplashCard extends Component
         $this->rank = $result->search(function($r) {
             return $r->id === (String)$this->bot['id'];
         }) + 1;
-        
+
+        try{
+            $this->votes = $this->bot['votes'] ?? $this->bot->votes; 
+        } catch (Exception $err) {
+            $this->votes = []; 
+        }
+                
         return view('livewire.bot-splash-card');
     }
 }
