@@ -2,14 +2,17 @@
 
 namespace App\Http\Livewire\Pages\Public;
 
+use App\Mail\BotStatus;
 use Exception;
 use Carbon\Carbon;
 use App\Models\Bot;
+use App\Models\User;
 use App\Models\Vote;
 use GuzzleHttp\Client;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class BotInfo extends Component
@@ -112,6 +115,11 @@ class BotInfo extends Component
         }
 
         $client->post('https://discord.com/api/v9/channels/1124325015630913576/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
+
+        $user = User::where(['id' => $bot->author])->first();
+
+        Mail::to($user->email)
+        ->send(new BotStatus($status, $bot, $this->reason));
 
     }
 
