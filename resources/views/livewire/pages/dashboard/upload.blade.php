@@ -13,8 +13,9 @@
                         class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" required>
                         <button wire:click="findBot" class="w-[10rem] md:h-auto h-[56px] bg-accent rounded-lg text-white font-semibold"> <li class="fa-solid fa-search"></li> Find Bot</button>
                     </div>
-                    <h1 class="text-sm text-gray-500">How to find your bot's client ID<i class="fa-solid fa-arrow-right ml-1 text-accent"></i></h1>
-
+                    <li class="fa-solid fa-arrow-right ml-1 text-accent">
+                        <a href="https://docs.discordadvertising.com/getting-your-application-id" class="text-sm text-gray-500">How to find your bot's Application ID</a>
+                    </li>
                 </div>
 
             </div>
@@ -89,6 +90,7 @@
                             class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" required>
                             <button wire:click="addAccount" class="w-[12rem] bg-accent rounded-lg text-white font-semibold md:h-auto h-[56px]"> <li class="fa-solid fa-search"></li> Find Account</button>
                         </div>
+                        
                         <h1 class="text-sm text-gray-500">How to find someones discord ID<i class="fa-solid fa-arrow-right ml-1 text-accent"></i></h1>
 
                     </div>
@@ -135,7 +137,9 @@
                         @if($inviteValid)
                             <button wire:click="createListing" class="w-fit bg-accent rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-check mr-1"></li> Create Listing</button>
                         @endif
-                        <h1 class="text-sm text-gray-500">By creating your bot listing you accept Discord Advertising's TOS<i class="fa-solid fa-arrow-right ml-1 text-accent"></i></h1>
+                        <li class="fa-solid fa-arrow-right ml-1 text-accent">
+                        <a href="https://tos.discordadvertising.com/" class="text-sm text-gray-500">By creating a bot listing you agree to our ToS</a>
+                    </li>
 
                     </div>
                 
