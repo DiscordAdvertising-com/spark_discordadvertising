@@ -5,7 +5,7 @@
                 <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
                 <ul class="text-gray-500 dark:text-gray-400 font-medium">
                     <li class="mb-4">
-                        <a href="#" class=" hover:underline">About</a>
+                        <a href="https://blog.discordadvertising.com/welcome" class=" hover:underline">Blog</a>
                     </li>
                     <li class="mb-4">
                         <a href="#" class="hover:underline">Team</a>
