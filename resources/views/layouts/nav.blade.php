@@ -6,7 +6,7 @@
         <a href="{{route('search')}}">
             <h1>Bots</h1>
         </a>
-        <a href="https://discord.gg/GypsEsvVrU">
+        <a href="https://discord.gg/vUxdpAmN6v">
             <h1>Our Discord</h1>
         </a>
         <a href="{{route('home')}}/dashboard/upload">
