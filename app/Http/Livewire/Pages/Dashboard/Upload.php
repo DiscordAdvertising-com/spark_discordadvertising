@@ -202,7 +202,7 @@ class Upload extends Component
 
     public function validateInvite() {
 
-        if(str_contains($this->invite, 'https://discord.com/api/oauth2/authorize?')) {
+        if(str_contains($this->invite, 'https://discord.com/api/oauth2/authorize?') || str_contains($this->invite, 'https://discord.com/oauth2/authorize?')) {
 
             $this->inviteValid = true;
             Session::push('notifications', ['title' => 'Success', 'message' => 'Valid Invite']);
