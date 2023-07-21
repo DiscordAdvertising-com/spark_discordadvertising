@@ -262,7 +262,9 @@ class Upload extends Component
 
         }
 
-        $this->emit('setPage', 'botList');
+        Session::put('botName', $this->bot['username']);
+
+        $this->emit('setPage', 'successScreen');
 
     }
     
