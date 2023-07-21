@@ -137,6 +137,20 @@ class BotInfo extends Component
 
         }
     }
+
+    public function refreshBotData() {
+
+        $client = new Client();
+        $data = $client->get('https://discord.com/api/v8/users/'.$this->botID, ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token')]]);
+        $data = json_decode($data->getBody(), true);
+
+
+        Bot::where(['id' => $this->botID])->update(['username' => $data['username'], 'avatar' => $data['avatar'], 'discriminator' => $data['discriminator']]);
+
+        Session::push('notifications', ['title' => 'Success', 'message' => 'Bot has been refreshed']);
+        $this->emit('flashSession');
+
+    }
     
     
 }

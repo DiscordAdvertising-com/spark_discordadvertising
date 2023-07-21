@@ -115,6 +115,12 @@
                         @endif
 
                     </div>
+                    <h1 class="text-white mt-10 mb-5">Refresh Bot Data</h1>
+                    <div class="grid gap-y-5">
+  
+                        <button class="w-full bg-accent rounded-lg text-white font-semibold p-3" wire:click="refreshBotData"> <li class="fa-solid fa-arrows-rotate mr-1"></li> Refresh</button>                     
+
+                    </div>
                 @endif
 
                 <div class="z-10 h-screen lg:w-screen bg-black top-0 left-0 fixed bg-opacity-50" x-show="rejectModal" x-cloak>
