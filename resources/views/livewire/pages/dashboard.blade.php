@@ -38,7 +38,12 @@
                 <div>
                     <livewire:pages.dashboard.success-screen />
                 </div>
-            @break
+                @break
+                @case('premium')
+                <div>
+                    <livewire:pages.dashboard.premium />
+                </div>
+                @break
                 @endswitch
 
             </div>

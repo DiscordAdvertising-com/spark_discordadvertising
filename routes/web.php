@@ -7,6 +7,7 @@ use App\Http\Livewire\Pages\Public\Home;
 use App\Http\Livewire\Pages\Public\Search;
 use App\Http\Livewire\Pages\Public\BotInfo;
 use App\Http\Controllers\DiscordLoginContoller;
+use App\Http\Controllers\StripeWebhookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,8 @@ Route::get('/bot/{botID}', BotInfo::class)->name('botInfo');
 Route::get('/logout',  [DiscordLoginContoller::class, 'logout'])->name('logout');
 Route::get('/login',  [DiscordLoginContoller::class, 'redirectToProvider'])->name('login');
 Route::get('/discordinfo', [DiscordLoginContoller::class, 'handleProviderCallback']);
+Route::post('webhooks/stripe', [StripeWebhookController::class, 'handleWebhook']);
+
 Route::get('/email', function() {
     return view('emails.status');
 });
