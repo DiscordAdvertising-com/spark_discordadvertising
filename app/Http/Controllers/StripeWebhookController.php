@@ -32,7 +32,7 @@ class StripeWebhookController extends WebhookController
         $embed->description = "Customer: ".$customerData['username']. " / ".$customerData['email']." / ".$customerData["id"] ;
         $embed->color = hexdec('#00F700');
 
-        $client->post('https://discord.com/api/v9/channels/1124145180375797810/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
+        $client->post('https://discord.com/api/v9/channels/1134844892724604989/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
         return new Response('Webhook Handled', 200);
     }
 
@@ -53,7 +53,7 @@ class StripeWebhookController extends WebhookController
         $embed->description = "Customer: ".$customerData['username']. " / ".$customerData['email']." / ".$customerData["id"] ;
         $embed->color = hexdec('#00F700');
 
-        $client->post('https://discord.com/api/v9/channels/1124145180375797810/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
+        $client->post('https://discord.com/api/v9/channels/1134844892724604989/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
 
         User::where(['email' => $customer2['email']])->update(['premium' => true]);
         // Log::channel('daily')->debug('Stripe Webhook Received, Subscription Created :', (array)$customer2);
@@ -78,7 +78,7 @@ class StripeWebhookController extends WebhookController
         $embed->description = "Customer: ".$customerData['username']. " / ".$customerData['email']." / ".$customerData["id"] ;
         $embed->color = hexdec('#00F700');
 
-        $client->post('https://discord.com/api/v9/channels/1124145180375797810/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
+        $client->post('https://discord.com/api/v9/channels/1134844892724604989/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
 
 
         User::where(['email' => $customer2['email']])->update(['premium' => false]);
