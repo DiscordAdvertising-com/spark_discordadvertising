@@ -29,3 +29,9 @@
         $('#session').fadeOut('veryslow');
     }, 4000);
 </script>
+<script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
+    new Crate({
+        server: '1123598765375357080', // Discord Advertising
+        channel: '1123606436203741366' // #general
+    })
+</script>
