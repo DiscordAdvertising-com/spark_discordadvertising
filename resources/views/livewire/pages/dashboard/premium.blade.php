@@ -1,11 +1,6 @@
 <div>
-  <script async
-  src="https://js.stripe.com/v3/buy-button.js">
-</script>
-
-<stripe-buy-button
-  buy-button-id="buy_btn_1NZh91FRSYCAp2ugUbvUepPF"
-  publishable-key="pk_test_51NYsI1FRSYCAp2ugif0B7M8BpgqYc846qCMxEwqhAe1i5cwFfZGelKso85T9Y7eIYNZ5EhIPN8UjbJ1BMGnRcjoA00ofHXsLMK"
->
-</stripe-buy-button>
+<script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+<stripe-pricing-table pricing-table-id="prctbl_1NaOYNFRSYCAp2ugYGmfUjzs"
+publishable-key="pk_live_51NYsI1FRSYCAp2ugXtJbsOMJqR8PtMSSSq5MWTJaIQdyrR51aozpOyE3kybmW47HiSEZxeWmcz5dPzkOTEd4n03h00dF7hei0I">
+</stripe-pricing-table>
 </div>
