@@ -34,6 +34,7 @@
                 <div>
                     <livewire:pages.dashboard.bot-manage />
                 </div>
+                @break
                 @case('successScreen')
                 <div>
                     <livewire:pages.dashboard.success-screen />
