@@ -15,4 +15,6 @@ class Tag extends Model
         return $this->hasMany(BotTag::class, 'tag', 'name');
     }
 
+    public $timestamps = false;
+
 }

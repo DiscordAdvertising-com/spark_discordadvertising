@@ -30,10 +30,10 @@
                     <div class="max-w-[50rem] grid gap-y-6 mt-6">
         
                         <div class="grid gap-y-2">
-        
+    
                             <label class="text-gray-400" for="headline">Bot Headline</label>
                             <div class="flex gap-x-5 relative">
-                                <textarea wire:model="headline" class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" name="headline" maxlength="40"></textarea>
+                                <textarea wire:model="headline" class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" name="headline" @if(Auth::user()->premium > 0) maxlength="60" @else maxlength="40" @endif></textarea>
                                 <h1 class=" text-accent text-sm absolute right-1 bottom-1">{{strlen($headline)}} / 40</h1>
                             </div>
         
@@ -50,6 +50,12 @@
                         <div class="grid gap-y-5">
         
                             <label class="text-gray-400" for="clientid">Bot Tags</label>
+                            @if(Auth::user()->premium >= 2)
+                            <div class="flex gap-x-5">
+                                <input type="text" wire:model="customTag" class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" id=""/>
+                                <button wire:click="addCustomTag" class=" bg-accent rounded-lg w-[8rem] text-white font-semibold"> <li class="fa-solid fa-plus"></li> Add <span class="hidden md:block">Custom Tag</span></button>
+                            </div>
+                            @endif
                             <div class="flex gap-x-5">
                                 <select wire:model="tag" class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" id="">
                                     @foreach ($tags as $tag)

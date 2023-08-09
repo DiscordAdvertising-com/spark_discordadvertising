@@ -23,6 +23,7 @@ class Upload extends Component
     public $tags = [];
     public $addedTags = [];
     public $tag;
+    public $customTag;
     public $accounts = [];
     public $accountID;
     public $invite;
@@ -88,11 +89,24 @@ class Upload extends Component
 
     }
 
+    public function addCustomTag() {
+        Tag::create(['name' => $this->customTag]);
+        $tag = Tag::where(['name' => $this->customTag])->first();
+        $this->addedTags[] = $this->customTag;
+        Session::push('notifications', ['title' => 'Success', 'message' => 'Custom Tag Created']);
+        $this->emit('flashSession');
+    }
+
     public function addTag() {
 
-        if(count($this->addedTags) == 3) {
+        if(count($this->addedTags) == 3 && Auth::user()->premium == 0) {
 
             Session::push('notifications', ['title' => 'Error', 'message' => '3 tags is the limit']);
+            $this->emit('flashSession');
+
+        } else if (count($this->addedTags) == 5 && Auth::user()->premium < 3) {
+
+            Session::push('notifications', ['title' => 'Error', 'message' => '5 tags is the limit']);
             $this->emit('flashSession');
 
         } else {

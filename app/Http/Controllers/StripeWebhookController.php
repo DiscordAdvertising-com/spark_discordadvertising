@@ -45,7 +45,7 @@ class StripeWebhookController extends WebhookController
             $customer,
             []
         );
-
+        
         $customerData = User::where(['email' => $customer2['email']])->first();
 
         $embed = (object)array();
@@ -55,8 +55,21 @@ class StripeWebhookController extends WebhookController
 
         $client->post('https://discord.com/api/v9/channels/1134844892724604989/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
 
-        User::where(['email' => $customer2['email']])->update(['premium' => true]);
-        // Log::channel('daily')->debug('Stripe Webhook Received, Subscription Created :', (array)$customer2);
+        if($payload['data']['object']['items']['data'][0]['plan']['id'] == 'price_1NYsR3FRSYCAp2ugFZBrH2QW') {
+
+            User::where(['email' => $customer2['email']])->update(['premium' => 1]);
+
+        } else if ($payload['data']['object']['items']['data'][0]['plan']['id'] == 'price_1NYtT7FRSYCAp2ugIDTOAO2V') {
+
+            User::where(['email' => $customer2['email']])->update(['premium' => 2]);
+
+        } else if ($payload['data']['object']['items']['data'][0]['plan']['id'] == 'price_1NaOWSFRSYCAp2ugvRQATJ6p') {
+
+            User::where(['email' => $customer2['email']])->update(['premium' => 3]);
+
+        }
+
+        Log::channel('daily')->debug('Stripe Webhook Received:', (array) $payload);
         return new Response('Webhook Handled', 200);
     }
 
@@ -81,7 +94,7 @@ class StripeWebhookController extends WebhookController
         $client->post('https://discord.com/api/v9/channels/1134844892724604989/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
 
 
-        User::where(['email' => $customer2['email']])->update(['premium' => false]);
+        User::where(['email' => $customer2['email']])->update(['premium' => 0]);
         return new Response('Webhook Handled', 200);
     }
 
