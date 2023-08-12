@@ -13,7 +13,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script>
 
-    @vite('resources/css/app.css')
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         [x-cloak] {
