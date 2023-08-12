@@ -56,7 +56,7 @@
                         'b': '#3D3E45',
                         'br': '#3D3E45',
                         // Dashboard Border
-                        'accent': '#FA4C6B',
+                        'accent': '#6773E5',
 
                     },
                     screens: {
