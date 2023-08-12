@@ -5,6 +5,7 @@ use App\Http\Livewire\Pages\Dashboard;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Livewire\Pages\Public\Home;
 use App\Http\Livewire\Pages\Public\Search;
+use App\Http\Livewire\Pages\AdminDashboard;
 use App\Http\Livewire\Pages\Public\BotInfo;
 use App\Http\Controllers\DiscordLoginContoller;
 use App\Http\Controllers\StripeWebhookController;
@@ -37,6 +38,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/dashboard/{page?}', Dashboard::class)->name('dashboard');
     Route::get('/dashboard/{page?}/{botID}', Dashboard::class)->name('manage');
 
+    Route::get('/admin-dashboard/{page?}', AdminDashboard::class)->name('admin-dashboard');
 });
 
 // Clear application cache:
