@@ -19,7 +19,7 @@
                 <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Help center</h2>
                 <ul class="text-gray-500 dark:text-gray-400 font-medium">
                     <li class="mb-4">
-                        <a href="https://discord.gg/GypsEsvVrU" class="hover:underline">Discord Server</a>
+                        <a href="https://discord.gg/vUxdpAmN6v" class="hover:underline">Discord Server</a>
                     </li>
                     <li class="mb-4">
                         <a href="https://tos.discordadvertising.com/#contact-us" class="hover:underline">Contact Us</a>
