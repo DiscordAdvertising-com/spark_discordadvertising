@@ -17,8 +17,8 @@
             @if(Auth::check() && Auth::user()->access)
             <a href="{{route('admin-dashboard')}}">
                 <h1>Admin Dashboard</h1>
-            </a>
             @endif
+            </a>
 
 
             <hr class="border border-white border-opacity-10">
