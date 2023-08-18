@@ -27,7 +27,7 @@
                 <i
                     class="fa-solid fa-bars-progress text-[20px] text-accent px-1 "></i>
             </div>
-            <span class="text-lg hidden group-hover:block  my-auto leading-tight min-w-[20rem]">Dashboard</span>
+            <span class="text-lg my-auto leading-tight min-w-[20rem]">Dashboard</span>
 
         </a>
 
