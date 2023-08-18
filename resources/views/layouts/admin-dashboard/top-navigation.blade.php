@@ -32,8 +32,6 @@
                 <span class="text-lg   my-auto leading-tight min-w-[20rem]">Bot List</span>
 
             </a>
-
-        <hr class="border-[1px] border-gray-500 border-opacity-40">
             
         <a  wire:click="setAdminPage('serverList')"
         class="flex p-[10px] gap-x-5 h-[50px] w-[50px] w-full rounded cursor-pointer @if($page == 'serverList') bg-accent @else hover:bg-mb @endif">
@@ -42,7 +40,7 @@
                 <i
                     class="fa-solid fa-list text-[20px] text-accent px-1 @if($page == 'serverList') text-white @endif"></i>
             </div>
-            <span class="text-lg hidden group-hover:block  my-auto leading-tight min-w-[20rem]">Server List</span>
+            <span class="text-lg   my-auto leading-tight min-w-[20rem]">Server List</span>
 
         </a>
         </div>
