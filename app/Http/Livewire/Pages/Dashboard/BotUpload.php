@@ -13,7 +13,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class Upload extends Component
+class BotUpload extends Component
 {
 
     public $botClientID;
@@ -43,7 +43,7 @@ class Upload extends Component
 
     public function render()
     {
-        return view('livewire.pages.dashboard.upload');
+        return view('livewire.pages.dashboard.bot-upload');
     }
 
     public function findBot() {

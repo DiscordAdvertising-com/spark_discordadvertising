@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire\Pages\Public;
 
-use App\Models\Bot;
+use App\Models\Server;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class Search extends Component
+class ServerSearch extends Component
 {
 
     public $query;
@@ -25,31 +25,31 @@ class Search extends Component
 
     public function render()
     {
-        $bots = [];
+        $servers = [];
 
         if($this->filter != null) {
 
-            $bs2 = DB::table('bots')
-            ->join('bot_tags', 'bots.id', '=', 'bot_tags.bot_id')
-            ->where('bot_tags.tag', $this->filter)
-            ->where('bots.username', 'LIKE', '%' . $this->query . '%')
-            ->where('bots.status', 'Accepted')
+            $bs2 = DB::table('servers')
+            ->join('server_tags', 'servers.id', '=', 'server_tags.server_id')
+            ->where('server_tags.tag', $this->filter)
+            ->where('servers.name', 'LIKE', '%' . $this->query . '%')
+            ->where('servers.status', 'Accepted')
             ->select('*')
-            ->orderBy('bots.created_at', 'DESC')
+            ->orderBy('servers.created_at', 'DESC')
             ->paginate($this->perPage);
         
             foreach($bs2 as $b2) {
-                $bots[] = (array)$b2;
+                $servers[] = (array)$b2;
             }
 
 
         } else {
 
-            $bots = Bot::where('username', 'LIKE', '%' . $this->query .'%')->where('status', 'Accepted')->orderBy('created_at', 'DESC')->paginate($this->perPage);
+            $servers = Server::where('name', 'LIKE', '%' . $this->query .'%')->where('status', 'Accepted')->orderBy('created_at', 'DESC')->paginate($this->perPage);
 
         }
 
-        return view('livewire.pages.public.search', ['bots' => $bots])
+        return view('livewire.pages.public.server-search', ['servers' => $servers])
         ->extends('layouts.app')
         ->section('content');
     }

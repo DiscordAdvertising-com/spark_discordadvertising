@@ -18,7 +18,7 @@ class BotSearchSplashCard extends Component
         $result = DB::table(function ($query) {
             $query->select('b.id', 'b.username', DB::raw('COUNT(bu.bot_id) AS vote_count'))
                 ->from('bots AS b')
-                ->leftJoin('votes AS bu', 'b.id', '=', 'bu.bot_id')
+                ->leftJoin('bot_votes AS bu', 'b.id', '=', 'bu.bot_id')
                 ->groupBy('b.id', 'b.username') // Include b.username in the GROUP BY clause
                 ->orderBy('vote_count', 'DESC');
         }, 'ranked_bots')

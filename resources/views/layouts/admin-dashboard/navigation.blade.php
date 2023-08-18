@@ -26,6 +26,16 @@
 
         </a>
 
+        <a  wire:click="setAdminPage('serverList')"
+        class="flex p-[10px] gap-x-5 h-[50px] w-[50px] w-full rounded cursor-pointer @if($page == 'serverList') bg-accent @else hover:bg-mb @endif">
+
+            <div class="grid place-items-center w-[30px]">
+                <i
+                    class="fa-solid fa-list text-[20px] text-accent px-1 @if($page == 'serverList') text-white @endif"></i>
+            </div>
+            <span class="text-lg hidden group-hover:block  my-auto leading-tight min-w-[20rem]">Server List</span>
+
+        </a>
     </div>
 
 </nav>

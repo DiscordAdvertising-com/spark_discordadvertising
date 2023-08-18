@@ -20,9 +20,14 @@
             <div class="max-w-[1540px]">
 
                 @switch($page)
-                @case('upload')
+                @case('botUpload')
                     <div>
-                        <livewire:pages.dashboard.upload />
+                        <livewire:pages.dashboard.bot-upload />
+                    </div>
+                @break
+                @case('serverUpload')
+                    <div>
+                        <livewire:pages.dashboard.server-upload />
                     </div>
                 @break
                 @case('botList')
@@ -30,9 +35,19 @@
                         <livewire:pages.dashboard.bot-list />
                     </div>
                 @break
+                @case('serverList')
+                    <div>
+                        <livewire:pages.dashboard.server-list />
+                    </div>
+                @break
                 @case('botManage')
                 <div>
                     <livewire:pages.dashboard.bot-manage />
+                </div>
+                @break
+                @case('serverManage')
+                <div>
+                    <livewire:pages.dashboard.server-manage />
                 </div>
                 @break
                 @case('successScreen')

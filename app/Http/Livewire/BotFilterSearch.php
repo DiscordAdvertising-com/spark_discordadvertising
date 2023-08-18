@@ -7,7 +7,7 @@ use App\Models\Tag;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 
-class FilterSearch extends Component
+class BotFilterSearch extends Component
 {
 
     public $filter;
@@ -56,7 +56,7 @@ class FilterSearch extends Component
 
         }
         
-        return view('livewire.filter-search',['bots' => Bot::all(), 'tags' => Tag::all(), 'searchResults' => $searchBots, 'allSearchResults' => $totalSearchBots ]);
+        return view('livewire.bot-filter-search',['bots' => Bot::all(), 'tags' => Tag::all(), 'searchResults' => $searchBots, 'allSearchResults' => $totalSearchBots ]);
     }
 
     public function filter($filter) {
@@ -71,9 +71,9 @@ class FilterSearch extends Component
 
     public function search() {
         if($this->search) {
-            return redirect()->route('search', ['query' => $this->search, 'filter' => $this->filter]);
+            return redirect()->route('botSearch', ['query' => $this->search, 'filter' => $this->filter]);
         } else { 
-            return redirect()->route('search');
+            return redirect()->route('botSearch');
         }
     }
     

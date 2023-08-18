@@ -4,34 +4,34 @@ namespace App\Http\Livewire\Pages\Public;
 
 use Exception;
 use Carbon\Carbon;
-use App\Models\Bot;
 use App\Models\User;
 use App\Models\Vote;
+use App\Models\Server;
 use GuzzleHttp\Client;
-use App\Mail\BotStatus;
-use App\Models\BotVote;
 use Livewire\Component;
+use App\Mail\ServerStatus;
+use App\Models\ServerVote;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
-class BotInfo extends Component
+class ServerInfo extends Component
 {
 
-    public $botID;
+    public $serverID;
     public $reason;
 
-    public function mount($botID) {
-        $this->botID = $botID;
+    public function mount($serverID) {
+        $this->serverID = $serverID;
         
-        $bot = Bot::where(['id' => $this->botID])->first();
+        $server = Server::where(['id' => $this->serverID])->first();
 
-        if(!$bot) {
+        if(!$server) {
             return redirect()->route('home');
         }
 
-        if(($bot->status != 'Accepted' && !Auth::check()) || ( $bot->status != 'Accepted' && !Auth::user()->access)) {
+        if(($server->status != 'Accepted' && !Auth::check()) || ( $server->status != 'Accepted' && !Auth::user()->access)) {
             return redirect()->route('home');
         }
     }
@@ -44,7 +44,7 @@ class BotInfo extends Component
 
         try {
 
-            $vote = BotVote::where(['bot_id' => $this->botID, 'user_id' => (String) Auth::user()->id])->latest()->first();
+            $vote = ServerVote::where(['server_id' => $this->serverID, 'user_id' => (String) Auth::user()->id])->latest()->first();
 
             if($vote) {
                 
@@ -75,19 +75,19 @@ class BotInfo extends Component
         }
 
         $result = DB::table(function ($query) {
-            $query->select('b.id', 'b.username', DB::raw('COUNT(bu.bot_id) AS vote_count'))
-                ->from('bots AS b')
-                ->leftJoin('bot_votes AS bu', 'b.id', '=', 'bu.bot_id')
-                ->groupBy('b.id', 'b.username') // Include b.username in the GROUP BY clause
+            $query->select('b.id', 'b.name', DB::raw('COUNT(bu.server_id) AS vote_count'))
+                ->from('servers AS b')
+                ->leftJoin('server_votes AS bu', 'b.id', '=', 'bu.server_id')
+                ->groupBy('b.id', 'b.name') // Include b.name in the GROUP BY clause
                 ->orderBy('vote_count', 'DESC');
-        }, 'ranked_bots')
+        }, 'ranked_servers')
         ->get();
         
         $rank = $result->search(function($r) {
-            return $r->id === $this->botID;
+            return $r->id === $this->serverID;
         });
 
-        return view('livewire.pages.public.bot-info', ['bot' => Bot::where(['id' => $this->botID])->first(), 'time' => $time, 'rank' => $rank + 1])
+        return view('livewire.pages.public.server-info', ['server' => Server::where(['id' => $this->serverID])->first(), 'time' => $time, 'rank' => $rank + 1])
         ->extends('layouts.app')
         ->section('content');        
 
@@ -95,42 +95,42 @@ class BotInfo extends Component
 
     public function updateStatus($status) {
 
-        Bot::where(['id' => $this->botID])->update(['status' => $status]);
-        $bot = Bot::where(['id' => $this->botID])->first();
+        Server::where(['id' => $this->serverID])->update(['status' => $status]);
+        $server = Server::where(['id' => $this->serverID])->first();
 
         $client = new Client();
         $embed = (object)array();
 
         if($status == "Rejected") {
 
-            $embed->title = "Bot Rejected";
-            $embed->description = "**Application ID:** ".$bot['id']."\n**Bot Name:** ".$bot['username']. "\n**Reviewer:** ".Auth::user()->username. "\n\n**Reason:** ".$this->reason;
+            $embed->title = "Server Rejected";
+            $embed->description = "**Server ID:** ".$server['id']."\n**Server Name:** ".$server['name']. "\n**Reviewer:** ".Auth::user()->username. "\n**Invite:** ".$server['invite']. "\n\n**Reason:** ".$this->reason;
             $embed->color = hexdec('#F70000');
 
         } else {
 
-            $embed->title = "Bot Accepted";
-            $embed->description = "**Application ID:** ".$bot['id']."\n**Bot Name:** ".$bot['username']. "\n**Reviewer:** ".Auth::user()->username;
+            $embed->title = "Server Accepted";
+            $embed->description = "**Server ID:** ".$server['id']."\n**Server Name:** ".$server['name']. "\n**Reviewer:** ".Auth::user()->username. "\n**Invite:** ".$server['invite'];
             $embed->color = hexdec('#00F700');
 
         }
 
         $client->post('https://discord.com/api/v9/channels/1124325015630913576/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
 
-        $user = User::where(['id' => $bot->author])->first();
+        $user = User::where(['id' => $server->author])->first();
 
         Mail::to($user->email)
-        ->send(new BotStatus($status, $bot, $this->reason));
+        ->send(new ServerStatus($status, $server, $this->reason));
 
     }
 
     public function vote() {
 
-        Session::put('vote', $this->botID);
+        Session::put('vote', $this->serverID);
         if(Auth::check()) {
 
-            BotVote::create(['user_id' => (String) Auth::user()->id, 'bot_id' => $this->botID]);
-            redirect()->route('botInfo', ['botID' => $this->botID]);
+            ServerVote::create(['user_id' => (String) Auth::user()->id, 'server_id' => $this->serverID]);
+            redirect()->route('serverInfo', ['serverID' => $this->serverID]);
             
         } else {
 
@@ -139,16 +139,16 @@ class BotInfo extends Component
         }
     }
 
-    public function refreshBotData() {
+    public function refreshServerData() {
 
         $client = new Client();
-        $data = $client->get('https://discord.com/api/v8/users/'.$this->botID, ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token')]]);
+        $data = $client->get('https://discord.com/api/v8/guilds/'.$this->serverID, ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token')]]);
         $data = json_decode($data->getBody(), true);
 
 
-        Bot::where(['id' => $this->botID])->update(['username' => $data['username'], 'avatar' => $data['avatar'], 'discriminator' => $data['discriminator']]);
+        Server::where(['id' => $this->serverID])->update(['name' => $data['name'], 'icon' => $data['icon']]);
 
-        Session::push('notifications', ['title' => 'Success', 'message' => 'Bot has been refreshed']);
+        Session::push('notifications', ['title' => 'Success', 'message' => 'Server has been refreshed']);
         $this->emit('flashSession');
 
     }

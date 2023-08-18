@@ -6,14 +6,20 @@
     <i x-cloak @click="mobile = false" x-show="mobile" class="fa-solid fa-x right-5 top-2 text-3xl text-accent absolute cursor-pointer"></i>
     <div class="w-full h-fit bg-dsb p-4 z-50" x-show="mobile">
         <div class="text-lg font-semibold text-white grid gap-y-5 pt-16 ">
-            <a href="{{route('search')}}">
+            <a href="{{route('botSearch')}}">
                 <h1>Bots</h1>
+            </a>
+            <a href="{{route('serverSearch')}}">
+                <h1>Servers</h1>
             </a>
             <a href="https://discord.gg/GypsEsvVrU">
                 <h1>Our Discord</h1>
             </a>
-            <a href="{{route('home')}}/dashboard/upload">
+            <a href="{{route('home')}}/dashboard/botUpload">
                 <h1>Add Bot</h1>
+            </a>
+            <a href="{{route('home')}}/dashboard/serverUpload">
+                <h1>Add Server</h1>
             </a>
             @if(Auth::check() && Auth::user()->access)
             <a href="{{route('admin-dashboard')}}">

@@ -3,14 +3,20 @@
         <img src="{{asset('img/logo.png')}}" class="h-[3.5rem]" alt="">
     </a>
     <div class="flex gap-x-10 float-right absolute top-1/2 -translate-y-1/2 right-10 lg:right-0 text-lg font-semibold text-white">
-        <a href="{{route('search')}}">
+        <a href="{{route('botSearch')}}">
             <h1>Bots</h1>
+        </a>
+        <a href="{{route('serverSearch')}}">
+            <h1>Servers</h1>
         </a>
         <a href="https://discord.gg/vUxdpAmN6v">
             <h1>Our Discord</h1>
         </a>
-        <a href="{{route('home')}}/dashboard/upload">
+        <a href="{{route('home')}}/dashboard/botUpload">
             <h1>Add Bot</h1>
+        </a>
+        <a href="{{route('home')}}/dashboard/serverUpload">
+            <h1>Add Server</h1>
         </a>
         @if(Auth::check() && Auth::user()->access)
         <a href="{{route('admin-dashboard')}}">

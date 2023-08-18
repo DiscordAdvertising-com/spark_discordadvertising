@@ -9,6 +9,9 @@
             @case('botList')
                     <livewire:pages.admin-dashboard.bot-list />
             @break
+            @case('serverList')
+                <livewire:pages.admin-dashboard.server-list />
+            @break
         @endswitch
         
     </div>

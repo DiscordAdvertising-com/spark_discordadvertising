@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Pages\Dashboard;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Livewire\Pages\Public\Home;
-use App\Http\Livewire\Pages\Public\Search;
+use App\Http\Livewire\Pages\Public\BotSearch;
+use App\Http\Livewire\Pages\Public\ServerSearch;
 use App\Http\Livewire\Pages\AdminDashboard;
 use App\Http\Livewire\Pages\Public\BotInfo;
+use App\Http\Livewire\Pages\Public\ServerInfo;
 use App\Http\Controllers\DiscordLoginContoller;
 use App\Http\Controllers\StripeWebhookController;
 
@@ -22,8 +24,10 @@ use App\Http\Controllers\StripeWebhookController;
 */
 
 Route::get('/', Home::class)->name('home');
-Route::get('/search', Search::class)->name('search');
+Route::get('/bot-search', BotSearch::class)->name('botSearch');
+Route::get('/server-search', ServerSearch::class)->name('serverSearch');
 Route::get('/bot/{botID}', BotInfo::class)->name('botInfo');
+Route::get('/server/{serverID}', ServerInfo::class)->name('serverInfo');
 Route::get('/logout',  [DiscordLoginContoller::class, 'logout'])->name('logout');
 Route::get('/login',  [DiscordLoginContoller::class, 'redirectToProvider'])->name('login');
 Route::get('/discordinfo', [DiscordLoginContoller::class, 'handleProviderCallback']);

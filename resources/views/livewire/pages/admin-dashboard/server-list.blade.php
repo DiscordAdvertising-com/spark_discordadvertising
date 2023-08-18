@@ -3,7 +3,7 @@
     <div class="w-full">
 
         <h1 class="text-5xl text-white tracking-wide font-semibold border-b pb-6">Home <span
-                class="text-2xl text-gray-400">/ BotList</span></h1>
+                class="text-2xl text-gray-400">/ ServerList</span></h1>
 
     </div>
 
@@ -14,7 +14,7 @@
             <select wire:model="filter" name="filter" id="filter"
                 class="p-3 h-[3.5rem] rounded-lg w-full lg:w-[20rem] 2xl:w-[30rem] bg-sb border-opacity-10 text-gray-400 cursor-pointer focus:ring-1 focus:ring-accent focus:outline-none">
                 <option value="id">ID</option>
-                <option value="username">Username</option> 
+                <option value="name">Name</option> 
             </select>
         </div>
 
@@ -56,26 +56,26 @@
                             </thead>
                             <tbody>
 
-                                @foreach ($bots as $bot)
+                                @foreach ($servers as $server)
 
                                     <tr class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:hover:bg-neutral-600 relative h-14 ">
                                         <td>
-                                            @if($bot['avatar'])
-                                                <img  src="https://cdn.discordapp.com/avatars/{{$bot['id']}}/{{$bot['avatar']}}.png?size=256" alt="" class="h-14 w-14 mr-2 border border-db bg-db rounded-full">
+                                            @if($server['icon'])
+                                                <img  src="https://cdn.discordapp.com/icons/{{$server['id']}}/{{$server['icon']}}.png?size=256" alt="" class="h-14 w-14 mr-2 border border-db bg-db rounded-full">
                                             @else
                                                 <img  src="{{asset('img/logo.png')}}" alt="" class="h-14 w-14 mr-2 border bg-cover border-db bg-db rounded-full">
                                             @endif
                                         </td>
-                                        <td class="whitespace-nowrap px-6 py-4 font-medium">#{{$bot['id']}}</td>
-                                        <td class="whitespace-nowrap px-6 py-4">{{$bot['username']}}</td>
-                                        <td class="whitespace-nowrap px-6 py-4">{{count($bot->tags)}}</td>
-                                        <td class="whitespace-nowrap px-6 py-4">{{count($bot->users) + 1}}</td>
-                                        <td class="whitespace-nowrap px-6 py-4">{{Carbon\Carbon::parse($bot->created_at)->diffForHumans()}}</td>
+                                        <td class="whitespace-nowrap px-6 py-4 font-medium">#{{$server['id']}}</td>
+                                        <td class="whitespace-nowrap px-6 py-4">{{$server['name']}}</td>
+                                        <td class="whitespace-nowrap px-6 py-4">{{count($server->tags)}}</td>
+                                        <td class="whitespace-nowrap px-6 py-4">{{count($server->users) + 1}}</td>
+                                        <td class="whitespace-nowrap px-6 py-4">{{Carbon\Carbon::parse($server->created_at)->diffForHumans()}}</td>
                                         <td class="whitespace-nowrap px-6 py-4 w-[10rem]"> <div
-                                                class="px-3 py-1.5 rounded-xl bg-accent text-white font-semibold min-w-[130px] text-center">{{$bot['status']}}</div>
+                                                class="px-3 py-1.5 rounded-xl bg-accent text-white font-semibold min-w-[130px] text-center">{{$server['status']}}</div>
                                         </td>
-                                        <td class="whitespace-nowrap float-right py-4"  href="{{route('botInfo', ['botID' => $bot['id']])}}">
-                                            <a  href="{{route('botInfo', ['botID' => $bot['id']])}}" class="px-3 py-1.5 rounded-xl bg-accent text-white font-semibold">Bot Page <i class="fa-solid fa-arrow-right my-auto"></i></a>
+                                        <td class="whitespace-nowrap float-right py-4"  href="{{route('serverInfo', ['serverID' => $server['id']])}}">
+                                            <a  href="{{route('serverInfo', ['serverID' => $server['id']])}}" class="px-3 py-1.5 rounded-xl bg-accent text-white font-semibold">Server Page <i class="fa-solid fa-arrow-right my-auto"></i></a>
                                         </td>
                                     </tr>
 

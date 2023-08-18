@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Vote extends Model
+class ServerVote extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
     protected $casts = [
-        'bot_id' => 'string',
+        'server_id' => 'string',
         'user_id' => 'string',
     ];
     
@@ -21,9 +21,9 @@ class Vote extends Model
         return $this->hasOne(User::class, 'id', 'user_id');
     }
 
-    public function bot()
+    public function server()
     {
-        return $this->hasOne(Bot::class, 'id', 'bot_id');
+        return $this->hasOne(Server::class, 'id', 'server_id');
     }
 
 }

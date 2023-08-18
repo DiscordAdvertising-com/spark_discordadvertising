@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\BotVote;
+use App\Models\ServerVote;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Bot extends Model
+class Server extends Model
 {
     use HasFactory;
 
@@ -18,12 +18,12 @@ class Bot extends Model
 
     public function tags()
     {
-        return $this->hasMany(BotTag::class, 'bot_id', 'id');
+        return $this->hasMany(Servertag::class, 'server_id', 'id');
     }
 
     public function users()
     {
-        return $this->hasMany(BotUser::class, 'bot_id', 'id');
+        return $this->hasMany(ServerUser::class, 'server_id', 'id');
     }
 
     public function lister()
@@ -33,7 +33,7 @@ class Bot extends Model
 
     public function votes()
     {
-        return $this->hasMany(BotVote::class, 'bot_id', 'id');
+        return $this->hasMany(ServerVote::class, 'server_id', 'id');
     }
 
 }
