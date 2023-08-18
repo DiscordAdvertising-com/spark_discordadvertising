@@ -15,13 +15,12 @@
             </div>
 
             @if(Auth::check() && Auth::user()->access)
-            <a href="{{route('admin-dashboard')}}">
-                <h1>Admin Dashboard</h1>
+ <a href="{{route('admin-dashboard')}}" class="hover:bg-dmb bg-dmb @endif cursor-pointer flex gap-4 text-lg py-2 px-3 rounded-lg"><i class="fa-solid fa-gear text-accent my-auto w-[20px]"></i><h1 class="text-base">Admin Dashboard</h1></a>
             @endif
             </a>
 
 
-            <hr class="border border-white border-opacity-10">
+     <hr class="border border-white border-opacity-10">
 
             <div>
                 <h1 class="text-white font-bold text-xs px-3 pb-2">BOT</h1>
