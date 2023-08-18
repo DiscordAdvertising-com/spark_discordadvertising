@@ -18,6 +18,8 @@
             <a href="{{route('admin-dashboard')}}">
                 <h1>Admin Dashboard</h1>
             </a>
+            @endif
+
 
             <hr class="border border-white border-opacity-10">
 
