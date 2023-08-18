@@ -12,6 +12,15 @@
                     </a>
                     <a href="{{route('dashboard', ['page' => 'premium'])}}" class="hover:bg-dmb  @if($page == 'premium') bg-dmb @endif cursor-pointer flex gap-4 text-lg py-2 px-3 rounded-lg"><i class="fa-solid fa-star text-accent my-auto w-[20px]"></i><h1 class="text-base">Premium</h1></a>
                     <li class="hover:bg-dmb cursor-pointer flex gap-4 text-lg py-2 px-3 rounded-lg"><i class="fa-solid fa-right-from-bracket text-accent my-auto w-[20px]"></i><h1 class="text-base">Logout</h1></li>
+
+
+                         @if(Auth::check() && Auth::user()->access)
+                        <a href="{{route('admin-dashboard')}}">
+                        <li class="hover:bg-dmb cursor-pointer flex gap-4 text-lg py-2 px-3 rounded-lg"><i class="fa-solid fa-gear text-accent my-auto w-[20px]"></i><h1 class="text-base">Admin Dashboard</h1></li>
+                        @endif
+                        </a>
+
+                    
                 </ul>    
             </div>
 
