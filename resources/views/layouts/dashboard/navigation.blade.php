@@ -15,7 +15,7 @@
             </div>
 
             @if(Auth::check() && Auth::user()->access)
- <a href="{{route('admin-dashboard')}}" class="hover:bg-dmb bg-dmb @endif cursor-pointer flex gap-4 text-lg py-2 px-3 rounded-lg"><i class="fa-solid fa-gear text-accent my-auto w-[20px]"></i><h1 class="text-base">Admin Dashboard</h1></a>
+ <a href="{{route('admin-dashboard')}}" class="hover:bg-dmb bg-dmb cursor-pointer flex gap-4 text-lg py-2 px-3 rounded-lg"><i class="fa-solid fa-gear text-accent my-auto w-[20px]"></i><h1 class="text-base">Admin Dashboard</h1></a>
             @endif
             </a>
 
