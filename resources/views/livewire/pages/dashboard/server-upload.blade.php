@@ -13,7 +13,7 @@
                         <input wire:model="serverID" name="serverid" type="text"
                         class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" required>
                         <button wire:click="findServer" class="w-[11rem] md:h-auto h-[56px] bg-accent rounded-lg text-white font-semibold"> <li class="fa-solid fa-search"></li> Find Server</button>
-                        <a href="https://discord.com/api/oauth2/authorize?client_id=1141540520791920711&permissions=2147485696&scope=applications.commands%20bot" class="w-[11rem] md:h-auto h-[56px] bg-accent rounded-lg text-white font-semibold"> <li class="fa-solid fa-plus"></li> Add Bot</a>
+                        <button class="w-[11rem] md:h-auto h-[56px] bg-accent rounded-lg text-white font-semibold"><a href="https://discord.com/api/oauth2/authorize?client_id=1141540520791920711&permissions=2147485696&scope=applications.commands%20bot" class=" h-[56px]"> <li class="fa-solid fa-plus"></li> Add Bot </a></button>
                     </div>
                     <li class="fa-solid fa-arrow-right ml-1 text-accent">
                         <a href="https://docs.discordadvertising.com/getting-your-application-id" class="text-sm text-gray-500">How to find your server's ID</a>
