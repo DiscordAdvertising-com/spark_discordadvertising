@@ -13,6 +13,17 @@
 
         </a>
 
+            <a href="{{route('dashboard')}}"
+            class="flex p-[10px] gap-x-5 h-[50px] w-[50px] w-full rounded cursor-pointer hover:bg-mb ">
+
+            <div class="grid place-items-center w-[30px]">
+                <i
+                    class="fa-solid fa-house text-[20px] text-accent px-1 "></i>
+            </div>
+            <span class="text-lg hidden group-hover:block  my-auto leading-tight min-w-[20rem]">Dashboard</span>
+
+        </a>
+
         <hr class="border-[1px] border-gray-500 border-opacity-40">
 
         <a  wire:click="setAdminPage('botList')"
