@@ -12,7 +12,8 @@
                     <div class="md:flex grid gap-5">
                         <input wire:model="serverID" name="serverid" type="text"
                         class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" required>
-                        <button wire:click="findServer" class="w-[10rem] md:h-auto h-[56px] bg-accent rounded-lg text-white font-semibold"> <li class="fa-solid fa-search"></li> Find Server</button>
+                        <button wire:click="findServer" class="w-[11rem] md:h-auto h-[56px] bg-accent rounded-lg text-white font-semibold"> <li class="fa-solid fa-search"></li> Find Server</button>
+                        <a href="https://discord.com/api/oauth2/authorize?client_id=1141540520791920711&permissions=2147485696&scope=applications.commands%20bot" class="w-[11rem] md:h-auto h-[56px] bg-accent rounded-lg text-white font-semibold"> <li class="fa-solid fa-plus"></li> Add Bot</a>
                     </div>
                     <li class="fa-solid fa-arrow-right ml-1 text-accent">
                         <a href="https://docs.discordadvertising.com/getting-your-application-id" class="text-sm text-gray-500">How to find your server's ID</a>
@@ -34,7 +35,7 @@
                             <label class="text-gray-400" for="headline">Server Headline</label>
                             <div class="flex gap-x-5 relative">
                                 <textarea wire:model="headline" class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" name="headline" @if(Auth::user()->premium > 0) maxlength="60" @else maxlength="40" @endif></textarea>
-                                <h1 class=" text-accent text-sm absolute right-1 bottom-1">{{strlen($headline)}} / 40</h1>
+                                <h1 class=" text-accent text-sm absolute right-1 bottom-1">{{strlen($headline)}} / @if(Auth::user()->premium > 0) 60 @else 40 @endif</h1>
                             </div>
         
                         </div>
