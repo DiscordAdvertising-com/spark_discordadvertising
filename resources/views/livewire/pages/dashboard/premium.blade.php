@@ -7,11 +7,11 @@
         @case(2)
             <h1>Active Plan: <span class="text-accent">Supreme</span></h1>
             @break
-        @case(2)
+        @case(3)
             <h1>Active Plan: <span class="text-accent">Highlighted</span></h1>
             @break
         @default
-            <h1>Active Plan: None</h1>
+            <h1>Active Plan: Free</h1>
     @endswitch
 
     <a href="http://customer.discordadvertising.com/" class=" absolute right-4 top-1/2 -translate-y-1/2 text-sm italic text-gray-400 "> manage plan <span class="text-accent text-sm"> <i class="fa-solid fa-arrow-right"></i> </span></a>
