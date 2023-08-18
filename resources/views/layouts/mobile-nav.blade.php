@@ -21,10 +21,6 @@
             <a href="{{route('home')}}/dashboard/serverUpload">
                 <h1>Add Server</h1>
             </a>
-            @if(Auth::check() && Auth::user()->access)
-            <a href="{{route('admin-dashboard')}}">
-                <h1>Admin Dashboard</h1>
-            </a>
             @endif
             @if(Auth::check()) 
                 <a href="{{route('login')}}">
