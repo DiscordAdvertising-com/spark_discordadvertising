@@ -21,7 +21,6 @@
             <a href="{{route('home')}}/dashboard/serverUpload">
                 <h1>Add Server</h1>
             </a>
-            @endif
             @if(Auth::check()) 
                 <a href="{{route('login')}}">
                     <button class="w-full bg-accent rounded text-white font-semibold py-1.5 px-3 -mt-1 " >{{Auth::user()->username}}</button>
