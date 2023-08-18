@@ -15,6 +15,11 @@ class Tag extends Model
         return $this->hasMany(BotTag::class, 'tag', 'name');
     }
 
+    public function servers()
+    {
+        return $this->hasMany(ServerTag::class, 'tag', 'name');
+    }
+
     public $timestamps = false;
 
 }

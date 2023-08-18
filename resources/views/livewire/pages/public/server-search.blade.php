@@ -11,7 +11,7 @@
 
     <div class="w-full mt-4 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
         
-        @foreach ($server as $server)
+        @foreach ($servers as $server)
             
             <livewire:server-splash-card :server="$server" />
 
