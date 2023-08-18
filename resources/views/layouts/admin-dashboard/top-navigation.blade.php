@@ -32,6 +32,9 @@
                 <span class="text-lg   my-auto leading-tight min-w-[20rem]">Bot List</span>
 
             </a>
+
+        <hr class="border-[1px] border-gray-500 border-opacity-40">
+            
         <a  wire:click="setAdminPage('serverList')"
         class="flex p-[10px] gap-x-5 h-[50px] w-[50px] w-full rounded cursor-pointer @if($page == 'serverList') bg-accent @else hover:bg-mb @endif">
 
