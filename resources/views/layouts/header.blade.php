@@ -1,7 +1,7 @@
 <header>
     <div class="lg:mt-10 relative">
-        <h1 class="text-6xl font-bold text-white md:w-[25rem]"><span class="text-accent">An awesome list</span> of Discord bots</h1>
-        <h1 class="text-white text-xl mt-5 md:w-[35rem] tracking-widest">Make sure to vote for your favorite bot to support their developer, or list your own bot!</h1>
+        <h1 class="text-6xl font-bold text-white md:w-[25rem]"><span class="text-accent">An awesome list</span> of Discord bots and servers</h1>
+        <h1 class="text-white text-xl mt-5 md:w-[35rem] tracking-widest">Make sure to vote for your favorite bot/server to support their developer or creator, or list your own bot and server!</h1>
         <div class="md:w-[22rem]  right-0 absolute top-2 hidden lg:block">
             <h1 class=" text-gray-500 mb-1 text-lg pb-2"> <li class="fa-solid fa-lightbulb mr-1 text-accent"></li>Highlighted Bot</h1>
             <div class="rounded-xl bg-dsb h-[27rem] overflow-hidden">
