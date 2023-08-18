@@ -18,7 +18,7 @@ class Server extends Model
 
     public function tags()
     {
-        return $this->hasMany(Servertag::class, 'server_id', 'id');
+        return $this->hasMany(ServerTag::class, 'server_id', 'id');
     }
 
     public function users()
