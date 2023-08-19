@@ -88,9 +88,14 @@ class BotManage extends Component
 
     public function addTag() {
 
-        if(count($this->addedTags) == 3) {
+        if(count($this->addedTags) >= 3 && Auth::user()->premium == 0) {
 
             Session::push('notifications', ['title' => 'Error', 'message' => '3 tags is the limit']);
+            $this->emit('flashSession');
+
+        } else if (count($this->addedTags) >= 5 && Auth::user()->premium < 3) {
+
+            Session::push('notifications', ['title' => 'Error', 'message' => '5 tags is the limit']);
             $this->emit('flashSession');
 
         } else {
@@ -117,6 +122,7 @@ class BotManage extends Component
 
             unset($this->addedTags[array_search($tag, $this->addedTags)]);  
             $this->addedTags = array_merge($this->addedTags);
+            $this->tags[] = $tag;
 
         } catch( Exception $err) {
 

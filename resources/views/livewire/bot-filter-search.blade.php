@@ -55,8 +55,8 @@
             </div>
             <div class="max-h-[20rem] overflow-hidden">
                 <div class="p-5 grid md:grid-cols-2 lg:grid-cols-4 gap-3">
-                    @foreach ($searchResults as $bot)
-                        <livewire:bot-search-splash-card :bot="$bot"/>
+                    @foreach ($allSearchResults as $bot)
+                        <livewire:bot-search-splash-card :bot="$bot" :wire:key="$bot['id']"/>
                     @endforeach
                 </div>
             </div>
