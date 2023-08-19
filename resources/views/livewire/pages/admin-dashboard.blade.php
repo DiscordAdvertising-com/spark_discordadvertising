@@ -12,6 +12,12 @@
             @case('serverList')
                 <livewire:pages.admin-dashboard.server-list />
             @break
+            @case('tags')
+                <livewire:pages.admin-dashboard.tags />
+            @break
+            @case('processes')
+                <livewire:pages.admin-dashboard.processes />
+            @break
         @endswitch
         
     </div>

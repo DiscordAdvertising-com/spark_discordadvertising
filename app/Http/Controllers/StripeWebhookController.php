@@ -69,6 +69,18 @@ class StripeWebhookController extends WebhookController
 
         }
 
+        $discordUserId = $customerData['id']; // Replace with the actual user ID
+        $guildId = '1123598765375357080'; // Replace with the actual guild ID
+        $roleId = '1135586274481279026';
+
+        $discordApiUrl = "https://discord.com/api/v9/guilds/$guildId/members/$discordUserId/roles/$roleId";
+
+        $client->put($discordApiUrl, [
+            'headers' => [
+                'Authorization' => 'Bot ' . config('services.discord.discord_bot_token'),
+            ],
+        ]);
+
         Log::channel('daily')->debug('Stripe Webhook Received:', (array) $payload);
         return new Response('Webhook Handled', 200);
     }
@@ -93,6 +105,17 @@ class StripeWebhookController extends WebhookController
 
         $client->post('https://discord.com/api/v9/channels/1134844892724604989/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
 
+        $discordUserId = $customerData['id']; // Replace with the actual user ID
+        $guildId = '1123598765375357080'; // Replace with the actual guild ID
+        $roleId = '1135586274481279026';
+
+        $discordApiUrl = "https://discord.com/api/v9/guilds/$guildId/members/$discordUserId/roles/$roleId";
+
+        $client->delete($discordApiUrl, [
+            'headers' => [
+                'Authorization' => 'Bot ' . config('services.discord.discord_bot_token'),
+            ],
+        ]);
 
         User::where(['email' => $customer2['email']])->update(['premium' => 0]);
         return new Response('Webhook Handled', 200);

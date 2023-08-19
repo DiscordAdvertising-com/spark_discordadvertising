@@ -47,6 +47,29 @@
             <span class="text-lg hidden group-hover:block  my-auto leading-tight min-w-[20rem]">Server List</span>
 
         </a>
+
+        <a  wire:click="setAdminPage('tags')"
+        class="flex p-[10px] gap-x-5 h-[50px] w-[50px] w-full rounded cursor-pointer @if($page == 'tags') bg-accent @else hover:bg-mb @endif">
+
+            <div class="grid place-items-center w-[30px]">
+                <i
+                    class="fa-solid fa-tag text-[20px] text-accent px-2 @if($page == 'tags') text-white @endif"></i>
+            </div>
+            <span class="text-lg hidden group-hover:block  my-auto leading-tight min-w-[20rem]">Tags</span>
+
+        </a>
+
+        <a  wire:click="setAdminPage('processes')"
+        class="flex p-[10px] gap-x-5 h-[50px] w-[50px] w-full rounded cursor-pointer @if($page == 'processes') bg-accent @else hover:bg-mb @endif">
+
+            <div class="grid place-items-center w-[30px]">
+                <i
+                    class="fa-solid fa-hammer text-[20px] text-accent px-1 @if($page == 'processes') text-white @endif"></i>
+            </div>
+            <span class="text-lg hidden group-hover:block  my-auto leading-tight min-w-[20rem]">Processes</span>
+
+        </a>
+
     </div>
 
 </nav>

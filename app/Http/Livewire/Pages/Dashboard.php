@@ -17,7 +17,7 @@ class Dashboard extends Component
     public function render()
     {
 
-        $page = Session::get('page') ? Session::get('page') : 'upload';
+        $page = Session::get('page') ? Session::get('page') : 'premium';
 
         return view('livewire.pages.dashboard',['page' => $page])
         ->extends('layouts.dashboard.app')
