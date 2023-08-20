@@ -20,7 +20,7 @@ class StripeWebhookController extends WebhookController
     {
         $client = new Client();
         $customer = $payload['data']['object']['customer'];
-        $stripe = new StripeClient('pk_live_51NYsI1FRSYCAp2ugXtJbsOMJqR8PtMSSSq5MWTJaIQdyrR51aozpOyE3kybmW47HiSEZxeWmcz5dPzkOTEd4n03h00dF7hei0I');
+        $stripe = new StripeClient('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');
         $customer2 = $stripe->customers->retrieve(
             $customer,
             []
@@ -40,7 +40,7 @@ class StripeWebhookController extends WebhookController
     {
         $client = new Client();
         $customer = $payload['data']['object']['customer'];
-        $stripe = new StripeClient('pk_live_51NYsI1FRSYCAp2ugXtJbsOMJqR8PtMSSSq5MWTJaIQdyrR51aozpOyE3kybmW47HiSEZxeWmcz5dPzkOTEd4n03h00dF7hei0I');
+        $stripe = new StripeClient('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');
         $customer2 = $stripe->customers->retrieve(
             $customer,
             []
@@ -90,7 +90,7 @@ class StripeWebhookController extends WebhookController
     {
         $client = new Client();
         $customer = $payload['data']['object']['customer'];
-        $stripe = new StripeClient('pk_live_51NYsI1FRSYCAp2ugXtJbsOMJqR8PtMSSSq5MWTJaIQdyrR51aozpOyE3kybmW47HiSEZxeWmcz5dPzkOTEd4n03h00dF7hei0I');
+        $stripe = new StripeClient('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');
         $customer2 = $stripe->customers->retrieve(
             $customer,
             []
