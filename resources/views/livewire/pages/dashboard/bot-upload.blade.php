@@ -145,7 +145,7 @@
                             <button wire:click="createListing" class="w-fit bg-accent rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-check mr-1"></li> Create Listing</button>
                         @endif
                         <li class="fa-solid fa-arrow-right ml-1 text-accent">
-                        <a href="https://tos.discordadvertising.com/" class="text-sm text-gray-500">By creating a bot listing you agree to our ToS</a>
+                        <a href="{{route('tos')}}" class="text-sm text-gray-500">By creating a bot listing you agree to our ToS</a>
                     </li>
 
                     </div>

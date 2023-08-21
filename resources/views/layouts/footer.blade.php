@@ -30,13 +30,10 @@
                 <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
                 <ul class="text-gray-500 dark:text-gray-400 font-medium">
                     <li class="mb-4">
-                        <a href="https://tos.discordadvertising.com/" class="hover:underline">Privacy Policy</a>
+                        <a href="{{route('privacy')}}" class="hover:underline">Privacy Policy</a>
                     </li>
                     <li class="mb-4">
-                        <a href="https://tos.discordadvertising.com/" class="hover:underline">Terms &amp; Conditions</a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">Brand guidlines</a>
+                        <a href="{{route('tos')}}" class="hover:underline">Terms &amp; Conditions</a>
                     </li>
                 </ul>
             </div>
@@ -44,16 +41,16 @@
                 <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Dashboard</h2>
                 <ul class="text-gray-500 dark:text-gray-400 font-medium">
                     <li class="mb-4">
-                        <a href="https://www.discordadvertising.com/dashboard/upload" class="hover:underline">Upload Bot</a>
+                        <a href="{{route('botUpload')}}" class="hover:underline">Upload Bot</a>
                     </li>
                     <li class="mb-4">
-                        <a href="https://www.discordadvertising.com/dashboard/botList" class="hover:underline">Your Bots</a>
+                        <a href="{{route('botList')}}" class="hover:underline">Your Bots</a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="hover:underline">Upload Server</a>
+                        <a href="{{route('serverUpload')}}" class="hover:underline">Upload Server</a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="hover:underline">Your Servers</a>
+                        <a href="{{route('serverList')}}" class="hover:underline">Your Servers</a>
                     </li>
                 </ul>
             </div>

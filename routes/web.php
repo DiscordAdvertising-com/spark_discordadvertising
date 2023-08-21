@@ -11,6 +11,8 @@ use App\Http\Livewire\Pages\Public\BotInfo;
 use App\Http\Livewire\Pages\Public\ServerInfo;
 use App\Http\Controllers\DiscordLoginContoller;
 use App\Http\Controllers\StripeWebhookController;
+use App\Http\Livewire\Pages\Public\privacy;
+use App\Http\Livewire\Pages\Public\tos;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,8 @@ Route::get('/server/{serverID}', ServerInfo::class)->name('serverInfo');
 Route::get('/logout',  [DiscordLoginContoller::class, 'logout'])->name('logout');
 Route::get('/login',  [DiscordLoginContoller::class, 'redirectToProvider'])->name('login');
 Route::get('/discordinfo', [DiscordLoginContoller::class, 'handleProviderCallback']);
+Route::get('/tos', tos::class)->name('tos');
+Route::get('/privacy', privacy::class)->name('privacy');
 Route::post('webhooks/stripe', [StripeWebhookController::class, 'handleWebhook']);
 
 Route::get('/email', function() {
@@ -40,6 +44,10 @@ Route::get('/email', function() {
 Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/dashboard/{page?}', Dashboard::class)->name('dashboard');
+    Route::get('/dashboard/serverList', Dashboard::class)->name('serverList');
+    Route::get('/dashboard/serverUpload', Dashboard::class)->name('serverUpload');
+    Route::get('/dashboard/botList', Dashboard::class)->name('botList');
+    Route::get('/dashboard/botUpload', Dashboard::class)->name('botUpload');
     Route::get('/dashboard/{page?}/{botID}', Dashboard::class)->name('manage');
 
     Route::get('/admin-dashboard/{page?}', AdminDashboard::class)->name('admin-dashboard');
