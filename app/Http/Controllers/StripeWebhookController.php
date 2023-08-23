@@ -82,7 +82,7 @@ class StripeWebhookController extends WebhookController
     
             $client->put($discordApiUrl, [
                 'headers' => [
-                    'Authorization' => 'Bot ' . config('services.discord.discord_bot_token'),
+                    'Authorization' => 'Bot ' .config('services.discord.discord_bot_token'),
                 ],
             ]);
     
@@ -122,7 +122,7 @@ class StripeWebhookController extends WebhookController
     
             $client->delete($discordApiUrl, [
                 'headers' => [
-                    'Authorization' => 'Bot ' . config('services.discord.discord_bot_token'),
+                    'Authorization' => 'Bot ' .config('services.discord.discord_bot_token'),
                 ],
             ]);
     
