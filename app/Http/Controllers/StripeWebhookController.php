@@ -63,28 +63,49 @@ class StripeWebhookController extends WebhookController
             if($payload['data']['object']['items']['data'][0]['plan']['id'] == 'price_1NYsR3FRSYCAp2ugFZBrH2QW') {
     
                 User::where(['email' => $customer2['email']])->update(['premium' => 1]);
-    
-            } else if ($payload['data']['object']['items']['data'][0]['plan']['id'] == 'price_1NiK4YFRSYCAp2ug0E8EAkdd') {
-    
-                User::where(['email' => $customer2['email']])->update(['premium' => 2]);
-    
-            } else if ($payload['data']['object']['items']['data'][0]['plan']['id'] == 'price_1NaOWSFRSYCAp2ugvRQATJ6p') {
-    
-                User::where(['email' => $customer2['email']])->update(['premium' => 3]);
-    
-            }
-    
+
             $discordUserId = $customerData['id']; // Replace with the actual user ID
             $guildId = '1123598765375357080'; // Replace with the actual guild ID
             $roleId = '1135586274481279026';
     
             $discordApiUrl = "https://discord.com/api/v9/guilds/$guildId/members/$discordUserId/roles/$roleId";
-    
             $client->put($discordApiUrl, [
                 'headers' => [
                     'Authorization' => 'Bot '.config('services.discord.bot_token'),
                 ],
             ]);
+    
+            } else if ($payload['data']['object']['items']['data'][0]['plan']['id'] == 'price_1NiK4YFRSYCAp2ug0E8EAkdd') {
+    
+                User::where(['email' => $customer2['email']])->update(['premium' => 2]);
+
+                $discordUserId = $customerData['id']; // Replace with the actual user ID
+                $guildId = '1123598765375357080'; // Replace with the actual guild ID
+                $roleId = '1143950899182575736';
+        
+                $discordApiUrl = "https://discord.com/api/v9/guilds/$guildId/members/$discordUserId/roles/$roleId";
+                $client->put($discordApiUrl, [
+                    'headers' => [
+                        'Authorization' => 'Bot '.config('services.discord.bot_token'),
+                    ],
+                ]);
+    
+            } else if ($payload['data']['object']['items']['data'][0]['plan']['id'] == 'price_1NaOWSFRSYCAp2ugvRQATJ6p') {
+    
+                User::where(['email' => $customer2['email']])->update(['premium' => 3]);
+
+                $discordUserId = $customerData['id']; // Replace with the actual user ID
+                $guildId = '1123598765375357080'; // Replace with the actual guild ID
+                $roleId = '1143950943549923358';
+        
+                $discordApiUrl = "https://discord.com/api/v9/guilds/$guildId/members/$discordUserId/roles/$roleId";
+                $client->put($discordApiUrl, [
+                    'headers' => [
+                        'Authorization' => 'Bot '.config('services.discord.bot_token'),
+                    ],
+                ]);
+    
+            }
     
             Log::channel('daily')->debug('Stripe Webhook Received:', (array) $payload);
             return new Response('Webhook Handled', 200);
