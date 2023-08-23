@@ -35,7 +35,7 @@ Route::get('/login',  [DiscordLoginContoller::class, 'redirectToProvider'])->nam
 Route::get('/discordinfo', [DiscordLoginContoller::class, 'handleProviderCallback']);
 Route::get('/tos', tos::class)->name('tos');
 Route::get('/privacy', privacy::class)->name('privacy');
-Route::post('webhooks/stripe', [StripeWebhookController::class, 'handleWebhook']);
+Route::post('/webhooks/stripe', [StripeWebhookController::class, 'handleWebhook']);
 
 Route::get('/email', function() {
     return view('emails.status');
