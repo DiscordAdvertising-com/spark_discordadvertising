@@ -137,11 +137,28 @@ class StripeWebhookController extends WebhookController
     
             $discordUserId = $customerData['id']; // Replace with the actual user ID
             $guildId = '1123598765375357080'; // Replace with the actual guild ID
-            $roleId = '1135586274481279026';
+            $basicRole = '1135586274481279026';
+            $supremeRole = '1143950899182575736';
+            $highlightedRole = '1143950899182575736';
     
-            $discordApiUrl = "https://discord.com/api/v9/guilds/$guildId/members/$discordUserId/roles/$roleId";
+            $discordApiUrl = "https://discord.com/api/v9/guilds/$guildId/members/$discordUserId/roles/$basicRole";
+            $discordApiUrl2 = "https://discord.com/api/v9/guilds/$guildId/members/$discordUserId/roles/$supremeRole";
+            $discordApiUrl3 = "https://discord.com/api/v9/guilds/$guildId/members/$discordUserId/roles/$highlightedRole";
+
     
-            $client->delete($discordApiUrl, [
+            $client->delete($discordApiUrl,  [
+                'headers' => [
+                    'Authorization' => 'Bot '.config('services.discord.bot_token'),
+                ],
+            ]);
+
+            $client->delete($discordApiUrl2,  [
+                'headers' => [
+                    'Authorization' => 'Bot '.config('services.discord.bot_token'),
+                ],
+            ]);
+
+            $client->delete($discordApiUrl3,  [
                 'headers' => [
                     'Authorization' => 'Bot '.config('services.discord.bot_token'),
                 ],
