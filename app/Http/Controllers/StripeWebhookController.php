@@ -64,7 +64,7 @@ class StripeWebhookController extends WebhookController
     
                 User::where(['email' => $customer2['email']])->update(['premium' => 1]);
     
-            } else if ($payload['data']['object']['items']['data'][0]['plan']['id'] == 'price_1NYtT7FRSYCAp2ugIDTOAO2V') {
+            } else if ($payload['data']['object']['items']['data'][0]['plan']['id'] == 'price_1NiK4YFRSYCAp2ug0E8EAkdd') {
     
                 User::where(['email' => $customer2['email']])->update(['premium' => 2]);
     

@@ -17,10 +17,10 @@
     <a href="http://customer.discordadvertising.com/" class=" absolute right-4 top-1/2 -translate-y-1/2 text-sm italic text-gray-400 "> manage plan <span class="text-accent text-sm"> <i class="fa-solid fa-arrow-right"></i> </span></a>
 
 </div>
-
+<br>
 <div>
-<script async src="https://js.stripe.com/v3/pricing-table.js"></script>
-<stripe-pricing-table pricing-table-id="prctbl_1NaOYNFRSYCAp2ugYGmfUjzs"
-publishable-key="pk_live_51NYsI1FRSYCAp2ugXtJbsOMJqR8PtMSSSq5MWTJaIQdyrR51aozpOyE3kybmW47HiSEZxeWmcz5dPzkOTEd4n03h00dF7hei0I">
-</stripe-pricing-table>
+    <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+    <stripe-pricing-table pricing-table-id="prctbl_1NiK7HFRSYCAp2ugO8qzwPWN"
+    publishable-key="pk_live_51NYsI1FRSYCAp2ugXtJbsOMJqR8PtMSSSq5MWTJaIQdyrR51aozpOyE3kybmW47HiSEZxeWmcz5dPzkOTEd4n03h00dF7hei0I">
+    </stripe-pricing-table>
 </div>
