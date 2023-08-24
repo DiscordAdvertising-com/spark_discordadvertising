@@ -3,7 +3,7 @@
     <div class="w-full">
 
         <h1 class="text-5xl text-white tracking-wide font-semibold border-b pb-6">Home <span
-                class="text-2xl text-gray-400">/ BotList</span></h1>
+                class="text-2xl text-gray-400">/ Tags</span></h1>
 
     </div>
 
