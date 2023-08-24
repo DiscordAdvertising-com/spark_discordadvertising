@@ -9,6 +9,7 @@ class Tags extends Component
 {
 
     public $search;
+    public $tag;
 
     public function render()
     {
@@ -24,6 +25,10 @@ class Tags extends Component
 
     public function remove($name) {
         Tag::where('name', '=', $name)->delete();
+    }
+
+    public function add() {
+        Tag::create(['name' => $this->tag]);
     }
 
 }
