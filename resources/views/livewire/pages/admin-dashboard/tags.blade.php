@@ -41,4 +41,22 @@
 
     </div>
 
+    <div class="lg:w-fit flex flex-col md:flex-row gap-x-5">
+
+        <div class="w-full">
+            <label for="filter" class="text-gray-500 italic block">Create</label>
+            <input wire:model="tag" name="filter" id="filter"
+                class="p-3 h-[3.5rem] rounded-lg w-full lg:w-[20rem] 2xl:w-[40rem] bg-sb border-opacity-10 text-gray-400 cursor-pointer focus:ring-1 focus:ring-accent focus:outline-none"
+                placeholder="" />
+        </div>
+
+        <div>
+            <button
+                wire:click="add"
+                class="my-auto bg-accent text-white rounded-lg w-full md:w-[4rem] h-[3.5rem] mt-[1.5rem] text-xl font-bold">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </div>
+    </div>
+
 </div>
