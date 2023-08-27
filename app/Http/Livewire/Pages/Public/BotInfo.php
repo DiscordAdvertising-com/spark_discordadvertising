@@ -117,20 +117,6 @@ class BotInfo extends Component
 
         $client->post('https://discord.com/api/v9/channels/1124325015630913576/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
 
-        if($status == "Accepted") {
-
-            $embed->title = "Bot Acccepted";
-            $embed->description = "**Application ID:** ".$bot['id']."\n**Bot Name:** ".$bot['username'];
-            $embed->color = hexdec('#00F700');
-
-        } else {
-
-        }
-
-        $client->post('https://discord.com/api/v9/channels/1126134459415134289/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
-
-
-
         $user = User::where(['id' => $bot->author])->first();
 
         Mail::to($user->email)

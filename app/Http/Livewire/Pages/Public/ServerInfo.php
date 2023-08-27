@@ -117,18 +117,6 @@ class ServerInfo extends Component
 
         $client->post('https://discord.com/api/v9/channels/1124325015630913576/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
 
-        if($status == "Accepted") {
-
-            $embed->title = "Server Accepted";
-            $embed->description = "**Server ID:** ".$server['id']."\n**Server Name:** ".$server['name']. "\n**Invite:** ".$server['invite'];
-            $embed->color = hexdec('#F70000');
-
-        } else {
-
-        }
-
-        $client->post('https://discord.com/api/v9/channels/1126134459415134289/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
-
         $user = User::where(['id' => $server->author])->first();
 
         Mail::to($user->email)
