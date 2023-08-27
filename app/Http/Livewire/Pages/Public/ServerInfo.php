@@ -31,7 +31,7 @@ class ServerInfo extends Component
             return redirect()->route('home');
         }
 
-        if(($server->status != 'Accepted' && !Auth::check()) || ( $server->status != 'Accepted' && !Auth::user()->access)) {
+        if(($server->status != 'Accepted' && !Auth::check()) || ( $server->status != 'Accepted' && !Auth::user()->manageBots)) {
             return redirect()->route('home');
         }
     }
