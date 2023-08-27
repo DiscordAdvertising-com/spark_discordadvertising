@@ -20,6 +20,7 @@ class BotInfo extends Component
 {
 
     public $botID;
+    public $botClientID;
     public $reason;
 
     public function mount($botID) {
@@ -100,6 +101,7 @@ class BotInfo extends Component
 
         $client = new Client();
         $embed = (object)array();
+        $findBot = Bot::find($this->botClientID);
 
         if($status == "Rejected") {
 
@@ -107,16 +109,43 @@ class BotInfo extends Component
             $embed->description = "**Application ID:** ".$bot['id']."\n**Bot Name:** ".$bot['username']. "\n**Reviewer:** ".Auth::user()->username. "\n\n**Reason:** ".$this->reason;
             $embed->color = hexdec('#F70000');
 
+            $client->post('https://discord.com/api/v9/channels/1124325015630913576/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
+
+
+            $embed->title = "Bot Rejected";
+            $embed->description = "**Application ID:** ".$bot['id']."\n**Bot Name:** ".$bot['username']. "\n\n**Reason:** *Reason undisclosed, see your email if your the bot owner* ";
+            $embed->color = hexdec('#F70000');
+
+            $client->post('https://discord.com/api/v9/channels/1126134459415134289/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
+
+
         } else {
 
             $embed->title = "Bot Accepted";
             $embed->description = "**Application ID:** ".$bot['id']."\n**Bot Name:** ".$bot['username']. "\n**Reviewer:** ".Auth::user()->username;
             $embed->color = hexdec('#00F700');
 
+
+            $client->post('https://discord.com/api/v9/channels/1124325015630913576/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
+
+
+            $embed->title = "Bot Accepted";
+            $embed->description = "**Application ID:** ".$bot['id']."\n**Bot Name:** ".$bot['username'];
+            $embed->color = hexdec('#00F700');
+
+            $component = (object)array();
+            $component->type = 1;
+            $component->components = [(object)array()];
+            $component->components[0]->type = 2;
+            $component->components[0]->style = 5;
+            $component->components[0]->label = "Bot Page";
+            $component->components[0]->url = "https://discordadvertising.com/bot/".$bot['id'];
+
+            $client->post('https://discord.com/api/v9/channels/1126134459415134289/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed], 'components' => [$component]]]);
+
         }
 
-        $client->post('https://discord.com/api/v9/channels/1124325015630913576/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
-
+    
         $user = User::where(['id' => $bot->author])->first();
 
         Mail::to($user->email)
