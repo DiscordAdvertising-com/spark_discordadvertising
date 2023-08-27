@@ -103,7 +103,7 @@
                     @endforeach
 
                 </div>
-                @if( Auth::check() && Auth::user()->access)
+                @if( Auth::check() && Auth::user()->manageBots)
                     <h1 class="text-white mt-10 mb-5">Status: {{$server['status']}}</h1>
                     <div class="grid gap-y-5">
                         @if ($server['status'] == 'Awaiting Review' || $server['status'] == 'Rejected')
