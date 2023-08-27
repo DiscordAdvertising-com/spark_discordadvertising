@@ -47,7 +47,7 @@ class BotStatus extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.status',
+            markdown: 'emails.bot-status',
             with: [
                 'status' => $this->status,
                 'bot' => $this->bot,
