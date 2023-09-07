@@ -125,8 +125,17 @@ class BotInfo extends Component
             $embed->description = "**Application ID:** ".$bot['id']."\n**Bot Name:** ".$bot['username']. "\n**Reviewer:** ".Auth::user()->username;
             $embed->color = hexdec('#00F700');
 
+            $component = (object)array();
+            $component->type = 1;
+            $component->components = [(object)array()];
+            $component->components[0]->type = 2;
+            $component->components[0]->style = 5;
+            $component->components[0]->label = "Bot Page";
+            $component->components[0]->url = "https://discordadvertising.com/bot/".$bot['id'];
 
-            $client->post('https://discord.com/api/v9/channels/1124325015630913576/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
+
+
+            $client->post('https://discord.com/api/v9/channels/1124325015630913576/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed], 'components' => [$component]]]);
 
 
             $embed->title = "Bot Accepted";
