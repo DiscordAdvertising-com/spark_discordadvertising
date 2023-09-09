@@ -53,3 +53,5 @@
     })();
     </script>
     <!--End of Tawk.to Script-->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3693059889859602"
+    crossorigin="anonymous"></script>

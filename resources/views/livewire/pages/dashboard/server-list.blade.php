@@ -76,3 +76,5 @@
     s0.parentNode.insertBefore(s1,s0);
     })();
     </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3693059889859602"
+    crossorigin="anonymous"></script>
