@@ -8,9 +8,6 @@
                         <a href="https://blog.discordadvertising.com/welcome" class=" hover:underline">Blog</a>
                     </li>
                     <li class="mb-4">
-                        <a href="#" class="hover:underline">Team</a>
-                    </li>
-                    <li class="mb-4">
                         <a href="https://staff.discordadvertising.com/" class="hover:underline">Apply Now</a>
                     </li>
                 </ul>
@@ -22,7 +19,7 @@
                         <a href="https://discord.gg/vUxdpAmN6v" class="hover:underline">Discord Server</a>
                     </li>
                     <li class="mb-4">
-                        <a href="https://tos.discordadvertising.com/#contact-us" class="hover:underline">Contact Us</a>
+                        <a href="mailto:admin@discordadvertising.com" class="hover:underline">Contact Us</a>
                     </li>
                 </ul>
             </div>
