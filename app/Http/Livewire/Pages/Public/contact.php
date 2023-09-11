@@ -30,11 +30,11 @@ class Contact extends Component
         $client = new Client();
 
         $embed = (object)array();
-        $embed->title = $this->name .' | '. $this->email  ?? 'No Info';
-        $embed->description = $this->description ?? 'No Description';
+        $embed->title = 'Name: '. $this->name .' | Email: '. $this->email  ?? 'No Info';
+        $embed->description = 'Description: '.$this->description ?? 'No Description';
         $embed->color = hexdec('#00F700');
 
-        $client->post('https://discord.com/api/v9/channels/1123608372659359805/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
+        $client->post('https://discord.com/api/v9/channels/1123608352837075066/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed]]]);
 
         $this->name = null;
         $this->email = null;
