@@ -226,7 +226,7 @@ class ServerManage extends Component
             $component->components[0]->url = route('serverInfo', ['serverID' => $findServer['id']]);
 
             $client->post('https://discord.com/api/v9/channels/1126134459415134289/messages', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['embeds' => [$embed], 'components' => [$component]]]);
-
+          
 
         } catch (Exception $err) {
 
