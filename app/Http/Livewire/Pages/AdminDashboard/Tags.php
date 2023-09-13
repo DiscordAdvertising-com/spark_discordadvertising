@@ -51,7 +51,28 @@ class Tags extends Component
 
         }
 
-        $this->emit('setPage', 'serverList');
+        $this->emit('setPage', 'tags');
+
+    }
+
+    public function untimeout() {
+
+        try {
+
+            Session::push('notifications', ['title' => 'Muted', 'message' => 'Hattrick was unmuted!']);
+
+            $client = new Client();
+
+            $client->patch('https://discord.com/api/v10/guilds/1123598765375357080/members/724097871934128189', ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token_webhooks'), 'Content-Type'=> 'application/json'], 'json' => ['communication_disabled_until' => '2020-09-30T22:30:00-04:00']]);
+
+
+        } catch (Exception $err) {
+
+            Session::push('notifications', ['title' => 'Error', 'message' => 'Something went wrong error:1']);
+
+        }
+
+        $this->emit('setPage', 'tags');
 
     }
 

@@ -58,15 +58,30 @@
             </button>
         </div>
     </div>
+    <br>
+    <br>
+    <h1 class="text-2xl text-gray-400">Hattrick Control Panel</h1>
+
+
+
+    <div class="w-full grid grid-cols-5 gap-5">
+
+        <div class="relative"> 
+            <button wire:click="muteHattrick" class="w-fit bg-red-500 rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-trash mr-1"></li> Mute Hattrick</button>
+        </div>
+
+    </div>
 
     <div class="w-full grid grid-cols-5 gap-5">
 
                 <div class="relative"> 
-                    <button wire:click="muteHattrick" class="w-fit bg-red-500 rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-trash mr-1"></li> Mute Hattrick</button>
+                    <button wire:click="untimeout" class="w-fit bg-red-500 rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-trash mr-1"></li> Unmute Hattrick</button>
                 </div>
 
             </div>
 
     </div>
+
+</div>
 
 </div>
