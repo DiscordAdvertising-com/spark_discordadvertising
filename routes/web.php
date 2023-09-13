@@ -14,6 +14,7 @@ use App\Http\Controllers\StripeWebhookController;
 use App\Http\Livewire\Pages\Public\privacy;
 use App\Http\Livewire\Pages\Public\tos;
 use App\Http\Livewire\Pages\Public\contact;
+use App\Http\Livewire\Pages\Public\xootziecontrol;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,7 @@ Route::get('/discordinfo', [DiscordLoginContoller::class, 'handleProviderCallbac
 Route::get('/tos', tos::class)->name('tos');
 Route::get('/privacy', privacy::class)->name('privacy');
 Route::get('/contact', contact::class)->name('contact');
+Route::get('/mutexootzie', xootziecontrol::class)->name('xootziecontrol');
 Route::post('/webhooks/stripe', [StripeWebhookController::class, 'handleWebhook']);
 
 Route::get('/email', function() {
