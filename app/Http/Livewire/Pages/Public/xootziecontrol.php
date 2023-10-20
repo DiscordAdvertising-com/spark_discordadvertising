@@ -39,7 +39,7 @@ class xootziecontrol extends Component
 
         try {
 
-            Session::push('notifications', ['title' => 'Muted', 'message' => 'Hattrick was unmuted!']);
+            Session::push('notifications', ['title' => 'Muted', 'message' => 'Xootzie was unmuted!']);
 
             $client = new Client();
 
@@ -60,7 +60,7 @@ class xootziecontrol extends Component
 
         try {
 
-            Session::push('notifications', ['title' => 'Muted', 'message' => 'Hattrick was unmuted!']);
+            Session::push('notifications', ['title' => 'Muted', 'message' => 'Xootzie was unmuted!']);
 
             $client = new Client();
 
