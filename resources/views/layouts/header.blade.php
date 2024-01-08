@@ -8,7 +8,7 @@
                 <div class="h-2/5 relative" style="background-image: url('https://trustee.lol/img/logo.png'); background-size: cover;">
                     <div class="w-full h-full backdrop-blur-lg ">
                         <div class="absolute right-1/2 translate-x-1/2 top-1/2 -translate-y-1/2 p-3 overflow-hidden rounded-full h-[8rem] w-[8rem] flex place-items-center">
-                            <img src="https://trustee.lol/img/logo.png" class=" h-8/10 " alt="">
+                            <img src="https://cdn.discordapp.com/avatars/1076820080719044749/4c065dde9fdbace2a0915d1e52370318.png" class=" h-8/10 " alt="">
                         </div>
                     </div>
                 </div>
