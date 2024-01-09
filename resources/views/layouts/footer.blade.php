@@ -57,7 +57,7 @@
                 <img src="{{asset('img/logo.png')}}" class="h-[1.5rem]" alt="">
                 <h1 class="text-white my-auto text-xl ml-2 font-bold"><span class="text-accent">Discord</span> Advertising</h1>
             </div>
-            <p class="mt-10 text-center text-xs leading-5 text-gray-500 border-t border-gray-500 border-opacity-40 pt-5">© 2023 Discord Advertising. All rights reserved.</p>
+            <p class="mt-10 text-center text-xs leading-5 text-gray-500 border-t border-gray-500 border-opacity-40 pt-5">© <script>document.write(new Date().getFullYear())</script> Discord Advertising. All rights reserved.</p>
             <p class="text-center text-xs leading-5 text-gray-500 mt-1 italic">Developed by Bacio001.</p>
         </div>
 
