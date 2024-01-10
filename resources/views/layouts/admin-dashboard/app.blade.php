@@ -2,7 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-
+    <title>Admin Panel - DA</title>
+    <link rel="shortcut icon" href="https://cdn.discordapp.com/attachments/918252696820146246/1194670795365036063/jlajbiem_1.png" type="image/x-icon" sizes="48x48px"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">

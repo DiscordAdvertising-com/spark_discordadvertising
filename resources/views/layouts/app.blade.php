@@ -4,8 +4,8 @@
 <head>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3693059889859602"
      crossorigin="anonymous"></script>
-    <title>Discord Advertising</title>
-    <link rel="shortcut icon" href="https://cdn.discordapp.com/attachments/1092610768157032540/1193058290943393822/DA.png" type="image/x-icon" sizes="48x48px"/>
+    <title>Discord Advertising - Home</title>
+    <link rel="shortcut icon" href="https://cdn.discordapp.com/attachments/918252696820146246/1194670795365036063/jlajbiem_1.png" type="image/x-icon" sizes="48x48px"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
