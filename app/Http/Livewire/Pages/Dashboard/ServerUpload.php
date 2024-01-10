@@ -62,13 +62,14 @@ class ServerUpload extends Component
 
                 //Fetch server by id
                 $data = $client->get('https://discord.com/api/v8/guilds/'.$this->serverID, ['headers' => ['Authorization' => 'Bot '.config('services.discord.bot_token')]]);
-                $data = json_decode($data->getBody(), true);
-        
+              $data = json_decode($data->getBody(), true);
+
                 if($data['owner_id'] != Auth::user()->id) {
     
-                    return Session::push('notifications', ['title' => 'Success', 'message' => 'You must be the owner of the server']);
+                   return Session::push('notifications', ['title' => 'Success', 'message' => 'You must be the owner of the server']);
                     
-                }
+               }
+
 
                 if($data) {
     
