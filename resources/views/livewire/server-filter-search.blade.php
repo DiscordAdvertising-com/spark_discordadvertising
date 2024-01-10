@@ -45,7 +45,7 @@
     <div class="relative z-20" @click.away="search = false">
         <div class="lg:w-[45rem] flex lg:gap-x-5 mt-10">
             <input type="text" wire:model="search" placeholder="Search for the perfect server..." @click="search = true" class="bg-input p-5 text-lg rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200 w-full" required>
-            <button class=" lg:block hidden h-[68px] w-[68px] bg-accent rounded-lg text-white font-semibold p-5 text-lg" wire:click="search" @click="search = false"> <li class="fa-solid fa-search text-xl"></li></button>
+            <button class=" lg:block hidden h-[68px] w-[68px] bg-accent hover:bg-accent/60 rounded-lg text-white font-semibold p-5 text-lg" wire:click="search" @click="search = false"> <li class="fa-solid fa-search text-xl"></li></button>
         </div>
         <div class="w-full max-h-[26rem] top-[78px] rounded-lg border border-db bg-dsb absolute z-10" x-cloak x-show="search">
             <div class="flex gap-x-4 pt-4 px-4">
@@ -68,7 +68,7 @@
         </div>
     </div>
     <div class="w-full grid grid-cols-2 lg:hidden mt-5 gap-x-5 ">
-        <button class="h-[68px] bg-accent rounded-lg text-white font-semibold p-5 text-lg" wire:click="search" @click="search = false"><li class="fa-solid fa-search text-xl"></li> Search</button>
-        <button class="h-[68px] bg-accent rounded-lg text-white font-semibold p-5 text-lg" @click="tags = true"><li class="fa-solid fa-filter text-xl"></li> Filter</button>
+        <button class="h-[68px] bg-accent hover:bg-accent/60 rounded-lg text-white font-semibold p-5 text-lg" wire:click="search" @click="search = false"><li class="fa-solid fa-search text-xl"></li> Search</button>
+        <button class="h-[68px] bg-accent hover:bg-accent/60 rounded-lg text-white font-semibold p-5 text-lg" @click="tags = true"><li class="fa-solid fa-filter text-xl"></li> Filter</button>
     </div>
 </div>

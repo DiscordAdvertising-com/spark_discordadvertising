@@ -33,7 +33,7 @@
                                     <option value="{{$tag}}">{{$tag}}</option>
                                 @endforeach
                             </select>
-                            <button wire:click="addTag" class=" bg-accent rounded-lg w-[8rem] text-white font-semibold"> <li class="fa-solid fa-plus"></li> Add <span class="hidden md:block">Tag</span></button>
+                            <button wire:click="addTag" class=" bg-accent hover:bg-accent/60 rounded-lg w-[8rem] text-white font-semibold"> <li class="fa-solid fa-plus"></li> Add <span class="hidden md:block">Tag</span></button>
                         </div>
                         <div class="flex gap-x-5">
                             <div class="flex gap-x-5 relative w-full">
@@ -64,7 +64,7 @@
                     <div class="md:flex grid gap-5">
                         <input name="clientid" wire:model="accountID" type="text"
                         class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" required>
-                        <button wire:click="addAccount" class="w-[12rem] bg-accent rounded-lg text-white font-semibold md:h-auto h-[56px]"> <li class="fa-solid fa-search"></li> Find Account</button>
+                        <button wire:click="addAccount" class="w-[12rem] bg-accent hover:bg-accent/60 rounded-lg text-white font-semibold md:h-auto h-[56px]"> <li class="fa-solid fa-search"></li> Find Account</button>
                     </div>
                     <h1 class="text-sm text-gray-500">How to find someones discord ID<i class="fa-solid fa-arrow-right ml-1 text-accent"></i></h1>
 
@@ -102,16 +102,16 @@
                     <div class="md:flex grid gap-5">
                         <input wire:model="invite" name="invite" type="text"
                         class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" required>
-                        <button wire:click="validateInvite" class="w-[10rem] bg-accent rounded-lg text-white font-semibold md:h-auto h-[56px]"> <li class="fa-solid fa-search"></li> Validate</button>
+                        <button wire:click="validateInvite" class="w-[10rem] bg-accent hover:bg-accent/60 rounded-lg text-white font-semibold md:h-auto h-[56px]"> <li class="fa-solid fa-search"></li> Validate</button>
                     </div>
 
                 </div>
 
                 <div class="md:flex grid gap-5">
                     @if($inviteValid)
-                        <button wire:click="updateListing" class="w-fit bg-accent rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-check mr-1"></li> Update Listing</button>
+                        <button wire:click="updateListing" class="w-fit bg-accent hover:bg-accent/60 rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-check mr-1"></li> Update Listing</button>
                     @endif
-                    <button wire:click="deleteListing" class="w-fit bg-red-500 rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-trash mr-1"></li> Delete Listing</button>
+                    <button wire:click="deleteListing" class="w-fit bg-red-500 hover:bg-red-500/60 rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-trash mr-1"></li> Delete Listing</button>
                 </div>
                 <h1 class="text-sm text-gray-500">By updating your bot listing you accept Discord Advertising's TOS<i class="fa-solid fa-arrow-right ml-1 text-accent"></i></h1>
             </div>

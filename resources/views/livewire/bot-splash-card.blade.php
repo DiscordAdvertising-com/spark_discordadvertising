@@ -21,7 +21,7 @@
                 {{$bot['headline']}}
             </h1>
             <a class="w-full flex place-items-center" href="{{route('botInfo', ['botID' => $bot['id']])}}">
-                <button class=" bg-accent rounded text-white font-semibold py-3 px-3 w-[10rem] mx-auto text-lg mt-2"><li class="fa-solid fa-eye mr-2"></li>View</button>
+                <button class=" bg-accent hover:bg-accent/60 rounded text-white font-semibold py-3 px-3 w-[10rem] mx-auto text-lg mt-2"><li class="fa-solid fa-eye mr-2"></li>View</button>
             </a>
         </div>
     </div>

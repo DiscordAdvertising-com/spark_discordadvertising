@@ -63,12 +63,12 @@
                 </div>
                 <div class="w-full grid grid-cols-2 gap-x-5">
                     @if ($time == "00:00:00")
-                        <button class="w-full bg-accent rounded-lg text-white font-semibold p-3" wire:click="vote('{{$server['id']}}')"> <li class="fa-solid fa-arrow-up mr-1"></li> Vote</button>
+                        <button class="w-full bg-accent hover:bg-accent/60 rounded-lg text-white font-semibold p-3" wire:click="vote('{{$server['id']}}')"> <li class="fa-solid fa-arrow-up mr-1"></li> Vote</button>
                     @else
                         <button class="w-full bg-accent rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-arrow-up mr-1"></li><span id="countdown">{{$time}}</span></button>
                     @endif
                     <a target="_blank" href="{{$server['invite']}}">
-                        <button class="w-full bg-accent rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-plus mr-1"></li> Join</button>
+                        <button class="w-full bg-accent hover:bg-accent/60 rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-plus mr-1"></li> Join</button>
                     </a>
 
                 </div>
@@ -107,17 +107,17 @@
                     <h1 class="text-white mt-10 mb-5">Status: {{$server['status']}}</h1>
                     <div class="grid gap-y-5">
                         @if ($server['status'] == 'Awaiting Review' || $server['status'] == 'Rejected')
-                            <button class="w-full bg-green-500 rounded-lg text-white font-semibold p-3" wire:click="updateStatus('Accepted')"> <li class="fa-solid fa-check mr-1"></li> Accept</button>   
+                            <button class="w-full bg-green-500 hover:bg-green-500/60 rounded-lg text-white font-semibold p-3" wire:click="updateStatus('Accepted')"> <li class="fa-solid fa-check mr-1"></li> Accept</button>   
                         @endif
                         @if ($server['status'] == 'Awaiting Review' || $server['status'] == 'Accepted')
-                            <button class="w-full bg-red-500 rounded-lg text-white font-semibold p-3" @click="rejectModal = true"> <li class="fa-solid fa-x mr-1"></li> Reject</button>                     
+                            <button class="w-full bg-red-500 hover:bg-red-500/60 rounded-lg text-white font-semibold p-3" @click="rejectModal = true"> <li class="fa-solid fa-x mr-1"></li> Reject</button>                     
                         @endif
 
                     </div>
                     <h1 class="text-white mt-10 mb-5">Refresh Server Data</h1>
                     <div class="grid gap-y-5">
   
-                        <button class="w-full bg-accent rounded-lg text-white font-semibold p-3" wire:click="refreshServerData"> <li class="fa-solid fa-arrows-rotate mr-1"></li> Refresh</button>                     
+                        <button class="w-full bg-accent hover:bg-accent/60 rounded-lg text-white font-semibold p-3" wire:click="refreshServerData"> <li class="fa-solid fa-arrows-rotate mr-1"></li> Refresh</button>                     
 
                     </div>
                 @endif

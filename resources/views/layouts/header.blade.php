@@ -7,8 +7,8 @@
             <div class="rounded-xl bg-dsb h-[27rem] overflow-hidden">
                 <div class="h-2/5 relative" style="background-image: url('https://trustee.lol/img/logo.png'); background-size: cover;">
                     <div class="w-full h-full backdrop-blur-lg ">
-                        <div class="absolute right-1/2 translate-x-1/2 top-1/2 -translate-y-1/2 p-4 overflow-hidden rounded-full h-[7rem] w-[7em] flex place-items-center">
-                            <img src="https://cdn.discordapp.com/attachments/1184938545098539088/1194088629828583504/Nuvora-Darkv2.png">
+                        <div class="absolute right-1/2 translate-x-1/2 top-1/2 -translate-y-1/2 p-4 overflow-hidden rounded-full h-[10rem] w-[10rem] flex place-items-center">
+                            <img src="https://cdn.discordapp.com/icons/1165870267348832256/15a331d2f3c724cea2e15dd552e1109c.png" class="w-full h-full object-cover" alt="Description of the image">
                         </div>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                         Nuvora offers a custom integration builder - integrate your favorite apps with ease!
                     </h1>
                     <a class="w-full flex place-items-center" href="{{route('home')}}/server/1165870267348832256"">
-                        <button class=" bg-accent rounded text-white font-semibold py-3 px-3 w-[10rem] mx-auto text-lg mt-2"><li class="fa-solid fa-eye mr-2"></li>View</button>
+                        <button class="bg-accent hover:bg-accent/60 rounded text-white font-semibold py-3 px-3 w-[10rem] mx-auto text-lg mt-2"><li class="fa-solid fa-eye mr-2"></li>View</button>
                     </a>
     
                 </div>

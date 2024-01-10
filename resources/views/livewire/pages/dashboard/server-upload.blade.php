@@ -12,8 +12,8 @@
                     <div class="md:flex grid gap-5">
                         <input wire:model="serverID" name="serverid" type="text"
                         class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" required>
-                        <button wire:click="findServer" class="w-[11rem] md:h-auto h-[56px] bg-accent rounded-lg text-white font-semibold"> <li class="fa-solid fa-search"></li> Find Server</button>
-                        <button class="w-[11rem] md:h-auto h-[56px] bg-accent rounded-lg text-white font-semibold"><a href="https://discord.com/api/oauth2/authorize?client_id=1141540520791920711&permissions=2147485696&scope=applications.commands%20bot" class=" h-[56px]"> <li class="fa-solid fa-plus"></li> Add Bot </a></button>
+                        <button wire:click="findServer" class="w-[11rem] md:h-auto h-[56px] bg-accent hover:bg-accent/60 rounded-lg text-white font-semibold"> <li class="fa-solid fa-search"></li> Find Server</button>
+                        <button class="w-[11rem] md:h-auto h-[56px] bg-accent hover:bg-accent/60 rounded-lg text-white font-semibold"><a href="https://discord.com/api/oauth2/authorize?client_id=1141540520791920711&permissions=2147485696&scope=applications.commands%20bot" class=" h-[56px]"> <li class="fa-solid fa-plus"></li> Add Bot </a></button>
                     </div>
                     <li class="fa-solid fa-arrow-right ml-1 text-accent">
                         <a href="https://docs.discordadvertising.com/getting-your-server-id" class="text-sm text-gray-500">How to find your server's ID</a>
@@ -54,7 +54,7 @@
                             @if(Auth::user()->premium >= 2)
                             <div class="flex gap-x-5">
                                 <input type="text" wire:model="customTag" class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" id=""/>
-                                <button wire:click="addCustomTag" class=" bg-accent rounded-lg w-[8rem] text-white font-semibold"> <li class="fa-solid fa-plus"></li> Add <span class="hidden md:block">Custom Tag</span></button>
+                                <button wire:click="addCustomTag" class=" bg-accent hover:bg-accent/60 rounded-lg w-[8rem] text-white font-semibold"> <li class="fa-solid fa-plus"></li> Add <span class="hidden md:block">Custom Tag</span></button>
                             </div>
                             @endif
                             <div class="flex gap-x-5">
@@ -63,7 +63,7 @@
                                         <option value="{{$tag}}">{{$tag}}</option>
                                     @endforeach
                                 </select>
-                                <button wire:click="addTag" class=" bg-accent rounded-lg w-[8rem] text-white font-semibold"> <li class="fa-solid fa-plus"></li> Add <span class="hidden md:block">Tag</span></button>
+                                <button wire:click="addTag" class=" bg-accent hover:bg-accent/60 rounded-lg w-[8rem] text-white font-semibold"> <li class="fa-solid fa-plus"></li> Add <span class="hidden md:block">Tag</span></button>
                             </div>
                             <div class="flex gap-x-5">
                                 <div class="flex gap-x-5 relative w-full">
@@ -96,7 +96,7 @@
                         <div class="md:flex grid gap-5">
                             <input name="accoutid" wire:model="accountID" type="text"
                             class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" required>
-                            <button wire:click="addAccount" class="w-[12rem] bg-accent rounded-lg text-white font-semibold md:h-auto h-[56px]"> <li class="fa-solid fa-search"></li> Find Account</button>
+                            <button wire:click="addAccount" class="w-[12rem] bg-accent hover:bg-accent/60 rounded-lg text-white font-semibold md:h-auto h-[56px]"> <li class="fa-solid fa-search"></li> Find Account</button>
                         </div>
                         
                         <h1 class="text-sm text-gray-500">How to find someones discord ID<i class="fa-solid fa-arrow-right ml-1 text-accent"></i></h1>
@@ -136,14 +136,14 @@
                         <div class="md:flex grid gap-5">
                             <input wire:model="invite" name="invite" type="text"
                             class="w-full bg-input p-4 rounded-lg focus:ring-2 focus:ring-accent  focus:outline-none text-gray-200" required>
-                            <button wire:click="validateInvite" class="w-[10rem] bg-accent rounded-lg text-white font-semibold md:h-auto h-[56px]"> <li class="fa-solid fa-search"></li> Validate</button>
+                            <button wire:click="validateInvite" class="w-[10rem] bg-accent hover:bg-accent/60 rounded-lg text-white font-semibold md:h-auto h-[56px]"> <li class="fa-solid fa-search"></li> Validate</button>
                         </div>
     
                     </div>
                     <div class="grid gap-y-2">
                         
                         @if($inviteValid)
-                            <button wire:click="createListing" class="w-fit bg-accent rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-check mr-1"></li> Create Listing</button>
+                            <button wire:click="createListing" class="w-fit bg-accent hover:bg-accent/60 rounded-lg text-white font-semibold p-3"> <li class="fa-solid fa-check mr-1"></li> Create Listing</button>
                         @endif
                         <li class="fa-solid fa-arrow-right ml-1 text-accent">
                         <a href="{{route('tos')}}" class="text-sm text-gray-500">By creating a server listing you agree to our ToS</a>
