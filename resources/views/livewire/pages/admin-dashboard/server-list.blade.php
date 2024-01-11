@@ -71,8 +71,16 @@
                                         <td class="whitespace-nowrap px-6 py-4">{{count($server->tags)}}</td>
                                         <td class="whitespace-nowrap px-6 py-4">{{count($server->users) + 1}}</td>
                                         <td class="whitespace-nowrap px-6 py-4">{{Carbon\Carbon::parse($server->created_at)->diffForHumans()}}</td>
-                                        <td class="whitespace-nowrap px-6 py-4 w-[10rem]"> <div
-                                                class="px-3 py-1.5 rounded-xl bg-accent text-white font-semibold min-w-[130px] text-center">{{$server['status']}}</div>
+                                        <td class="whitespace-nowrap px-6 py-4 w-[10rem]">
+                                            @if($server['status'] == 'Accepted')
+                                                <div class="px-3 py-1.5 rounded-xl bg-green-500 text-white font-semibold min-w-[130px] text-center">
+                                                    {{$server['status']}}
+                                                </div>
+                                            @else
+                                                <div class="px-3 py-1.5 rounded-xl bg-red-500 text-white font-semibold min-w-[130px] text-center">
+                                                    {{$server['status']}}
+                                                </div>
+                                            @endif
                                         </td>
                                         <td class="whitespace-nowrap float-right py-4"  href="{{route('serverInfo', ['serverID' => $server['id']])}}">
                                             <a  href="{{route('serverInfo', ['serverID' => $server['id']])}}" class="px-3 py-1.5 rounded-xl bg-accent text-white font-semibold">Server Page <i class="fa-solid fa-arrow-right my-auto"></i></a>
