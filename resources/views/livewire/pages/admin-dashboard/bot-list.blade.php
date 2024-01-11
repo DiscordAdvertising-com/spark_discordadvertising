@@ -71,8 +71,16 @@
                                         <td class="whitespace-nowrap px-6 py-4">{{count($bot->tags)}}</td>
                                         <td class="whitespace-nowrap px-6 py-4">{{count($bot->users) + 1}}</td>
                                         <td class="whitespace-nowrap px-6 py-4">{{Carbon\Carbon::parse($bot->created_at)->diffForHumans()}}</td>
-                                        <td class="whitespace-nowrap px-6 py-4 w-[10rem]"> <div
-                                                class="px-3 py-1.5 rounded-xl bg-accent text-white font-semibold min-w-[130px] text-center">{{$bot['status']}}</div>
+                                        <td class="whitespace-nowrap px-6 py-4 w-[10rem]">
+                                            @if($bot['status'] == 'Accepted')
+                                                <div class="px-3 py-1.5 rounded-xl bg-green-500 text-white font-semibold min-w-[130px] text-center">
+                                                    {{$bot['status']}}
+                                                </div>
+                                            @else
+                                                <div class="px-3 py-1.5 rounded-xl bg-red-500 text-white font-semibold min-w-[130px] text-center">
+                                                    {{$bot['status']}}
+                                                </div>
+                                            @endif
                                         </td>
                                         <td class="whitespace-nowrap float-right py-4"  href="{{route('botInfo', ['botID' => $bot['id']])}}">
                                             <a  href="{{route('botInfo', ['botID' => $bot['id']])}}" class="px-3 py-1.5 rounded-xl bg-accent text-white font-semibold">Bot Page <i class="fa-solid fa-arrow-right my-auto"></i></a>
