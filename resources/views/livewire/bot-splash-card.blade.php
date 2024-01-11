@@ -1,5 +1,5 @@
 <div>
-    <div class="rounded-xl bg-dsb h-[25rem] overflow-hidden">
+    <div class="rounded-xl bg-dsb h-[25rem] overflow-hidden hover:scale-[1.1]">
         <div class="h-2/5 relative" style="background-image: @if($bot['avatar']) url('https://cdn.discordapp.com/avatars/{{$bot['id']}}/{{$bot['avatar']}}.jpg') @else url('{{asset('img/logo.png')}}') @endif; background-size: cover;">
             <div class="w-full h-full backdrop-blur-lg ">
                     <div class="absolute right-1/2 translate-x-1/2 top-1/2 -translate-y-1/2 p-3 overflow-hidden rounded-full  h-[8rem] w-[8rem] flex place-items-center">
